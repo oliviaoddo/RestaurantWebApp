@@ -7,101 +7,144 @@
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
+$_SESSION['calories'] = "";
+$_SESSION['sugar'] = "";
+$_SESSION['protien']= "";
+$_SESSION['fat'] = "";
+$_SESSION['carbs']= "";
+$_SESSION['price'] = "";
 ?>
 
 <?php
 include "connect_to_mysql.php";
 date_default_timezone_set('UTC');
 
-$calories = 1500;
-$sugar = 20;
-$protien = 20;
-$fat = 15;
-$carbs = 50;
-$price = 15;
 
+if (isset($_POST['submit'])) {
+    if(isset($_POST['calories'])) {
+      $_SESSION['calories'] = $_POST['calories'];  //  Displaying Selected Value
+    }
+    if(isset($_POST['sugar']))
+    {
+      $_SESSION['sugar'] = $_POST['sugar'];   //  Displaying Selected Value
+    }
+    if(isset($_POST['protien']))
+    {
+      $_SESSION['protien'] = $_POST['protien'];   //  Displaying Selected Value
+    }
+    if(isset($_POST['fat']))
+    {
+      $_SESSION['fat'] = $_POST['fat'];   //  Displaying Selected Value
+    }
+    if(isset($_POST['carbs']))
+    {
+      $_SESSION['carbs'] = $_POST['carbs'];   //  Displaying Selected Value
+    }
+    if(isset($_POST['price']))
+    {
+      $_SESSION['price'] = $_POST['price'];   //  Displaying Selected Value
+    }
+}
+
+echo $_SESSION['calories'];
+echo $_SESSION['sugar'];
+echo $_SESSION['protien'];
+echo $_SESSION['fat'];
+echo $_SESSION['carbs'];
+echo $_SESSION['price'];
+
+
+/*
 //SET CALORIES//
-if(isset($_GET['caloriesUnder500'])){
-  $calories = 500;
+if(isset($_POST['caloriesUnder500'])){
+  $_SESSION['calories'] = 500;
 }
-else if(isset($_GET['caloriesUnder800'])){
-  $calories = 800;
+
+else if(isset($_POST['caloriesUnder800'])){
+  $_SESSION['calories'] = 800;
 }
-else if(isset($_GET['caloriesUnder1000'])){
-  $calories = 1000;
+
+else if(isset($_POST['caloriesUnder1000'])){
+  $_SESSION['calories'] = 1000;
 }
-else if(isset($_GET['caloriesUnder1500'])){
-  $calories = 1500;
+else if(isset($_POST'caloriesUnder1500'])){
+  $_SESSION['calories'] = 1500;
 }
+
 
 //SET FAT//
 if(isset($_GET['fatUnder5'])){
-  $fat = 5;
+  $_SESSION['fat'] = 5;
 }
 else if(isset($_GET['fatUnder10'])){
-  $fat = 10;
+  $_SESSION['fat'] = 10;
 }
 else if(isset($_GET['fatUnder15'])){
-  $fat = 15;
+  $_SESSION['fat'] = 15;
 }
 
 //SET PROTIEN//
 if(isset($_GET['protienUnder5'])){
-  $protien = 5;
+  $_SESSION['protien'] = 5;
 }
 else if(isset($_GET['protienUnder10'])){
-  $protien = 10;
+  $_SESSION['protien'] = 10;
 }
 else if(isset($_GET['protienUnder15'])){
-  $protien = 15;
+  $_SESSION['protien'] = 15;
 }
 else if(isset($_GET['protienUnder20'])){
-  $protien = 20;
+  $_SESSION['protien'] = 20;
 }
 
 //SET SUGAR//
 if(isset($_GET['sugarUnder5'])){
-  $sugar = 5;
+  $_SESSION['sugar'] = 5;
 }
 else if(isset($_GET['sugarUnder10'])){
-  $sugar = 10;
+  $_SESSION['sugar'] = 10;
 }
 else if(isset($_GET['sugarUnder15'])){
-  $sugar = 15;
+  $_SESSION['sugar'] = 15;
 }
 else if(isset($_GET['sugarUnder20'])){
-  $sugar = 20;
+  $_SESSION['sugar'] = 20;
 }
 
 //SET CARBS//
 if(isset($_GET['carbsUnder20'])){
-  $carbs = 20;
+  $_SESSION['carbs'] = 20;
 }
 else if(isset($_GET['carbsUnder30'])){
-  $carbs = 30;
+  $_SESSION['carbs'] = 30;
 }
 else if(isset($_GET['carbsUnder40'])){
-  $$carbs = 40;
+  $_SESSION['carbs'] = 40;
 }
 else if(isset($_GET['carbsUnder50'])){
-  $carbs = 50;
+  $_SESSION['carbs'] = 50;
 }
 
 
 //SET PRICE//
 if(isset($_GET['priceUnder5'])){
-  $price = 5;
+  $_SESSION['price'] = 5;
 }
 else if(isset($_GET['priceUnder10'])){
-  $price = 10;
+  $_SESSION['price'] = 10;
 }
 else if(isset($_GET['priceUnder15'])){
-  $price = 15;
+  $_SESSION['price'] = 15;
 }
-
+*/
 $dynamicList = "";
 
-$sql = mysqli_query($link, "SELECT * FROM products WHERE calories <= '$calories' AND sugar <= '$sugar' AND protien <= '$protien' AND fat <= '$fat' AND carbs <= '$carbs' AND price <= '$price' ");
+/*$sql = mysqli_query($link, "SELECT * FROM products WHERE calories <= '".$_SESSION['calories'] AND sugar = $_SESSION['sugar'] AND protien = $_SESSION['protien'] AND fat = $_SESSION['fat'] AND carbs = $_SESSION['carbs'] AND price = $_SESSION['price']."' ");*/
+
+$sql = mysqli_query($link, "SELECT * FROM products WHERE calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'"); 
+
+
+/*$sql = mysqli_query($link, "SELECT * FROM products WHERE calories <= '".$_SESSION['calories']."' AND sugar <= '".$_SESSION['sugar']."' AND protien <= '".$_SESSION['protien']."' AND fat <= '". $_SESSION['fat']."' AND carbs <= '".$_SESSION['carbs']."' AND price <= '".$_SESSION['price']."' ");*/
 $productCount = mysqli_num_rows($sql); // count the output amount
 if ($productCount > 0) {
   while($row = mysqli_fetch_array($sql)){ 
@@ -218,6 +261,20 @@ mysqli_close($link);
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<script>
+  $(function() {
+    $("input[type=\"radio\"]").click(function(){
+        [...]
+        //localStorage:
+        localStorage.setItem("option", value);
+    });
+    //localStorage:
+    var itemValue = localStorage.getItem("option");
+    if (itemValue !== null) {
+        $("input[value=\""+itemValue+"\"]").click();
+    }
+});
+</script>
 <div align="center" id="mainWrapper">
   <?php include_once("template_header.php");?>
   <div id="pageContent">
@@ -321,77 +378,100 @@ mysqli_close($link);
 <div class = "container-fluid">
   <div class = "row">
     <div class="col-md-6">
-      <form action="product_list.php" method="get">
+      <form action="" method="post">
         <h4>Calories</h4>
-        <input type="checkbox" name="caloriesUnder500" value="caloriesUnder500">Under 500 Calories<br>
-        <input type="checkbox" name="caloriesUnder800" value="caloriesUnder800">Under 800 Calories<br>
-        <input type="checkbox" name="caloriesUnder1000" value="caloriesUnder1000">Under 1000 Calories<br>
-        <input type="checkbox" name="caloriesUnder1500" value="caloriesUnder1500">Under 1500 Calories<br>
+        <input type="radio" name="calories" value="500"
+          <?php if(!isset($_POST['calories']) || (isset($_POST['calories']) && $_POST['calories'] == '500')) echo ' checked="checked"'?>/>Under 500 Calories<br>
+        <input type="radio" name="calories" value="800"
+          <?php if(!isset($_POST['calories']) || (isset($_POST['calories']) && $_POST['calories'] == '800')) echo ' checked="checked"'?>/>Under 800 Calories<br>
+        <input type="radio" name="calories" value="1000"
+            <?php if(!isset($_POST['calories']) || (isset($_POST['calories']) && $_POST['calories'] == '1000')) echo ' checked="checked"'?>/>
+          Under 1000 Calories<br>
+        <input type="radio" name="calories" value="1500"
+            <?php if(!isset($_POST['calories']) || (isset($_POST['calories']) && $_POST['calories'] == '1500')) echo ' checked="checked"'?>/>Under 1500 Calories<br>
     <hr>
         <h4>Sugar</h4>
-        <input type="checkbox" name="sugarUnder5" value="sugarUnder5">Under 5g of Sugar<br>
-        <input type="checkbox" name="sugarUnder10" value="sugarUnder10">Under 10g of Sugar<br>
-        <input type="checkbox" name="sugarUnder15" value="sugarUnder15">Under 15g of Sugar<br>
-        <input type="checkbox" name="sugarUnder20" value="sugarUnder20">Under 20g of Sugar<br>
+        <input type="radio" name="sugar" value="5"
+            <?php if(!isset($_POST['sugar']) || (isset($_POST['sugar']) && $_POST['sugar'] == '5')) echo ' checked="checked"'?>/>Under 5g of Sugar<br>
+        <input type="radio" name="sugar" value="10"
+            <?php if(!isset($_POST['sugar']) || (isset($_POST['sugar']) && $_POST['sugar'] == '10')) echo ' checked="checked"'?>/>Under 10g of Sugar<br>
+        <input type="radio" name="sugar" value="15"
+            <?php if(!isset($_POST['sugar']) || (isset($_POST['sugar']) && $_POST['sugar'] == '15')) echo ' checked="checked"'?>/>Under 15g of Sugar<br>
+        <input type="radio" name="sugar" value="20"
+            <?php if(!isset($_POST['sugar']) || (isset($_POST['sugar']) && $_POST['sugar'] == '20')) echo ' checked="checked"'?>/>Under 20g of Sugar<br>
     <hr>
         <h4>Protien</h4>
-        <input type="checkbox" name="protienUnder5" value="protienUnder5">Under 5g of Protien<br>
-        <input type="checkbox" name="protienUnder10" value="protienUnder10">Under 10g of Protien<br>
-        <input type="checkbox" name="protienUnder15" value="protienUnder15">Under 15g of Protien<br>
-        <input type="checkbox" name="protienUnder20" value="protienUnder20">Under 20g of Protien<br>
+        <input type="radio" name="protien" value="5"
+            <?php if(!isset($_POST['protien']) || (isset($_POST['protien']) && $_POST['protien'] == '5')) echo ' checked="checked"'?>/>Under 5g of Protien<br>
+        <input type="radio" name="protien" value="10"
+            <?php if(!isset($_POST['protien']) || (isset($_POST['protien']) && $_POST['protien'] == '10')) echo ' checked="checked"'?>/>Under 10g of Protien<br>
+        <input type="radio" name="protien" value="15"
+            <?php if(!isset($_POST['protien']) || (isset($_POST['protien']) && $_POST['protien'] == '15')) echo ' checked="checked"'?>/>Under 15g of Protien<br>
+        <input type="radio" name="protien" value="20"
+            <?php if(!isset($_POST['protien']) || (isset($_POST['protien']) && $_POST['protien'] == '20')) echo ' checked="checked"'?>/>Under 20g of Protien<br>
     <hr>
         <h4>Fat</h4>
-        <input type="checkbox" name="fatUnder5" value="fatUnder5">Under 5g of Fat<br>
-        <input type="checkbox" name="fatUnder10" value="fatUnder10">Under 10g of Fat<br>
-        <input type="checkbox" name="fatUnder15" value="fatUnder15">Under 15g of Fat<br>
+        <input type="radio" name="fat" value="5"
+            <?php if(!isset($_POST['fat']) || (isset($_POST['fat']) && $_POST['fat'] == '5')) echo ' checked="checked"'?>/>Under 5g of Fat<br>
+        <input type="radio" name="fat" value="10"
+            <?php if(!isset($_POST['fat']) || (isset($_POST['fat']) && $_POST['fat'] == '10')) echo ' checked="checked"'?>/>Under 10g of Fat<br>
+        <input type="radio" name="fat" value="15"
+            <?php if(!isset($_POST['fat']) || (isset($_POST['fat']) && $_POST['fat'] == '15')) echo ' checked="checked"'?>/>Under 15g of Fat<br>
     <hr>
         <h4>Carbs</h4>
-        <input type="checkbox" name="carbsUnder20" value="carbsUnder20">Under 20g of Carbs<br>
-        <input type="checkbox" name="carbsUnder30" value="carbsUnder30">Under 30g of Carbs<br>
-        <input type="checkbox" name="carbsUnder40" value="carbsUnder40">Under 40g of Carbs<br>
-        <input type="checkbox" name="carbsUnder50" value="carbsUnder50">Under 50g of Carbs<br>
+        <input type="radio" name="carbs" value="20"
+            <?php if(!isset($_POST['carbs']) || (isset($_POST['carbs']) && $_POST['carbs'] == '20')) echo ' checked="checked"'?>/>Under 20g of Carbs<br>
+        <input type="radio" name="carbs" value="30"
+            <?php if(!isset($_POST['carbs']) || (isset($_POST['carbs']) && $_POST['carbs'] == '30')) echo ' checked="checked"'?>/>Under 30g of Carbs<br>
+        <input type="radio" name="carbs" value="40"
+            <?php if(!isset($_POST['carbs']) || (isset($_POST['carbs']) && $_POST['carbs'] == '40')) echo ' checked="checked"'?>/>Under 40g of Carbs<br>
+        <input type="radio" name="carbs" value="50"
+            <?php if(!isset($_POST['carbs']) || (isset($_POST['carbs']) && $_POST['carbs'] == '50')) echo ' checked="checked"'?>/>Under 50g of Carbs<br>
     <hr>
         <h4>Price</h4>
-        <input type="checkbox" name="priceUnder5" value="priceUnder5">Under $5<br>
-        <input type="checkbox" name="priceUnder10" value="priceUnder10">Under $10<br>
-        <input type="checkbox" name="priceUnder15" value="priceUnder15">Under $15<br>
+        <input type="radio" name="price" value="5"
+            <?php if(!isset($_POST['price']) || (isset($_POST['price']) && $_POST['price'] == '5')) echo ' checked="checked"'?>/>Under $5<br>
+        <input type="radio" name="price" value="10"
+            <?php if(!isset($_POST['price']) || (isset($_POST['price']) && $_POST['price'] == '10')) echo ' checked="checked"'?>/>Under $10<br>
+        <input type="radio" name="price" value="15"
+            <?php if(!isset($_POST['price']) || (isset($_POST['price']) && $_POST['price'] == '15')) echo ' checked="checked"'?>/>Under $15<br>
 
-  <input type="submit" value="Submit">
+  <input type="submit" name="submit" value="Submit" />
 </form>
 
     </div>
     <div class="col-md-6">
       <?php 
-        if (isset ($calories)) {
-          echo "Under ". $calories . " Calories<br>";
+        if(isset($_POST['calories'])){
+          echo "Under ". $_SESSION['calories'] . " Calories<br>";
         }
       ?>
       <?php
-        if (isset ($sugar)) {
-          echo "Under ". $sugar . "g of Sugar<br>";
+        if(isset($_POST['sugar'])) {
+          echo "Under ". $_SESSION['sugar'] . "g of Sugar<br>";
         }
       ?>
       <form action = "product_list.php" method = "post">
          <input type="submit" name = "sugarRemove" value="X">
       </form>
       <?php
-        if (isset ($protien)) {
-          echo "Under ". $protien . "g of Protien<br>";
+        if(isset($_POST['protien'])) {
+          echo "Under ". $_SESSION['protien'] . "g of Protien<br>";
         }
       ?>
       <?php
-        if (isset ($fat)) {
-          echo "Under ". $fat . " g of Fat<br>";
+        if(isset($_POST['fat'])) {
+          echo "Under ". $_SESSION['fat'] . " g of Fat<br>";
         }
       ?>
       <?php
-          if (isset ($carbs)) {
-          echo "Under ". $carbs . " g of Carbs<br>";
+          if(isset($_POST['carbs'])) {
+          echo "Under ". $_SESSION['carbs'] . " g of Carbs<br>";
         }
       ?>
       <?php
-          if (isset ($price)) {
-          echo "Under $". $price;
+          if(isset($_POST['price'])) {
+          echo "Under $". $_SESSION['price'];
         }
         echo $dynamicList;
        ?>
