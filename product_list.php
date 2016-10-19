@@ -7,24 +7,26 @@
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-$_SESSION['calories'] = "1500";
-$_SESSION['sugar'] = "20";
-$_SESSION['protien']= "20";
-$_SESSION['fat'] = "15";
-$_SESSION['carbs']= "50";
-$_SESSION['price'] = "15";
 ?>
 
 <?php
 include "connect_to_mysql.php";
 date_default_timezone_set('UTC');
 
-if (!isset($_POST['submit'])){ 
+if (!isset($_POST['filter'])){ 
+
+    $_SESSION['calories'] = "1500";
+    $_SESSION['sugar'] = "20";
+    $_SESSION['protien']= "20";
+    $_SESSION['fat'] = "15";
+    $_SESSION['carbs']= "50";
+    $_SESSION['price'] = "15";
+
   $sql = mysqli_query($link, "SELECT * FROM products WHERE calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'"); 
 }
 
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['filter'])) {
     if(isset($_POST['calories'])) {
       $_SESSION['calories'] = $_POST['calories'];  //  Displaying Selected Value
     }
@@ -49,7 +51,8 @@ if (isset($_POST['submit'])) {
       $_SESSION['price'] = $_POST['price'];   //  Displaying Selected Value
     }
 
-    $sql = mysqli_query($link, "SELECT * FROM products WHERE calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'"); 
+    $sql = mysqli_query($link, "SELECT * FROM products WHERE calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'");
+
 }
 
 $dynamicList = "";
@@ -170,44 +173,43 @@ mysqli_close($link);
         <input type="radio" name="price" value="15"
             <?php if(!isset($_POST['price']) || (isset($_POST['price']) && $_POST['price'] == '15')) echo ' checked="checked"'?>/>Under $15<br>
 
-  <input type="submit" name="submit" value="Submit" />
+  <input type="submit" name="filter" value="Submit" />
 </form>
 
     </div>
     <div class="col-md-6">
+
       <?php 
+        if(isset($_POST['filter'])){
+          echo "<form action = '' method = 'post'>
+                <input type ='submit' name = 'clearFilters' value = 'Clear Filters'>
+                </form>";
+        }
         if(isset($_POST['calories'])){
           echo "Under ". $_SESSION['calories'] . " Calories<br>";
         }
-      ?>
-      <?php
+
         if(isset($_POST['sugar'])) {
           echo "Under ". $_SESSION['sugar'] . "g of Sugar<br>";
         }
-      ?>
-      <form action = "product_list.php" method = "post">
-         <input type="submit" name = "sugarRemove" value="X">
-      </form>
-      <?php
+
         if(isset($_POST['protien'])) {
           echo "Under ". $_SESSION['protien'] . "g of Protien<br>";
         }
-      ?>
-      <?php
+
         if(isset($_POST['fat'])) {
           echo "Under ". $_SESSION['fat'] . " g of Fat<br>";
         }
-      ?>
-      <?php
+
           if(isset($_POST['carbs'])) {
           echo "Under ". $_SESSION['carbs'] . " g of Carbs<br>";
         }
-      ?>
-      <?php
           if(isset($_POST['price'])) {
           echo "Under $". $_SESSION['price'];
         }
+
         echo $dynamicList;
+
        ?>
     </div>
 </div>
