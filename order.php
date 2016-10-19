@@ -137,7 +137,7 @@ if ($productCount > 0) {
        $date_added = strftime("%b %d, %Y", strtotime($row["date_added"]));
        $dynamicList .= '<table width="100%" border="0" cellspacing="0" cellpadding="6">
         <tr>
-          <td width="17%" valign="top"><a href="product.php?id=' . $id . '"><img style="border:#666 1px solid;" src="inventory_images/' . $id . '.png" alt="' . $product_name . '" width="77" height="102" border="1" /></a></td>
+          <td width="17%" valign="top"><a href="product.php?id=' . $id . '"><img src="inventory_images/' . $id . '.png" alt="' . $product_name . '" width="200" height="100" border="1" /></a></td>
           <td width="83%" valign="top">' . $product_name . '<br />
             $' . $price . '<br />
             <a href="product.php?id=' . $id . '">View Product Details</a></td>
@@ -155,11 +155,12 @@ mysqli_close($link);
 <div align="center" id="mainWrapper">
   <div id="pageContent">
 <h3>Menu</h3>
-<div class = "container-fluid">
+<!--<div class = "container-fluid">
   <div class = "row">
-    <div class="col-md-6">
+    <div class="col-md-6">-->
       <form action="" method="post">
-        <h4>Calories</h4>
+        <label class = "filters">Calories
+        <div class = "filterType">
         <input type="radio" name="calories" value="500"
           <?php if(!isset($_POST['calories']) || (isset($_POST['calories']) && $_POST['calories'] == '500')) echo ' checked="checked"'?>/>Under 500 Calories<br>
         <input type="radio" name="calories" value="800"
@@ -168,9 +169,11 @@ mysqli_close($link);
             <?php if(!isset($_POST['calories']) || (isset($_POST['calories']) && $_POST['calories'] == '1000')) echo ' checked="checked"'?>/>
           Under 1000 Calories<br>
         <input type="radio" name="calories" value="1500"
-            <?php if(!isset($_POST['calories']) || (isset($_POST['calories']) && $_POST['calories'] == '1500')) echo ' checked="checked"'?>/>Under 1500 Calories<br>
-    <hr>
-        <h4>Sugar</h4>
+            <?php if(!isset($_POST['calories']) || (isset($_POST['calories']) && $_POST['calories'] == '1500')) echo ' checked="checked"'?>/>Under 1500 Calories
+          </div>
+          </label>
+        <label class = "filters">Sugar
+        <div class = "filterType">
         <input type="radio" name="sugar" value="5"
             <?php if(!isset($_POST['sugar']) || (isset($_POST['sugar']) && $_POST['sugar'] == '5')) echo ' checked="checked"'?>/>Under 5g of Sugar<br>
         <input type="radio" name="sugar" value="10"
@@ -178,9 +181,11 @@ mysqli_close($link);
         <input type="radio" name="sugar" value="15"
             <?php if(!isset($_POST['sugar']) || (isset($_POST['sugar']) && $_POST['sugar'] == '15')) echo ' checked="checked"'?>/>Under 15g of Sugar<br>
         <input type="radio" name="sugar" value="20"
-            <?php if(!isset($_POST['sugar']) || (isset($_POST['sugar']) && $_POST['sugar'] == '20')) echo ' checked="checked"'?>/>Under 20g of Sugar<br>
-    <hr>
-        <h4>Protien</h4>
+            <?php if(!isset($_POST['sugar']) || (isset($_POST['sugar']) && $_POST['sugar'] == '20')) echo ' checked="checked"'?>/>Under 20g of Sugar
+          </div>
+          </label>
+        <label class = "filters">Protien
+        <div class = "filterType">
         <input type="radio" name="protien" value="5"
             <?php if(!isset($_POST['protien']) || (isset($_POST['protien']) && $_POST['protien'] == '5')) echo ' checked="checked"'?>/>Under 5g of Protien<br>
         <input type="radio" name="protien" value="10"
@@ -188,17 +193,21 @@ mysqli_close($link);
         <input type="radio" name="protien" value="15"
             <?php if(!isset($_POST['protien']) || (isset($_POST['protien']) && $_POST['protien'] == '15')) echo ' checked="checked"'?>/>Under 15g of Protien<br>
         <input type="radio" name="protien" value="20"
-            <?php if(!isset($_POST['protien']) || (isset($_POST['protien']) && $_POST['protien'] == '20')) echo ' checked="checked"'?>/>Under 20g of Protien<br>
-    <hr>
-        <h4>Fat</h4>
+            <?php if(!isset($_POST['protien']) || (isset($_POST['protien']) && $_POST['protien'] == '20')) echo ' checked="checked"'?>/>Under 20g of Protien
+        </div>
+        </label>
+        <label class = "filters">Fat
+        <div class = "filterType">
         <input type="radio" name="fat" value="5"
             <?php if(!isset($_POST['fat']) || (isset($_POST['fat']) && $_POST['fat'] == '5')) echo ' checked="checked"'?>/>Under 5g of Fat<br>
         <input type="radio" name="fat" value="10"
             <?php if(!isset($_POST['fat']) || (isset($_POST['fat']) && $_POST['fat'] == '10')) echo ' checked="checked"'?>/>Under 10g of Fat<br>
         <input type="radio" name="fat" value="15"
-            <?php if(!isset($_POST['fat']) || (isset($_POST['fat']) && $_POST['fat'] == '15')) echo ' checked="checked"'?>/>Under 15g of Fat<br>
-    <hr>
-        <h4>Carbs</h4>
+            <?php if(!isset($_POST['fat']) || (isset($_POST['fat']) && $_POST['fat'] == '15')) echo ' checked="checked"'?>/>Under 15g of Fat
+          </div>
+          </label>
+        <label class = "filters">Carbs
+        <div class = "filterType">
         <input type="radio" name="carbs" value="20"
             <?php if(!isset($_POST['carbs']) || (isset($_POST['carbs']) && $_POST['carbs'] == '20')) echo ' checked="checked"'?>/>Under 20g of Carbs<br>
         <input type="radio" name="carbs" value="30"
@@ -206,21 +215,24 @@ mysqli_close($link);
         <input type="radio" name="carbs" value="40"
             <?php if(!isset($_POST['carbs']) || (isset($_POST['carbs']) && $_POST['carbs'] == '40')) echo ' checked="checked"'?>/>Under 40g of Carbs<br>
         <input type="radio" name="carbs" value="50"
-            <?php if(!isset($_POST['carbs']) || (isset($_POST['carbs']) && $_POST['carbs'] == '50')) echo ' checked="checked"'?>/>Under 50g of Carbs<br>
-    <hr>
-        <h4>Price</h4>
+            <?php if(!isset($_POST['carbs']) || (isset($_POST['carbs']) && $_POST['carbs'] == '50')) echo ' checked="checked"'?>/>Under 50g of Carbs
+          </div>
+          </label>
+          <label class = "filters">Price
+          <div class = "filterType">
         <input type="radio" name="price" value="5"
             <?php if(!isset($_POST['price']) || (isset($_POST['price']) && $_POST['price'] == '5')) echo ' checked="checked"'?>/>Under $5<br>
         <input type="radio" name="price" value="10"
             <?php if(!isset($_POST['price']) || (isset($_POST['price']) && $_POST['price'] == '10')) echo ' checked="checked"'?>/>Under $10<br>
         <input type="radio" name="price" value="15"
             <?php if(!isset($_POST['price']) || (isset($_POST['price']) && $_POST['price'] == '15')) echo ' checked="checked"'?>/>Under $15<br>
-
+          </div>
+          </label>
   <input type="submit" name="filter" value="Submit" />
 </form>
 
-    </div>
-    <div class="col-md-6">
+   <!-- </div>
+    <div class="col-md-6">-->
 
       <?php 
         if(isset($_POST['filter'])){
@@ -254,8 +266,8 @@ mysqli_close($link);
         echo $dynamicList;
 
        ?>
-    </div>
-</div>
+   <!-- </div>
+</div>-->
 </div>
 
   <footer class="footer">
