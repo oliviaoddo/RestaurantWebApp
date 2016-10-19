@@ -93,8 +93,16 @@ if (!isset($_POST['filter'])){
     $_SESSION['carbs']= "50";
     $_SESSION['price'] = "15";
 
-  $sql = mysqli_query($link, "SELECT * FROM products WHERE calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'"); 
+  $sqlPizza = mysqli_query($link, "SELECT * FROM products WHERE category = 'Pizza' AND calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'"); 
+
+  $sqlSandwich = mysqli_query($link, "SELECT * FROM products WHERE category = 'Sandwich' AND calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'");
+
+  $sqlSalad = mysqli_query($link, "SELECT * FROM products WHERE category = 'Salad' AND calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'");
+
+$sqlSoup = mysqli_query($link, "SELECT * FROM products WHERE category = 'Soup' AND calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'");
 }
+
+ $sqlPasta = mysqli_query($link, "SELECT * FROM products WHERE category = 'Pasta' AND calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'");
 
 
 if (isset($_POST['filter'])) {
@@ -122,37 +130,130 @@ if (isset($_POST['filter'])) {
       $_SESSION['price'] = $_POST['price'];   //  Displaying Selected Value
     }
 
-    $sql = mysqli_query($link, "SELECT * FROM products WHERE calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'");
+    $sqlPizza = mysqli_query($link, "SELECT * FROM products WHERE category = 'Pizza' AND calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'");
+
+    $sqlSandwich = mysqli_query($link, "SELECT * FROM products WHERE category = 'Sandwich' AND calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'");
+
+    $sqlSalad = mysqli_query($link, "SELECT * FROM products WHERE category = 'Salad' AND calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'");
+
+    $sqlSoup = mysqli_query($link, "SELECT * FROM products WHERE category = 'Soup' AND calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'");
+
+    $sqlPasta = mysqli_query($link, "SELECT * FROM products WHERE category = 'Pasta' AND calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'");
+
 
 }
 
-$dynamicList = "";
+$pizzaCategory = "";
 
-$productCount = mysqli_num_rows($sql); // count the output amount
+$productCount = mysqli_num_rows($sqlPizza); // count the output amount
 if ($productCount > 0) {
-  while($row = mysqli_fetch_array($sql)){ 
+  while($row = mysqli_fetch_array($sqlPizza)){ 
        $id = $row["id"];
        $product_name = $row["name"];
        $price = $row["price"];
        $date_added = strftime("%b %d, %Y", strtotime($row["date_added"]));
-       $dynamicList .= '<br><br><div class = "container"><div class = "row"><div class="col-md-4"> <a href="product.php?id=' . $id . '"><img src="inventory_images/' . $id . '.png" alt="' . $product_name . '" width="200" height="100" border="1" /><br></a>' . $product_name . '<br />
-            $' . $price . '<br />
-            <a href="product.php?id=' . $id . '">View Product Details</a><br />
-        </div>
-        <div class="col-md-4"> <a href="product.php?id=' . $id . '"><img src="inventory_images/' . $id . '.png" alt="' . $product_name . '" width="200" height="100" border="1" /><br></a>' . $product_name . '<br />
-            $' . $price . '<br />
-            <a href="product.php?id=' . $id . '">View Product Details</a><br /><br>
-        </div>
-         <div class="col-md-4"> <a href="product.php?id=' . $id . '"><img src="inventory_images/' . $id . '.png" alt="' . $product_name . '" width="200" height="100" border="1" /><br></a>' . $product_name . '<br />
-            $' . $price . '<br />
-            <a href="product.php?id=' . $id . '">View Product Details</a><br /><br>
-        </div>
-        </div>
+       echo "<div class = 'container'><div class = 'row'>";
+       $pizzaCategory .= '
+          <div class="col-md-4"> 
+             <a href="product.php?id=' . $id . '"><img src="inventory_images/' . $id . '.png" alt="' . $product_name . '" width="200" height="100" border="1" /><br></a>' . $product_name . '<br />
+                  $' . $price . '<br />
+                  <a href="product.php?id=' . $id . '">View Product Details</a><br />
         </div>';
+      echo "</div></div>";
     }
 } else {
-  $dynamicList = "<br>We have no menu items that meet your filter request";
+  $pizzaCategory = "<br>We have no menu items that meet your filter request";
 }
+
+$sandwichCategory = "";
+
+$productCount = mysqli_num_rows($sqlSandwich); // count the output amount
+if ($productCount > 0) {
+  while($row = mysqli_fetch_array($sqlSandwich)){ 
+       $id = $row["id"];
+       $product_name = $row["name"];
+       $price = $row["price"];
+       $date_added = strftime("%b %d, %Y", strtotime($row["date_added"]));
+       echo "<div class = 'container'><div class = 'row'>";
+       $sandwichCategory .= '
+          <div class="col-md-4"> 
+             <a href="product.php?id=' . $id . '"><img src="inventory_images/' . $id . '.png" alt="' . $product_name . '" width="200" height="100" border="1" /><br></a>' . $product_name . '<br />
+                  $' . $price . '<br />
+                  <a href="product.php?id=' . $id . '">View Product Details</a><br />
+        </div>';
+      echo "</div></div>";
+    }
+} else {
+  $sandwichCategory = "<br>We have no menu items that meet your filter request";
+}
+
+$saladCategory = "";
+
+$productCount = mysqli_num_rows($sqlSalad); // count the output amount
+if ($productCount > 0) {
+  while($row = mysqli_fetch_array($sqlSalad)){ 
+       $id = $row["id"];
+       $product_name = $row["name"];
+       $price = $row["price"];
+       $date_added = strftime("%b %d, %Y", strtotime($row["date_added"]));
+       echo "<div class = 'container'><div class = 'row'>";
+       $saladCategory .= '
+          <div class="col-md-4"> 
+             <a href="product.php?id=' . $id . '"><img src="inventory_images/' . $id . '.png" alt="' . $product_name . '" width="200" height="100" border="1" /><br></a>' . $product_name . '<br />
+                  $' . $price . '<br />
+                  <a href="product.php?id=' . $id . '">View Product Details</a><br />
+        </div>';
+      echo "</div></div>";
+    }
+} else {
+  $saladCategory = "<br>We have no menu items that meet your filter request";
+}
+
+$soupCategory = "";
+
+$productCount = mysqli_num_rows($sqlSoup); // count the output amount
+if ($productCount > 0) {
+  while($row = mysqli_fetch_array($sqlSoup)){ 
+       $id = $row["id"];
+       $product_name = $row["name"];
+       $price = $row["price"];
+       $date_added = strftime("%b %d, %Y", strtotime($row["date_added"]));
+       echo "<div class = 'container'><div class = 'row'>";
+       $soupCategory .= '
+          <div class="col-md-4"> 
+             <a href="product.php?id=' . $id . '"><img src="inventory_images/' . $id . '.png" alt="' . $product_name . '" width="200" height="100" border="1" /><br></a>' . $product_name . '<br />
+                  $' . $price . '<br />
+                  <a href="product.php?id=' . $id . '">View Product Details</a><br />
+        </div>';
+      echo "</div></div>";
+    }
+} else {
+  $soupCategory = "<br>We have no menu items that meet your filter request";
+}
+
+$pastaCategory = "";
+
+$productCount = mysqli_num_rows($sqlPasta); // count the output amount
+if ($productCount > 0) {
+  while($row = mysqli_fetch_array($sqlPasta)){ 
+       $id = $row["id"];
+       $product_name = $row["name"];
+       $price = $row["price"];
+       $date_added = strftime("%b %d, %Y", strtotime($row["date_added"]));
+       echo "<div class = 'container'><div class = 'row'>";
+       $pastaCategory .= '
+          <div class="col-md-4"> 
+             <a href="product.php?id=' . $id . '"><img src="inventory_images/' . $id . '.png" alt="' . $product_name . '" width="200" height="100" border="1" /><br></a>' . $product_name . '<br />
+                  $' . $price . '<br />
+                  <a href="product.php?id=' . $id . '">View Product Details</a><br />
+        </div>';
+      echo "</div></div>";
+    }
+} else {
+  $pastaCategory = "<br>We have no menu items that meet your filter request";
+}
+
+
 
 mysqli_close($link);
 
@@ -259,11 +360,14 @@ mysqli_close($link);
     <div class="col-md-6">-->
 
       <?php 
-        echo $dynamicList;
+        echo $pizzaCategory;
+        echo $sandwichCategory;
+        echo $saladCategory;
+        echo $soupCategory;
+        echo $pastaCategory;
        ?>
    <!-- </div>
 </div>-->
-</div>
 
   <footer class="footer">
         <div id="footer">
