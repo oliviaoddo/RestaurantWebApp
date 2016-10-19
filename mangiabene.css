@@ -1,0 +1,345 @@
+/* Import Google Fonts */
+@import url(https://fonts.googleapis.com/css?family=Pontano+Sans); 
+@import url(https://fonts.googleapis.com/css?family=Signika); 
+
+/*Nav background color*/
+.navbar-default {
+    background-color: #000;
+    border-color: #000000;
+    }
+/*Nav hover styles */    
+.navbar-default .navbar-nav>.active>a:hover {
+    color: #000 !important;
+    background-color: #FFF !important;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: #000;
+  background-color: white;
+}
+    
+ .navbar-default .navbar-nav>li>a:hover {   
+ color: #000;
+ background-color: white;
+ }
+ 
+ .navbar-default .navbar-brand>li:hover {
+  color: #000;
+ background-color: white;
+ }
+ 
+.navbar {
+    border-radius: 0px;
+    font-family:  'Signika',serif;	
+}
+
+.navbar-default .navbar-brand {
+    color: #FFF;
+    font-family:  'Signika',serif;	
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #FFF;
+    background-color: #000;
+    }
+    .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: #FFF;
+    background-color: #000;
+    }
+    
+/*Nav font color*/
+.navbar-default .navbar-nav>li>a {
+    color: #FFF;
+    font-family:  'Signika',serif;
+
+}
+   
+/*Drop down menu styles */    
+ul.dropdown-menu {
+background-color: #000;
+}
+
+ 
+.dropdown-menu>li>a {
+color: white;
+}
+
+
+.dropdown-menu>li>a {
+background-color: #000;
+border-color: #000;
+}
+
+/* Header logo */
+
+#logo {
+	height: 250px;
+	background-image: url(logo.png);
+  	background-position: 0 50%;
+  	background-repeat:  no-repeat;
+  	background-size: 25%;
+	}
+	
+ 
+/*Page background color*/
+body {
+	background-color: #fbfbfb;
+	font-family:  'Signika',serif;	
+	}
+
+/* Paragraph padding */
+
+.about{
+	padding-left: 300px;
+	padding-right: 300px;
+}
+	
+.menu {
+	padding-left: 300px;
+	padding-right: 300px;
+	}
+	
+.catering {
+	padding-left: 300px;
+	padding-right: 300px;
+	}
+	
+.contact {
+	padding-left: 300px;
+	padding-right: 300px;
+	}
+
+#title{
+	font-weight: bold;
+	}
+	
+/*Page cover photos*/
+
+
+.aboutimage {
+	height: 250px;
+  	padding: 20px 0 70px 0;
+	color: white;
+	text-align: right;
+  	background-image:  url(steak.jpg);
+  	background-position: 0 70%;
+  	background-repeat:  no-repeat;
+  	background-size: cover;
+}
+
+.contactimage {
+	height: 190px;
+  	padding: 20px 0 70px 0;
+	color: white;
+	text-align: right;
+  	background-image:  url(slide4.jpg);
+  	background-position: 0 50%;
+  	background-repeat:  no-repeat;
+  	background-size: cover;
+}
+
+
+/*Footer styles*/
+
+#footer {
+	padding-left: 90px;
+	padding-top: 80px;
+	padding-bottom: 300px;
+	font-family:  'Signika',serif;	
+	background-color: black;
+	color: white;
+	margin: none;
+	}
+
+.footertitles {
+	text-align: center;
+	}
+	
+/* Home page menu */
+.menucontainer { 
+	margin: 15px;
+	padding: 30px;
+	text-align: center;
+	font-family:  'Signika',serif;
+	}
+	
+
+/*Menu page styles */	
+.antipasta {
+	text-align: center;
+	}
+.antipasta h4 {
+	text-transform: lowercase;
+	}
+	
+.insalata {
+	text-align: center;
+	}
+.insalata h4 {
+	text-transform: lowercase;
+	}
+	
+.panini {
+	text-align: center;
+	}
+.panini h4 {
+	text-transform: lowercase;
+	}
+	
+.pasta {
+	text-align: center;
+	}
+.pasta h4 {
+	text-transform: lowercase;
+	}
+	
+.pizza {
+	text-align: center;
+	}
+.pizza h4 {
+	text-transform: lowercase;
+	}
+
+.meat {
+	text-align: center;
+	}
+.meat h4 {
+	text-transform: lowercase;
+	}
+	
+.kids {
+	text-align: center;
+	}
+.kids h4 {
+	text-transform: lowercase;
+	}
+.martinis {
+	text-align: center;
+	}
+.martinis h4 {
+	text-transform: lowercase;
+	}
+.drinks {
+	text-align: center;
+	}
+.brinks h4 {
+	text-transform: lowercase;
+	}
+.vini {
+	text-align: center;
+	}
+.vini h4 {
+	text-transform: lowercase;
+	}
+.rossi {
+	text-align: center;
+	}
+.rossi h4 {
+	text-transform: lowercase;
+	}
+.birra {
+	text-align: center;
+	}
+.birra h4 {
+	text-transform: lowercase;
+	}
+	
+/*Title on the top of menu pages */
+#menutitle{
+text-align: center;
+font-weight: bold;
+font-size: 50px;
+}
+
+/*Menu text on index page */
+.menuoptions  h3{
+	text-align: center;
+	font-weight: bold;
+	font-size: 30px;
+	}
+	
+#menulinks a:link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+#menulinks a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+
+#menulinks a:hover {
+	text-decoration: none;
+    color: #6f1414;
+    font-weight: bold;
+    }
+	
+#space {
+height: 200px;
+}
+
+/*Contact Page Styles */
+
+#contactus{
+	color: white;
+	font-family: 'Signika',serif;
+	font-size: 50px;
+	position: absolute;
+	bottom: -950px;
+	left: 80px;
+	}
+	
+#contactheader {
+	font-family:  'Signika',serif;	
+	font-size: 100px;
+	text-align: center;
+}
+
+#contact {
+	font-size:15px;
+	}
+	
+#contact a:link {
+    text-decoration: none;
+    color: black;
+    font-weight: normal;
+}
+
+#contact a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+
+#contact a:hover {
+	text-decoration: none;
+    color: #6f1414;
+    font-weight: bold;
+    }
+	
+#button{
+	background-color: black;
+	border-color: black;
+	}
+	
+/*About page text padding */
+#abouttext{
+padding-left:30px;
+padding-right: 30px;
+font-size: 20px;
+}
+
+/*Modal styles */
+
+#happyhours{
+background-color: white;
+color: black;
+border-color: white;
+}
+
+#myModal{
+color: black;
+font-size: 20px;
+}
