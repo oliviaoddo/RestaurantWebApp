@@ -135,14 +135,20 @@ if ($productCount > 0) {
        $product_name = $row["name"];
        $price = $row["price"];
        $date_added = strftime("%b %d, %Y", strtotime($row["date_added"]));
-       $dynamicList .= '<table width="100%" border="0" cellspacing="0" cellpadding="6">
-        <tr>
-          <td width="17%" valign="top"><a href="product.php?id=' . $id . '"><img src="inventory_images/' . $id . '.png" alt="' . $product_name . '" width="200" height="100" border="1" /></a></td>
-          <td width="83%" valign="top">' . $product_name . '<br />
+       $dynamicList .= '<br><br><div class = "container"><div class = "row"><div class="col-md-4"> <a href="product.php?id=' . $id . '"><img src="inventory_images/' . $id . '.png" alt="' . $product_name . '" width="200" height="100" border="1" /><br></a>' . $product_name . '<br />
             $' . $price . '<br />
-            <a href="product.php?id=' . $id . '">View Product Details</a></td>
-        </tr>
-      </table>';
+            <a href="product.php?id=' . $id . '">View Product Details</a><br />
+        </div>
+        <div class="col-md-4"> <a href="product.php?id=' . $id . '"><img src="inventory_images/' . $id . '.png" alt="' . $product_name . '" width="200" height="100" border="1" /><br></a>' . $product_name . '<br />
+            $' . $price . '<br />
+            <a href="product.php?id=' . $id . '">View Product Details</a><br /><br>
+        </div>
+         <div class="col-md-4"> <a href="product.php?id=' . $id . '"><img src="inventory_images/' . $id . '.png" alt="' . $product_name . '" width="200" height="100" border="1" /><br></a>' . $product_name . '<br />
+            $' . $price . '<br />
+            <a href="product.php?id=' . $id . '">View Product Details</a><br /><br>
+        </div>
+        </div>
+        </div>';
     }
 } else {
   $dynamicList = "<br>We have no menu items that meet your filter request";
