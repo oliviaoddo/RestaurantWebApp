@@ -7,17 +7,21 @@
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-$_SESSION['calories'] = "";
-$_SESSION['sugar'] = "";
-$_SESSION['protien']= "";
-$_SESSION['fat'] = "";
-$_SESSION['carbs']= "";
-$_SESSION['price'] = "";
+$_SESSION['calories'] = "1500";
+$_SESSION['sugar'] = "20";
+$_SESSION['protien']= "20";
+$_SESSION['fat'] = "15";
+$_SESSION['carbs']= "50";
+$_SESSION['price'] = "15";
 ?>
 
 <?php
 include "connect_to_mysql.php";
 date_default_timezone_set('UTC');
+
+if (!isset($_POST['submit'])){ 
+  $sql = mysqli_query($link, "SELECT * FROM products WHERE calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'"); 
+}
 
 
 if (isset($_POST['submit'])) {
@@ -44,18 +48,11 @@ if (isset($_POST['submit'])) {
     {
       $_SESSION['price'] = $_POST['price'];   //  Displaying Selected Value
     }
+
+    $sql = mysqli_query($link, "SELECT * FROM products WHERE calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'"); 
 }
 
-echo $_SESSION['calories'];
-echo $_SESSION['sugar'];
-echo $_SESSION['protien'];
-echo $_SESSION['fat'];
-echo $_SESSION['carbs'];
-echo $_SESSION['price'];
-
 $dynamicList = "";
-
-$sql = mysqli_query($link, "SELECT * FROM products WHERE calories <= '{$_SESSION["calories"]}' AND sugar <= '{$_SESSION["sugar"]}' AND protien <= '{$_SESSION["protien"]}' AND fat <= '{$_SESSION["fat"]}' AND carbs <= '{$_SESSION["carbs"]}' AND price <= '{$_SESSION["price"]}'"); 
 
 $productCount = mysqli_num_rows($sql); // count the output amount
 if ($productCount > 0) {
@@ -77,14 +74,7 @@ if ($productCount > 0) {
   $dynamicList = "<br>We have no menu items that meet your filter request";
 }
 
-//UNSET//
-
-if (isset($_POST['sugarRemove'])){
-  unset($sugar);
-}
-
 mysqli_close($link);
-
 
 ?>
 
