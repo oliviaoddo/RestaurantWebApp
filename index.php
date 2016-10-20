@@ -1,7 +1,4 @@
 <?php 
-// This file is www.developphp.com curriculum material
-// Written by Adam Khoury January 01, 2011
-// http://www.youtube.com/view_play_list?p=442E340A42191003
 // Script Error Reporting
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
