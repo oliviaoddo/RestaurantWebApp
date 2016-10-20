@@ -418,9 +418,9 @@ mysqli_close($link);
           
             <section class="col-sm-4">
           <h3>FOLLOW US</h3>
-          <a href="https://www.instagram.com/"><img class="twitter" src="instagramgood.png" alt="Twitter" ></a>
-          <a href="https://twitter.com/?lang=en"><img class="twitter" src="twittergood.png" alt="Twitter" ></a>
-          <a href="https://www.facebook.com/MangiaBeneCucinas"><img class="twitter" src="facebookgood.png" alt="Twitter" ></a>
+          <a href="https://www.instagram.com/"><img class="twitter" src="images/instagramgood.png" alt="Twitter" ></a>
+          <a href="https://twitter.com/?lang=en"><img class="twitter" src="images/twittergood.png" alt="Twitter" ></a>
+          <a href="https://www.facebook.com/MangiaBeneCucinas"><img class="twitter" src="images/facebookgood.png" alt="Twitter" ></a>
           </section>
         
         </div>

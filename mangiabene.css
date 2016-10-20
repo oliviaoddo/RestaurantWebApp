@@ -74,7 +74,7 @@ border-color: #000;
 
 #logo {
 	height: 250px;
-	background-image: url(logo.png);
+	background-image: url(images/logo.png);
   	background-position: 0 50%;
   	background-repeat:  no-repeat;
   	background-size: 25%;
@@ -121,7 +121,7 @@ body {
   	padding: 20px 0 70px 0;
 	color: white;
 	text-align: right;
-  	background-image:  url(steak.jpg);
+  	background-image:  url(images/steak.jpg);
   	background-position: 0 70%;
   	background-repeat:  no-repeat;
   	background-size: cover;
@@ -132,7 +132,7 @@ body {
   	padding: 20px 0 70px 0;
 	color: white;
 	text-align: right;
-  	background-image:  url(slide4.jpg);
+  	background-image:  url(images/slide4.jpg);
   	background-position: 0 50%;
   	background-repeat:  no-repeat;
   	background-size: cover;
