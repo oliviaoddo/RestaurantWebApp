@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Mangia Bene</title>
+    <title>About</title>
 
     <!-- Bootstrap core CSS -->
    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -27,42 +27,42 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
     <link href="mangiabene.css" rel="stylesheet">
     
   </head>
-  <header id="logo">
+<body>
+  <div>
+    <?php include_once("nav.php");?>
+</div>
+	
+<section class= "aboutimage"> 
+</section>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.php">HOME</a>
-    </div>
+ 
+<div class="container">
+<section class ="col-sm-12 col-lg-12 col-md-12 col-xs-12" id= "abouttext"> 
+	<h1>About</h1>
+	<p>Located in beautiful Laguna Niguel, CA, Mangia Bene Cucina has been an Orange County landmark since 1991. 
+	Our mission is to provide our guests with the best and most memorable dining experience. From our upbeat and vibrant staff, 
+	to our original and delicious Italian dishes.</p>
+	<p>We have a passion for Italian cuisine and with over 21 years of restaurant experience, we are sure to provide you with 
+	what we like to call, The Fresh Italian Food Experience.</p>
+	<p>From serving you daily for lunch and dinner to catering your parties and special events, we welcome your family to our family 
+	restaurant.</p>
+	<br />
+</section>
+	
+	
+</div>
+	<div>
+    <?php include_once("footer.php");?>
+</div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="about.php">ABOUT <span class="sr-only">(current)</span></a></li>
-        <li><a href="contact.php">CONTACT</a></li>
-        <li><a href="menu.php">MENU</a></li>
-        <li><a href="order.php">ORDER ONLINE</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="cart.php">CART</a></li>
-        <li><a href="customer_login.php">LOG IN</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-    
-</header>
+       <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
 </html>
