@@ -31,7 +31,7 @@ if($existCount == 0){// evaluate the count
 
 <body>
 <div align="center" id="mainWrapper">
-  <?php include_once("template_header.php");?>
+  <?php include_once("nav.php");?>
   <div id="pageContent"><br />
     <div align="left" style="margin-left:24px;">
       <h2>Hello store manager, what would you like to do today?</h2>
@@ -42,7 +42,7 @@ if($existCount == 0){// evaluate the count
   <br />
   <br />
   </div>
-  <?php include_once("template_footer.php");?>
+  <?php include_once("footer.php");?>
 </div>
 </body>
 </html>

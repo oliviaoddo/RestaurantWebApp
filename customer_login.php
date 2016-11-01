@@ -1,3 +1,37 @@
+<?php 
+session_start();
+if (isset($_SESSION["manager"])) {
+    header("location: indexCustomer.php"); 
+    exit();
+}
+?>
+<?php
+session_start();
+if(isset($_POST["username"]) && isset($_POST["password"])){
+
+	$manager = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["username"]); // filter everything but numbers and letters
+    $password = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["password"]); // filter everything but numbers and letters
+	//Connect to the MySQL database 
+	include "connect_to_mysql.php";
+	$sql = mysqli_query($link, "SELECT id FROM admin WHERE username='$manager' AND password = '$password' LIMIT 1"); //query the person 
+	//MAKE SURE PERSON EXISTS IN DATABASE
+	$existCount = mysqli_num_rows($sql); //count the row nums
+	if($existCount == 1){//evaluate the count
+		while($row= mysqli_fetch_array($sql)){
+			$id=$row["id"];
+		}
+		$_SESSION["id"] = $id;
+		$_SESSION["manager"] = $manager;
+		$_SESSION["password"] = $password; 
+		header("location: indexadmin.php");
+		exit();
+	}
+	else{ 
+		echo 'That information is incorrect, try again <a href="index.php">Click Here</a>';
+		exit();
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +43,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>About</title>
+    <title>Mangia Bene</title>
 
     <!-- Bootstrap core CSS -->
    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -27,12 +61,16 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
     <link href="mangiabene.css" rel="stylesheet">
     
   </head>
-<body>
+
+  <body>
+  
 <header id="logo">
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -62,29 +100,34 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-	</header>
-	
-<section class= "aboutimage"> 
-</section>
-
- 
-<div class="container">
-<section class ="col-sm-12 col-lg-12 col-md-12 col-xs-12" id= "abouttext"> 
-	<h1>About</h1>
-	<p>Located in beautiful Laguna Niguel, CA, Mangia Bene Cucina has been an Orange County landmark since 1991. 
-	Our mission is to provide our guests with the best and most memorable dining experience. From our upbeat and vibrant staff, 
-	to our original and delicious Italian dishes.</p>
-	<p>We have a passion for Italian cuisine and with over 21 years of restaurant experience, we are sure to provide you with 
-	what we like to call, The Fresh Italian Food Experience.</p>
-	<p>From serving you daily for lunch and dinner to catering your parties and special events, we welcome your family to our family 
-	restaurant.</p>
-	<br />
-</section>
-	
-	
+  
+</header>
+<div align="center" id="mainWrapper">
+  <div id="pageContent"><br />
+    <div align="left" style="margin-left:24px;">
+      <h2>Customer Login</h2>
+      <form id="form1" name="form1" method="post" action="admin_login.php">
+        User Name:<br />
+          <input name="username" type="text" id="username" size="40" />
+        <br /><br />
+        Password:<br />
+       <input name="password" type="password" id="password" size="40" />
+       <br />
+       <br />
+       <br />
+       
+         <input type="submit" name="button" id="button" value="Log In" />
+       
+      </form>
+      <p>&nbsp; </p>
+    </div>
+    <br />
+  <br />
+  <br />
+  </div>
 </div>
-	 <footer class="footer">
-       <div id="footer">
+<footer class="footer">
+        <div id="footer">
         <div class="row">
         
           <section class="col-sm-4">
@@ -101,8 +144,7 @@
             <h3>HOURS</h3>
             </br>
             <br /><p>Sun- Thurs 11:30 am. to 9:30 pm.
-            <br />Friday & Sat 11:30 am - 10:30 pm.</p>
-            <br/>
+            <br />Friday & Sat 11:30 am - 10:30 pm.</p> <br />
             <!-- Trigger the modal with a button -->
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="happyhours">Happy Hours</button>
 
@@ -135,17 +177,11 @@
           <a href="https://www.instagram.com/"><img class="twitter" src="images/instagramgood.png" alt="Twitter" ></a>
           <a href="https://twitter.com/?lang=en"><img class="twitter" src="images/twittergood.png" alt="Twitter" ></a>
           <a href="https://www.facebook.com/MangiaBeneCucinas"><img class="twitter" src="images/facebookgood.png" alt="Twitter" ></a>
+          
           </section>
         
         </div>
-      <h4><a href = "admin_login.php">Admin Login</a></h4>
       </div>
     </footer>
-
-       <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>

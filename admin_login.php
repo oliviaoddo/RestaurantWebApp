@@ -32,20 +32,48 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 	}
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Admin Log In </title>
-<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
-</head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-<body>
+    <title>Mangia Bene</title>
+
+    <!-- Bootstrap core CSS -->
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="carousel.css" rel="stylesheet">
+    <link href="mangiabene.css" rel="stylesheet">
+    
+  </head>
+
+  <body>
+  
+  <?php include_once("nav.php");?>
 <div align="center" id="mainWrapper">
-  <?php include_once("template_header.php");?>
   <div id="pageContent"><br />
     <div align="left" style="margin-left:24px;">
-      <h2>Please Log In To Manage the Store</h2>
+      <h2>Admin Login</h2>
       <form id="form1" name="form1" method="post" action="admin_login.php">
         User Name:<br />
           <input name="username" type="text" id="username" size="40" />
@@ -65,7 +93,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
   <br />
   <br />
   </div>
-  <?php include_once("template_footer.php");?>
 </div>
+  <?php include_once("footer.php");?>
 </body>
 </html>
