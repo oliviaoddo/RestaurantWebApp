@@ -9,27 +9,30 @@ if (isset($_SESSION["manager"])) {
 session_start();
 if(isset($_POST["username"]) && isset($_POST["password"])){
 
-	$manager = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["username"]); // filter everything but numbers and letters
+	$customer = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["username"]); // filter everything but numbers and letters
     $password = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["password"]); // filter everything but numbers and letters
 	//Connect to the MySQL database 
 	include "connect_to_mysql.php";
-	$sql = mysqli_query($link, "SELECT id FROM admin WHERE username='$manager' AND password = '$password' LIMIT 1"); //query the person 
+	$sql = mysqli_query($link, "SELECT * FROM customer"); //query the person 
 	//MAKE SURE PERSON EXISTS IN DATABASE
 	$existCount = mysqli_num_rows($sql); //count the row nums
+  echo $existCount;
 	if($existCount == 1){//evaluate the count
 		while($row= mysqli_fetch_array($sql)){
 			$id=$row["id"];
 		}
 		$_SESSION["id"] = $id;
-		$_SESSION["manager"] = $manager;
+		$_SESSION["customer"] = $customer;
 		$_SESSION["password"] = $password; 
-		header("location: indexadmin.php");
+		header("location: indexCustomer.php");
 		exit();
 	}
+  
 	else{ 
 		echo 'That information is incorrect, try again <a href="index.php">Click Here</a>';
 		exit();
 	}
+  
 }
 ?>
 <!DOCTYPE html>
@@ -43,7 +46,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Mangia Bene</title>
+    <title>Log in</title>
 
     <!-- Bootstrap core CSS -->
    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -76,7 +79,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
   <div id="pageContent"><br />
     <div align="left" style="margin-left:24px;">
       <h2>Customer Login</h2>
-      <form id="form1" name="form1" method="post" action="admin_login.php">
+      <form id="form1" name="form1" method="post" action="customer_login.php">
         User Name:<br />
           <input name="username" type="text" id="username" size="40" />
         <br /><br />
