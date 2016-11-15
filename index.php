@@ -6,29 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
-    <title>Mangia Bene</title>
-
-    <!-- Bootstrap core CSS -->
-   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
     <link href="mangiabene.css" rel="stylesheet">
     
@@ -74,9 +52,6 @@
     </div>
     
     <!-- /.carousel -->
-
-      <!-- /END THE FEATURETTES -->
-
 	<div class="menucontainer" id="menulinks">
 		<div class="row">
 			<section class="col-md-12 col-sm-12 col-lg-4 col-xs-12">
@@ -96,62 +71,6 @@
 			
 		</div>
 	</div>
-	
-	
-<div id="stack1" class="modal hide fade" tabindex="-1" data-focus-on="input:first">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3>Stack One</h3>
-  </div>
-  <div class="modal-body">
-    <p>One fine body…</p>
-    <p>One fine body…</p>
-    <p>One fine body…</p>
-    <input type="text" data-tabindex="1">
-    <input type="text" data-tabindex="2">
-    <button class="btn" data-toggle="modal" href="#stack2">Launch modal</button>
-  </div>
-  <div class="modal-footer">
-    <button type="button" data-dismiss="modal" class="btn">Close</button>
-    <button type="button" class="btn btn-primary">Ok</button>
-  </div>
-</div>
- 
-<div id="stack2" class="modal hide fade" tabindex="-1" data-focus-on="input:first">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3>Stack Two</h3>
-  </div>
-  <div class="modal-body">
-    <p>One fine body…</p>
-    <p>One fine body…</p>
-    <input type="text" data-tabindex="1">
-    <input type="text" data-tabindex="2">
-    <button class="btn" data-toggle="modal" href="#stack3">Launch modal</button>
-  </div>
-  <div class="modal-footer">
-    <button type="button" data-dismiss="modal" class="btn">Close</button>
-    <button type="button" class="btn btn-primary">Ok</button>
-  </div>
-</div>
- 
-<div id="stack3" class="modal hide fade" tabindex="-1" data-focus-on="input:first">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3>Stack Three</h3>
-  </div>
-  <div class="modal-body">
-    <p>One fine body…</p>
-    <input type="text" data-tabindex="1">
-    <input type="text" data-tabindex="2">
-  </div>
-  <div class="modal-footer">
-    <button type="button" data-dismiss="modal" class="btn">Close</button>
-    <button type="button" class="btn btn-primary">Ok</button>
-  </div>
-</div>
-
-	
   <div>
     <?php include_once("footer.php");?>
 </div>

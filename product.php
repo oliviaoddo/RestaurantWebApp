@@ -3,7 +3,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 ?>
-
 <?php
 //check to see the url variable is set and exists is in the database 
 date_default_timezone_set('UTC');
@@ -25,7 +24,7 @@ if (isset($_GET["id"])){
        $calories = $row["calories"];
        $fat = $row["fat"];
        $sugar = $row["sugar"];
-       $protien = $row["protien"];
+       $protein = $row["protein"];
        $carbs = $row["carbs"];
        $date_added = strftime("%b %d, %Y", strtotime($row["date_added"]));
       }
@@ -49,7 +48,7 @@ mysqli_close($link);
 </head>
 <body>
 <div align="center" id="mainWrapper">
-  <?php include_once("template_header.php");?>
+  <?php include_once("nav.php");?>
   <div id="pageContent">
   <table width="100%" border="0" cellspacing="0" cellpadding="15">
   <tr>
@@ -64,7 +63,7 @@ mysqli_close($link);
 <br />
 <?php echo "Fat: ". $fat; ?>
 <br />
-<?php echo "Protien: ". $protien; ?>
+<?php echo "protein: ". $protein; ?>
 <br />
 <?php echo "Sugar: ". $sugar; ?>
 <br />
@@ -79,7 +78,7 @@ mysqli_close($link);
     </tr>
 </table>
   </div>
-  <?php include_once("template_footer.php");?>
+  <?php include_once("footer.php");?>
 </div>
 </body>
 </html>
