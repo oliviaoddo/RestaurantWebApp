@@ -5,7 +5,42 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 include "connect_to_mysql.php";
 ?>
+ <div>
+    <?php include_once("nav.php");?>
+</div>
 
+<?php
+if (isset($_POST['pid'])) { // pid = name of add-to-cart button on product.php, this is cart.php screen after they added something
+    $pid = $_POST['pid'];
+	$wasFound = false;
+	$i = 0;
+	// If the cart session variable is not set or cart array is empty
+	if (!isset($_SESSION["cart_array"]) || count($_SESSION["cart_array"]) < 1) { 
+	    // RUN IF THE CART IS EMPTY OR NOT SET
+		$_SESSION["cart_array"] = array(0 => array("item_id" => $pid, "quantity" => 1));
+	} else {
+		// RUN IF THE CART HAS AT LEAST ONE ITEM IN IT
+		foreach ($_SESSION["cart_array"] as $each_item) { 
+		      $i++;
+		      while (list($key, $value) = each($each_item)) {
+				  if ($key == "item_id" && $value == $pid) {
+					  // That item is in cart already so let's adjust its quantity using array_splice()
+					  array_splice($_SESSION["cart_array"], $i-1, 1, array(array("item_id" => $pid, "quantity" => $each_item['quantity'] + 1)));
+					  $wasFound = true;
+				  } // close if condition
+		      } // close while loop
+	       } // close foreach loop
+		   if ($wasFound == false) {
+			   array_push($_SESSION["cart_array"], array("item_id" => $pid, "quantity" => 1));
+		   }
+	}
+	header("location: cart.php"); 
+    exit();
+	
+}
+
+?>
+<!-- raw HTML code must be place after header location above -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -43,40 +78,7 @@ include "connect_to_mysql.php";
 
 	<body>
 	
- <div>
-    <?php include_once("nav.php");?>
-</div>
 
-<?php
-if (isset($_POST['pid'])) {
-    $pid = $_POST['pid'];
-	$wasFound = false;
-	$i = 0;
-	// If the cart session variable is not set or cart array is empty
-	if (!isset($_SESSION["cart_array"]) || count($_SESSION["cart_array"]) < 1) { 
-	    // RUN IF THE CART IS EMPTY OR NOT SET
-		$_SESSION["cart_array"] = array(0 => array("item_id" => $pid, "quantity" => 1));
-	} else {
-		// RUN IF THE CART HAS AT LEAST ONE ITEM IN IT
-		foreach ($_SESSION["cart_array"] as $each_item) { 
-		      $i++;
-		      while (list($key, $value) = each($each_item)) {
-				  if ($key == "item_id" && $value == $pid) {
-					  // That item is in cart already so let's adjust its quantity using array_splice()
-					  array_splice($_SESSION["cart_array"], $i-1, 1, array(array("item_id" => $pid, "quantity" => $each_item['quantity'] + 1)));
-					  $wasFound = true;
-				  } // close if condition
-		      } // close while loop
-	       } // close foreach loop
-		   if ($wasFound == false) {
-			   array_push($_SESSION["cart_array"], array("item_id" => $pid, "quantity" => 1));
-		   }
-	}
-	header("location: cart.php"); 
-    exit();
-}
-
-?>
 <?php
 //if user deletes from cart
 if(isset($_POST['index_to_remove']) && $_POST['index_to_remove']!=""){
@@ -146,11 +148,15 @@ if(!isset($_SESSION["cart_array"]) || count($_SESSION["cart_array"]) < 1){
 		$cartTotal = $priceTotal + $cartTotal;
 
 		setlocale(LC_MONETARY, "en_US");
-		$priceTotal = money_format("%10.2n", $priceTotal);
+		$priceTotal = sprintf("%01.2f", $priceTotal);
+		$priceTotal = sprintf("%01.2f", $priceTotal);
 		//Dynamic table row assembly 
-
+		
 		$cartOutput .="<tr>";
-		$cartOutput .= "<td> <a href =\"product.php?id=$item_id\">$product_name</a> <br /><img src=\"$item_id.jpg\" alt = \"$product_name\" width =\"40\" height=\"52\" border =\"1\"/></td>";
+		$cartOutput .= "<td> 
+						<a href =\"product.php?id=$item_id\">$product_name</a> <br />
+						<img src=\"inventory_images/$item_id.png\" 
+						alt = \"$product_name\" width =\"100\" height=\"75\" border =\"1\"/></td>";
 		$cartOutput .= "<td>" . $description . "</td>";
 		$cartOutput .= "<td>$" . $price . "</td>";
 		$cartOutput .= '<td><form action="cart.php" method="post">
@@ -166,7 +172,8 @@ if(!isset($_SESSION["cart_array"]) || count($_SESSION["cart_array"]) < 1){
 
 	}
 	setlocale(LC_MONETARY, "en_US");
-	$cartTotal = money_format("%10.2n", $cartTotal);
+	$cartTotal = sprintf("%01.2f", $cartTotal);
+	$cartTotal = sprintf("%01.2f", $cartTotal);
 	$cartTotal = "<div style = 'font-size: 18px; margin-top:12px;' align='right'>Cart Total: ".$cartTotal."USD</div>";
 }
 ?>

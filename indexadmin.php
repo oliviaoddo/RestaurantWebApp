@@ -5,7 +5,7 @@ if(!isset($_SESSION["manager"])){
 	exit();
 }
 
-//Be sure to check this manager SESSION value is in fact in the database 
+//Check if admin SESSION value is in database if user tries to access index in browser bar
 $managerID = preg_replace('#[^0-9]#i','',$_SESSION["id"]); //filter everything but numbers and letters
 $manager = preg_replace('#[^A-Za-z0-9]#i','', $_SESSION["manager"]); //filter everything but numbers and letters
 $password = preg_replace('#[^A-Za-z0-9]#i','', $_SESSION["password"]);
@@ -31,7 +31,7 @@ if($existCount == 0){// evaluate the count
 
 <body>
 <div align="center" id="mainWrapper">
-  <?php include_once("nav.php");?>
+  <?php include_once("navAdmin.php");?>
   <div id="pageContent"><br />
     <div align="left" style="margin-left:24px;">
       <h2>Hello store manager, what would you like to do today?</h2>
@@ -42,7 +42,7 @@ if($existCount == 0){// evaluate the count
   <br />
   <br />
   </div>
-  <?php include_once("footer.php");?>
+  <?php include_once("footerAdmin.php");?>
 </div>
 </body>
 </html>

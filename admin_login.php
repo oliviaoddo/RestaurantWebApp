@@ -1,8 +1,9 @@
 <?php 
 session_start();
+//log admin out by unsetting "customer" in SESSION based on whether "customer" is set in _SESSION or not
 if (isset($_SESSION["manager"])) {
-    header("location: indexadmin.php"); 
-    exit();
+	unset($_SESSION["manager"]);
+	header("location: admin_login.php");
 }
 ?>
 <?php
@@ -27,7 +28,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 		exit();
 	}
 	else{ 
-		echo 'That information is incorrect, try again <a href="index.php">Click Here</a>';
+		echo 'That information is incorrect, try again <a href="admin_login.php">Click Here</a>';
 		exit();
 	}
 }
