@@ -17,39 +17,60 @@ var currentTime = function(){
 	return currentTime;
 };
 
+var standard = function (time){
+	var hour = Math.trunc(time/60);
+		if(hour > 12){
+			hour = hour - 12;
+			var timeOfDay = "PM";
+		}
+		else if(hour = 12) {
+			var timeOfDay = "PM";
+		}
+		else{
+			var timeOfDay = "AM";
+		}
+		var minutes = time%60;
+		//convert to normal time 
+		if(minutes == 0){
+			var standardTime = hour + ":" + minutes + "0" + timeOfDay;
+		}
+		else {
+			var standardTime = hour + ":" + minutes + timeOfDay;
+		}
+
+		return standardTime;
+};
+
+var addOptionTag = function(id, time){
+	var selectItem = document.getElementById(id);
+	var optionItem = document.createElement("option");
+	optionItem.text = time;
+	selectItem.add(optionItem);
+};
+
 var orderTimes = function(option){
 	var current = currentTime();
 	var closeTime = 1260;
+	var openTime = 540;
+	if(current > closeTime){
+		current = openTime;
+	}
 	//if delivery selected
 	if (option === "delivery"){
 		//add 1 hour to time 
 		current = current + 60;
 		//create option element in delivery select time
-		var selectItem = document.getElementById("deliveryTime");
-		var optionItem = document.createElement("option");
-		optionItem.text = current;
-		selectItem.add(optionItem);
+		var standardTime = standard(current);
+		//create <option> element in delivery <select> time 
+		addOptionTag("deliveryTime", standardTime);
 		//loop
 			while (current < closeTime){
 				//add 15 minutes until closing
 				current = current + 15;
 				//convert to military time
-				var hour = Math.trunc(current/60);
-					if(hour > 12){
-						hour = hour - 12;
-						var timeOfDay = "PM";
-					}
-					else{
-						var timeOfDay = "AM";
-					}
-				var minutes = current%60;
-				//convert to normal time 
-				var standardTime = hour + ":" + minutes + timeOfDay;
+				var standardTime = standard(current);
 				//create <option> element in delivery <select> time 
-				selectItem = document.getElementById("deliveryTime");
-				optionItem = document.createElement("option");
-				optionItem.text = standardTime;
-				selectItem.add(optionItem);
+				addOptionTag("deliveryTime", standardTime);
 			}
 		}
 	//if pick up selected 
@@ -57,31 +78,16 @@ var orderTimes = function(option){
 		//add 15 minutes to time 
 		current = current + 15;
 		//create <option> element in pickup <select> time
-		var selectItem = document.getElementById("pickupTime");
-		var optionItem = document.createElement("option");
-		optionItem.text = current;
-		selectItem.add(optionItem);
+		var standardTime = standard(current);
+		addOptionTag("pickupTime", standardTime);
 		//loop
 			while (current < closeTime){
 				//add 15 minutes until closing
 				current = current + 15;
 				//convert to military time
-				var hour = Math.trunc(current/60);
-					if(hour > 12){
-						hour = hour - 12;
-						var timeOfDay = "PM";
-					}
-					else{
-						var timeOfDay = "AM";
-					}
-				var minutes = current%60;
-				//convert to normal time 
-				var standardTime = hour + ":" + minutes + timeOfDay;
+				var standardTime = standard(current);
 				//create <option> element in pickup <select> time 
-				selectItem = document.getElementById("pickupTime");
-				optionItem = document.createElement("option");
-				optionItem.text = standardTime;
-				selectItem.add(optionItem);
+				addOptionTag("pickupTime", standardTime);
 			}
 
 		}

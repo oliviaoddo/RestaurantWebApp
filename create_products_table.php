@@ -11,7 +11,7 @@ $sqlCommand = "CREATE TABLE products (
 		calories int NOT NULL, 
 		fat int NOT NULL, 
 		carbs int NOT NULL, 
-		protien int NOT NULL, 
+		protein int NOT NULL, 
 		sugar int NOT NULL, 
 		date_added date NOT NULL,
 		PRIMARY KEY(id), 
