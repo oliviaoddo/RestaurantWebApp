@@ -36,7 +36,8 @@ if (isset($_POST['pid'])) { // pid = name of add-to-cart button on product.php, 
 	}
 	header("location: cart.php"); 
     exit();
-	
+	//comment2
+	//commetn2
 }
 
 ?>
