@@ -87,6 +87,9 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
         Password:<br />
        <input name="password" type="password" id="password" size="40" />
        <br />
+	   <br />
+	    <a href="customer_signup.php">Don't have an account? Sign up here!</a> 
+       <br />
        <br />
        <br />
        
