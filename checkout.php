@@ -52,10 +52,14 @@
           </div>
 
           <label for = "pickupTime" class = "pickupTime">Pickup Time:</label>
-          <input type = "time" id = "pickupTime" class = "pickupTime" name = "pickup_time">
+          <select id = "pickupTime" class = "pickupTime" name = "pickup_time">
+            <option value = "pickup">Pickup Time</option>
+          </select>
 
           <label for = "deliveryTime" class = "deliveryTime">Delivery Time:</label>
-          <input type = "time" id = "deliveryTime" class = "deliveryTime" name = "delivery_time">
+          <select id = "deliveryTime" class = "deliveryTime" name = "delivery_time">
+            <option value = "deliveryTime">Delivery Time</option>
+          </select>
 
           <h3 class = "deliveryAddress">Delivery Address</h3>
           <label for = "deliveryStreet" class = "deliveryAddress">Street:</label>
@@ -82,9 +86,37 @@
         <label for = "cardNumber">Card Number:</label>
         <input type = "number" id = "cardNumber" name = "card_number" min="16" max="16">
 
-        <label>Expiration Date:</label>
-        <input type = "month" id = "cardMonth" name = "card_month">
-        <input type = "year" id = "cardYear" name = "card_year">
+        <label>Expiration Date:</label><br>
+        <select id = "card_month" name = "card_month">
+            <option value = "month">Month</option>
+            <option value = "january">01 January</option>
+            <option value = "feburary">02 Feburary</option>
+            <option value = "march">03 March</option>
+            <option value = "april">04 April</option>
+            <option value = "may">05 May</option>
+            <option value = "june">06 June</option>
+            <option value = "july">07 July</option>
+            <option value = "august">08 August</option>
+            <option value = "september">09 September</option>
+            <option value = "october">10 October</option>
+            <option value = "november">11 November</option>
+            <option value = "december">12 December</option>
+          </select>
+        <select id = "card_year" name = "card_year">
+            <option value = "year">Year</option>
+            <option value = "2016">2016</option>
+            <option value = "2017">2017</option>
+            <option value = "2018">2018</option>
+            <option value = "2019">2019</option>
+            <option value = "2020">2020</option>
+            <option value = "2021">2021</option>
+            <option value = "2022">2022</option>
+            <option value = "2023">2023</option>
+            <option value = "2024">2024</option>
+            <option value = "2025">2025</option>
+            <option value = "2026">2026</option>
+            <option value = "2027">2027</option>
+          </select>
 
         <label for = "cardCode">Security Code:</label>
         <input type = "number" id = "cardCode" name = "card_number" min="3" max="3">
