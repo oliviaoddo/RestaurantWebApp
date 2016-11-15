@@ -52,9 +52,9 @@ mysqli_close($link);
   <div id="pageContent">
   <table width="100%" border="0" cellspacing="0" cellpadding="15">
   <tr>
-    <td width="19%" valign="top"><img src="inventory_images/<?php echo $id; ?>.png" width="142" height="188" alt="<?php echo $product_name; ?>" /><br />
+    <td width="50%" valign="top"><img src="inventory_images/<?php echo $id; ?>.png" width="200" height="100" alt="<?php echo $product_name; ?>" /><br />
       <a href="inventory_images/<?php echo $id; ?>.png">View Full Size Image</a></td>
-    <td width="81%" valign="top"><h3><?php echo $product_name; ?></h3>
+    <td width="50%" valign="top"><h3><?php echo $product_name; ?></h3>
       <p><?php echo "$".$price; ?><br />
         <br /> 
         <?php echo "Description: ". $description; ?>

@@ -88,7 +88,7 @@ if ($productCount > 0) {
        echo "<div class = 'container'><div class = 'row'>"; //echo HTML that creates food icons under filter
        $pizzaCategory .= '
           <div class="col-md-4"> 
-             <a href="product.php?id=' . $product->getName() . '"><img src="inventory_images/' . $product->getid() . '.png" alt="' . $product->getname() . '" width="200" height="100" border="1" /><br></a>' . $product->getname() . '<br />
+             <a href="product.php?id=' . $product->getid() . '"><img src="inventory_images/' . $product->getid() . '.png" alt="' . $product->getname() . '" width="200" height="100" border="1" /><br></a>' . $product->getname() . '<br />
                   $' . $product->getprice() . '<br />
                   <a href="product.php?id=' . $product->getid() . '">View Product Details</a><br />
         </div>'; // ?
@@ -105,7 +105,7 @@ if ($productCount > 0) {
        echo "<div class = 'container'><div class = 'row'>";
        $sandwichCategory .= '
           <div class="col-md-4"> 
-             <a href="product.php?id=' . $product->getName() . '"><img src="inventory_images/' . $product->getid() . '.png" alt="' . $product->getname() . '" width="200" height="100" border="1" /><br></a>' . $product->getname() . '<br />
+             <a href="product.php?id=' . $product->getid() . '"><img src="inventory_images/' . $product->getid() . '.png" alt="' . $product->getname() . '" width="200" height="100" border="1" /><br></a>' . $product->getname() . '<br />
                   $' . $product->getprice() . '<br />
                   <a href="product.php?id=' . $product->getid() . '">View Product Details</a><br />
         </div>';
@@ -122,7 +122,7 @@ if ($productCount > 0) {
        echo "<div class = 'container'><div class = 'row'>";
        $saladCategory .= '
           <div class="col-md-4"> 
-             <a href="product.php?id=' . $product->getName() . '"><img src="inventory_images/' . $product->getid() . '.png" alt="' . $product->getname() . '" width="200" height="100" border="1" /><br></a>' . $product->getname() . '<br />
+             <a href="product.php?id=' . $product->getid() . '"><img src="inventory_images/' . $product->getid() . '.png" alt="' . $product->getname() . '" width="200" height="100" border="1" /><br></a>' . $product->getname() . '<br />
                   $' . $product->getprice() . '<br />
                   <a href="product.php?id=' . $product->getid() . '">View Product Details</a><br />
         </div>';
@@ -139,7 +139,7 @@ if ($productCount > 0) {
        echo "<div class = 'container'><div class = 'row'>";
        $soupCategory .= '
           <div class="col-md-4"> 
-             <a href="product.php?id=' . $product->getName() . '"><img src="inventory_images/' . $product->getid() . '.png" alt="' . $product->getname() . '" width="200" height="100" border="1" /><br></a>' . $product->getname() . '<br />
+             <a href="product.php?id=' . $product->getid() . '"><img src="inventory_images/' . $product->getid() . '.png" alt="' . $product->getname() . '" width="200" height="100" border="1" /><br></a>' . $product->getname() . '<br />
                   $' . $product->getprice() . '<br />
                   <a href="product.php?id=' . $product->getid() . '">View Product Details</a><br />
         </div>';
@@ -156,7 +156,7 @@ if ($productCount > 0) {
        echo "<div class = 'container'><div class = 'row'>";
        $pastaCategory .= '
           <div class="col-md-4"> 
-             <a href="product.php?id=' . $product->getName() . '"><img src="inventory_images/' . $product->getid() . '.png" alt="' . $product->getname() . '" width="200" height="100" border="1" /><br></a>' . $product->getname() . '<br />
+             <a href="product.php?id=' . $product->getid() . '"><img src="inventory_images/' . $product->getid() . '.png" alt="' . $product->getname() . '" width="200" height="100" border="1" /><br></a>' . $product->getname() . '<br />
                   $' . $product->getprice() . '<br />
                   <a href="product.php?id=' . $product->getid() . '">View Product Details</a><br />
         </div>';
