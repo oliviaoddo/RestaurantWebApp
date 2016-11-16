@@ -46,14 +46,14 @@ mysqli_close($link);
 <title><?php echo $product_name; ?></title>
 <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="product.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="lightbox.css" type="text/css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
   <?php include_once("nav.php");?>
   <div class = "row" id = "productRow">
 
-    <div class = "col-md-6">
-      <img src="inventory_images/<?php echo $id; ?>.png" width="200" height="100" alt="<?php echo $product_name; ?>" /><br />
-      <a href="inventory_images/<?php echo $id; ?>.png">View Full Size Image</a>
+    <div class = "col-md-6" id = "productImage">
+      <a href = "inventory_images/<?php echo $id; ?>.png"><img src="inventory_images/<?php echo $id; ?>.png" width="200" height="100" alt="<?php echo $product_name; ?>"></a>
     </div>
 
     <div class = "col-md-6">
@@ -83,6 +83,7 @@ mysqli_close($link);
     </div>
   </div>
   <?php include_once("footer.php");?>
-
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="lightbox.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
