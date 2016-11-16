@@ -3,9 +3,10 @@ require "connect_to_mysql.php";
 
 $sqlCommand = "CREATE TABLE customer (
 		id int(11) NOT NULL auto_increment, 
+		fname varchar(255) NOT NULL,
+		lname varchar(255) NOT NULL,
 		username varchar(255) NOT NULL, 
 		password varchar(255) NOT NULL, 
-		last_log_date date NOT NULL, 
 		PRIMARY KEY(id), 
 		UNIQUE KEY username(username)
 		)";

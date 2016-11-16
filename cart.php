@@ -175,7 +175,7 @@ if(!isset($_SESSION["cart_array"]) || count($_SESSION["cart_array"]) < 1){
 	setlocale(LC_MONETARY, "en_US");
 	$cartTotal = sprintf("%01.2f", $cartTotal);
 	$cartTotal = sprintf("%01.2f", $cartTotal);
-	$cartTotal = "<div style = 'font-size: 18px; margin-top:12px;' align='right'>Cart Total: ".$cartTotal."USD</div>";
+	$cartTotal = "<div style = 'font-size: 18px; margin-top:12px;' align='right'>Subtotal: ".$cartTotal."USD</div>";
 }
 ?>
 
@@ -203,6 +203,7 @@ if(!isset($_SESSION["cart_array"]) || count($_SESSION["cart_array"]) < 1){
       </tr> -->
     </table>
        <?php echo $cartTotal; ?>
+       <a href="checkout.php"><button input = "button" style = "font-size: 18px; margin-top:12px;" align="right">Checkout</button></a>
 <br /> <br />
 <a href = "cart.php?cmd=emptycart">Click here to empty shopping cart</a>
 </div>
