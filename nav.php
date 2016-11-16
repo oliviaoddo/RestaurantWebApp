@@ -57,7 +57,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="cart.php">CART</a></li>
-        <li><a href="customer_login.php">LOG IN</a></li>
+        <li><a href="login.php">LOG IN</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
