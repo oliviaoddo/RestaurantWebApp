@@ -1,0 +1,13 @@
+#productRow{
+	padding-right: 25%;
+	padding-left: 25%;
+	padding-bottom: 100px;
+}
+
+.productHeader {
+	font-weight: bold;
+}
+
+#facts {
+	padding-top: 100px;
+}

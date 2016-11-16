@@ -39,46 +39,50 @@ if (isset($_GET["id"])){
 mysqli_close($link);
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo $product_name; ?></title>
-<link rel="stylesheet" href="style/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="product.css" type="text/css" media="screen" />
 </head>
 <body>
-<div align="center" id="mainWrapper">
   <?php include_once("nav.php");?>
-  <div id="pageContent">
-  <table width="100%" border="0" cellspacing="0" cellpadding="15">
-  <tr>
-    <td width="50%" valign="top"><img src="inventory_images/<?php echo $id; ?>.png" width="200" height="100" alt="<?php echo $product_name; ?>" /><br />
-      <a href="inventory_images/<?php echo $id; ?>.png">View Full Size Image</a></td>
-    <td width="50%" valign="top"><h3><?php echo $product_name; ?></h3>
+  <div class = "row" id = "productRow">
+
+    <div class = "col-md-6">
+      <img src="inventory_images/<?php echo $id; ?>.png" width="200" height="100" alt="<?php echo $product_name; ?>" /><br />
+      <a href="inventory_images/<?php echo $id; ?>.png">View Full Size Image</a>
+    </div>
+
+    <div class = "col-md-6">
+      <h3><?php echo $product_name; ?></h3>
       <p><?php echo "$".$price; ?><br />
-        <br /> 
-        <?php echo "Description: ". $description; ?>
-<br />
-<?php echo "Calories: ". $calories; ?>
-<br />
-<?php echo "Fat: ". $fat; ?>
-<br />
-<?php echo "protein: ". $protein; ?>
-<br />
-<?php echo "Sugar: ". $sugar; ?>
-<br />
-<?php echo "Carbs: ". $carbs; ?>
-<br />
-        </p>
+      <br /> 
+      <h4>Description:</h4>
+      <p><?php echo $description; ?></p>
+      <br />
+      <h4>Nutritional Facts:</h4>
+      <?php echo "Calories- ". $calories; ?>
+      <br />
+      <?php echo "Fat- ". $fat; ?>
+      <br />
+      <?php echo "Protein- ". $protein; ?>
+      <br />
+      <?php echo "Sugar- ". $sugar; ?>
+      <br />
+      <?php echo "Carbs- ". $carbs; ?>
+      <br />
+      </p>
       <form id="form1" name="form1" method="post" action="cart.php">
         <input type="hidden" name="pid" id="pid" value="<?php echo $id; ?>" />
         <input type="submit" name="button" id="button" value="Add to Shopping Cart" />
       </form>
-      </td>
-    </tr>
-</table>
+      </div>
+    </div>
   </div>
   <?php include_once("footer.php");?>
-</div>
+
 </body>
 </html>
