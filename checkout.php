@@ -148,7 +148,12 @@
           <input type = "text" id = "billingCountry" name = "billing_country">
 
         </fieldset>
-        
+
+        <legend id = "fieldNumber3"><span class = "number">4</span> Review Order</legend>
+        <fieldset id = "set4">
+        <!-- add the cart content here-->
+        </fieldset>
+        <!-- display the subtotal, tax, delivery fee(if applicable), and grand total-->
         <button type = "submit">Complete Order</button>
         
       </form>
