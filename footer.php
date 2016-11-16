@@ -87,7 +87,7 @@
     			</section>
     		
     		</div>
-      <h4><a href = "admin_login.php">Admin Login</a></h4>
+      <h4><a href = "adminLogin.php">Admin Login</a></h4>
       </div>
     </footer>
     </html>
