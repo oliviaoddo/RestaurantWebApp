@@ -18,17 +18,17 @@
   <h1>Sign Up</h1>
     <p>
       <label for="fname">First Name</label>
-      <input id="fname" name="fname" type="text">
+      <input id="fname" name="fname" type="text" required>
     </p>
 
     <p>
       <label for="lname">Last Name</label>
-      <input id="lname" name="lname" type="text">
+      <input id="lname" name="lname" type="text" required>
     </p>
 
     <p>
       <label for="username">Username</label>
-      <input id="username" name="username" type="text">
+      <input id="username" name="username" type="text" required>
     </p>
     <p>
       <label for="password">Password</label>
