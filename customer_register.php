@@ -1,5 +1,6 @@
 <?php 
 $pageTitle = 'User Register';
+date_default_timezone_set('UTC');
 // note: since customer and admin table have AUTO_INCREMENT for their ID values, don't need to fill out parameter when inserting query
 /**
  * These are the database login details
@@ -28,9 +29,12 @@ $fname = $_REQUEST['fname'];
 $lname = $_REQUEST['lname'];
 $username = $_REQUEST['username'];
 $password = $_REQUEST['password'];
-
+$phone = $_REQUEST['phone'];
+$email = $_REQUEST['email'];
+$date = date("y-m-d");
+ 
 $sql = "INSERT INTO Customer 
-		VALUES('1','$fname', '$lname', '$username', '$password')";
+		VALUES('','$fname', '$lname', '$username', '$password', '$email', '$phone','$date')";
 //change this code once user revised with OOP, will just need to store $customer obj into session instead of these 3 param
 /* 
 $_SESSION["custId"] = $custID;
