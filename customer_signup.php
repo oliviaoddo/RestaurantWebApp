@@ -26,29 +26,23 @@
       <input id="lname" name="lname" type="text" required>
     </p>
 	
-<<<<<<< HEAD
  	<p>
        <label for="email">Enter a desired email </br> ex.'Example@yahoo.com'</label>
        <input id="email" name="email" type="text" required>
      </p>
  	
-=======
+
 	<p>
       <label for="email">Enter a desired email </br> ex.'Example@yahoo.com'</label>
       <input id="email" name="email" type="text" required>
     </p>
 	
->>>>>>> 828384af0b5242b6f4fcce6eed1d4ac8ea227466
+
 	<p>
       <label for="phone">Enter primary phone number:</label>
       <input id="phone" name="phone" type="text" required>
     </p>
-<<<<<<< HEAD
- 
-	
-=======
->>>>>>> 828384af0b5242b6f4fcce6eed1d4ac8ea227466
-	
+
     <p>
       <label for="username">Username</label>
       <input id="username" name="username" type="text" required>
