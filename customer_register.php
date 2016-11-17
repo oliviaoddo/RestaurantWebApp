@@ -32,7 +32,10 @@ $password = $_REQUEST['password'];
 $phone = $_REQUEST['phone'];
 $email = $_REQUEST['email'];
 $date = date("y-m-d");
+<<<<<<< HEAD
  
+=======
+>>>>>>> 828384af0b5242b6f4fcce6eed1d4ac8ea227466
 $sql = "INSERT INTO Customer 
 		VALUES('','$fname', '$lname', '$username', '$password', '$email', '$phone','$date')";
 //change this code once user revised with OOP, will just need to store $customer obj into session instead of these 3 param
