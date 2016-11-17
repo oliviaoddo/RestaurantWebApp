@@ -33,12 +33,6 @@
  	
 
 	<p>
-      <label for="email">Enter a desired email </br> ex.'Example@yahoo.com'</label>
-      <input id="email" name="email" type="text" required>
-    </p>
-	
-
-	<p>
       <label for="phone">Enter primary phone number:</label>
       <input id="phone" name="phone" type="text" required>
     </p>
