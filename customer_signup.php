@@ -25,7 +25,17 @@
       <label for="lname">Last Name</label>
       <input id="lname" name="lname" type="text" required>
     </p>
-
+	
+	<p>
+      <label for="email">Enter a desired email </br> ex.'Example@yahoo.com'</label>
+      <input id="email" name="email" type="text" required>
+    </p>
+	
+	<p>
+      <label for="phone">Enter primary phone number:</label>
+      <input id="phone" name="phone" type="text" required>
+    </p>
+	
     <p>
       <label for="username">Username</label>
       <input id="username" name="username" type="text" required>
@@ -40,6 +50,7 @@
       <input id="confirm_password" name="confirm_password" type="password">
       <span>Please confirm your password</span>
     </p>
+
     <p>
       <input type="submit" value="Sign Up" id="submit">
     </p>
