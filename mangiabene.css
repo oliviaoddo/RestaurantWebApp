@@ -343,12 +343,16 @@ color: black;
 font-size: 20px;
 }
 
-.filter {
-	display: inline-block;
+label.filter {
+	display: inline-block !important;
 }
 
 .filterType {
-	display: block;
-	padding-right: 10px;
-	padding-left: 10px;
+	display: block !important;
+	padding-right: 10px !important;
+	padding-left: 10px !important; 
+}
+
+.orderTitle{
+	text-align: center;
 }

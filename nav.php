@@ -53,7 +53,7 @@
         <li class="active"><a href="about.php">ABOUT <span class="sr-only">(current)</span></a></li>
         <li><a href="contact.php">CONTACT</a></li>
         <li><a href="menu.php">MENU</a></li>
-        <li><a href="product_list.php">ORDER ONLINE</a></li>
+        <li><a href="filteredProducts.php">ORDER ONLINE</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="cart.php">CART</a></li>

@@ -4,11 +4,10 @@ class product{
 	protected $name;
 	protected $price;
 	protected $dateAdded;
-	public function __construct($id,$n,$p,$dA){
+	public function __construct($id,$n,$p){
 		$this->id = $id;
 		$this->name = $n;
 		$this->price = $p;
-		$this->dateAdded = $dA;
 	}
 	public function getID(){
 		return $this->id;
@@ -18,9 +17,6 @@ class product{
 	}
 	public function getPrice(){
 		return $this->price;
-	}
-	public function getDateAdded(){
-		return $this->dateAdded;
 	}
 }
 ?>
