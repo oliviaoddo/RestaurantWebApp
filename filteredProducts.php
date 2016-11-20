@@ -59,13 +59,17 @@
                      <input type="radio" name="carbs" value="50" class = "carbs" id = "50car" onclick="filterFunction()"/><label for ="50car">Under 50g</label>
                 </div>
                 </div>
-          <div class = "col-md-2">      
+          <div class = "col-md-1">      
         <label id = "filterPrice">Price<i class="fa fa-caret-down" aria-hidden="true"></i></label><br>
                 <div class = "filterPrice">
                     <input type="radio" name="price" value="5" class = "price" id = "5dol" onclick="filterFunction()"/><label for ="5dol">Under $5</label><br>
                     <input type="radio" name="price" value="10" class = "price" id = "10dol" onclick="filterFunction()"/><label for ="10dol">Under $10</label><br>
                     <input type="radio" name="price" value="15" class = "price" id = "15dol" onclick="filterFunction()"/><label for ="15dol">Under $15</label>
                     </div>
+                </div>
+
+                <div class = "col-md-1">  
+                    <button type = "button" onclick = "displayAllFunction()">Clear</button>
                 </div>
 
         </div>
