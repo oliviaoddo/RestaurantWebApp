@@ -365,3 +365,8 @@ font-size: 20px;
 .orderTitle{
 	text-align: center;
 }
+
+.filterCalories {
+    background-color: #f4f7f8;
+    padding: 5px;
+}

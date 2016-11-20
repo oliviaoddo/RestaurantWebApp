@@ -12,6 +12,7 @@
         <div>
             <?php include_once("nav.php");?>
          </div>
+    <form>
     <div class = "row" id = "filterRow">
         <div class = "col-md-2">
          <label id = "filterCalories">Calories<i class="fa fa-caret-down" aria-hidden="true"></i></label><br>
@@ -69,8 +70,9 @@
                 </div>
 
                 <div class = "col-md-1">  
-                    <button type = "button" onclick = "displayAllFunction()">Clear</button>
+                    <input type = "reset" value = "Clear" onclick = "displayAllFunction()">
                 </div>
+        </form>
 
         </div>
         <div id = "productsDiv" class = "container">
