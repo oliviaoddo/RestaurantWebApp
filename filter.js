@@ -8,22 +8,42 @@ function filterFunction(){
 		}
 	}
 
-	var calories = document.getElementsByClassName('calories');
-	var sugar = document.getElementsByClassName('sugar');
-	var protein = document.getElementsByClassName('protein');
-	var fat = document.getElementsByClassName('fat');
-	var carbs = document.getElementsByClassName('carbs');
-	var price = document.getElementsByClassName('price');
+	var calories = 1500;
+	var sugar = 20;
+	var protein = 20;
+	var fat = 15;
+	var carbs = 50; 
+	var price = 15;
 
-	var caloriesIndex = getChecked(calories);
-	var sugarIndex = getChecked(sugar);
-	var proteinIndex = getChecked(protein);
-	var fatIndex = getChecked(fat);
-	var carbsIndex = getChecked(carbs);
-	var priceIndex = getChecked(price);
 
-	var queryString = "?calories="  + calories[caloriesIndex].value;
-	queryString += "&sugar=" + sugar[sugarIndex].value + "&protein=" + protein[proteinIndex].value + "&fat=" + fat[fatIndex].value + "&carbs=" + carbs[carbsIndex].value + "&price=" + price[priceIndex].value;
+	var caloriesCheck = document.getElementsByClassName('calories');
+	var sugarCheck = document.getElementsByClassName('sugar');
+	var proteinCheck = document.getElementsByClassName('protein');
+	var fatCheck = document.getElementsByClassName('fat');
+	var carbsCheck = document.getElementsByClassName('carbs');
+	var priceCheck = document.getElementsByClassName('price');
+
+
+	var caloriesIndex = getChecked(caloriesCheck);
+	var sugarIndex = getChecked(sugarCheck);
+	var proteinIndex = getChecked(proteinCheck);
+	var fatIndex = getChecked(fatCheck);
+	var carbsIndex = getChecked(carbsCheck);
+	var priceIndex = getChecked(priceCheck);
+
+
+	calories = caloriesCheck[caloriesIndex].value;
+	sugar = sugarCheck[sugarIndex].value;
+	protein = proteinCheck[proteinIndex].value;
+	fat = fatCheck[fatIndex].value;
+	carbs = carbsCheck[carbsIndex].value;
+	price = priceCheck[priceIndex].value;
+
+
+	var queryString = "?calories="  + calories;
+	queryString += "&sugar=" + sugar + "&protein=" + protein + "&fat=" + fat + "&carbs=" + carbs + "&price=" + price;
+
+	console.log(queryString);
 
 	xhr.open("GET", "filter.php" + queryString, true);
 	xhr.send();
@@ -49,7 +69,7 @@ function displayAllFunction(){
 window.onload = displayAllFunction();
 
 function getChecked(list) {
-	var index = 0;
+	var index = list.length-1;
 
 	for(var i = 0; i < list.length; i++){
 		if (list[i].checked) {
@@ -67,11 +87,11 @@ $('.filterCarbs').hide();
 $('.filterPrice').hide();
 
 $('#filterCalories').click(function(){
-	$('.filterCalories').toggle(400);
+	$('.filterCalories').toggle(300);
 });
 
 $('.filterCalories').click(function(){
-	$('.filterCalories').hide("slow");
+	$('.filterCalories').hide(300);
 });
 
 $('#filterSugar').click(function(){
