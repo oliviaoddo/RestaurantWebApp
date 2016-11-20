@@ -44,12 +44,58 @@ function getChecked(list) {
     return index;
 }
 
-$(".filterCalories").hide();
+$('.filterCalories').hide();
+$('.filterSugar').hide();
+$('.filterProtein').hide();
+$('.filterFat').hide();
+$('.filterCarbs').hide();
+$('.filterPrice').hide();
 
-$( ".filters" ).mouseover(function() {
-  $(".filterCalories").toggle();
+$('#filterCalories').click(function(){
+	$('.filterCalories').toggle(400);
 });
 
-$( ".filterCalories" ).mouseleave(function() {
-  $(".filterCalories").toggle();
+$('.filterCalories').click(function(){
+	$('.filterCalories').hide("slow");
 });
+
+$('#filterSugar').click(function(){
+	$('.filterSugar').toggle(400);
+});
+
+$('.filterSugar').click(function(){
+	$('.filterSugar').hide("slow");
+});
+
+$('#filterProtein').click(function(){
+	$('.filterProtein').toggle(400);
+});
+
+$('.filterProtein').click(function(){
+	$('.filterProtein').hide("slow");
+});
+
+$('#filterFat').click(function(){
+	$('.filterFat').toggle(400);
+});
+
+$('.filterFat').click(function(){
+	$('.filterFat').hide("slow");
+});
+
+$('#filterCarbs').click(function(){
+	$('.filterCarbs').toggle(400);
+});
+
+$('.filterCarbs').click(function(){
+	$('.filterCarbs').hide("slow");
+});
+
+$('#filterPrice').click(function(){
+	$('.filterPrice').toggle(400);
+});
+
+$('.filterPrice').click(function(){
+	$('.filterPrice').hide("slow");
+});
+
