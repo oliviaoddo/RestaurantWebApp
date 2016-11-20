@@ -21,12 +21,20 @@
 
 	$qry_result = mysqli_query($link, $query) or die(mysqli_error());
 
-	while ($row = $qry_result->fetch_assoc()) {
-       $product = new Product($row["id"],$row["name"],$row["price"]);
-       $display_string .= '<div class="col-md-6">';
-       $display_string .=  '<a href="product.php?id=' . $product->getid() . '"><img src="inventory_images/'
-        . $product->getid() . '.png" alt="' . $product->getname() . '" width="200" height="100" border="1" /><br></a>'. $product->getname() . '<br /> $' . $product->getprice() . '<br /> <a href="product.php?id=' . $product->getid() . '">View Product Details</a><br /> </div>';
-    }
+	$rowCount = mysqli_num_rows($qry_result); // count the output amount
+
+	if ($rowCount > 0) {
+
+		while ($row = $qry_result->fetch_assoc()) {
+	       $product = new Product($row["id"],$row["name"],$row["price"]);
+	       $display_string .= '<div class="col-md-4">';
+	       $display_string .=  '<a href="product.php?id=' . $product->getid() . '"><img src="inventory_images/'
+	        . $product->getid() . '.png" alt="' . $product->getname() . '" width="200" height="100" border="1" /><br></a>'. $product->getname() . '<br /> $' . $product->getprice() . '<br /> <a href="product.php?id=' . $product->getid() . '">View Product Details</a><br /> </div>';
+	    }
+	   } else {
+	    	$display_string = "<h5>We are sorry. None of our products match your search.</h5>";
+	   }
+	 
 
 	echo $display_string;
 ?>
