@@ -1,11 +1,10 @@
-function ajaxFunction(){
+function filterFunction(){
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function(){
 		console.log(xhr.status);
 		if(xhr.readyState === 4 && xhr.status === 200) {
 			var displayProducts = document.getElementById('productsDiv');
 			displayProducts.innerHTML = xhr.responseText;
-			console.log(xhr.responseText);
 		}
 	}
 
@@ -30,7 +29,24 @@ function ajaxFunction(){
 	xhr.send();
 };
 
-window.onload = ajaxFunction();
+function displayAllFunction(){
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(){
+		console.log(xhr.status);
+		if(xhr.readyState === 4 && xhr.status === 200) {
+			var displayProducts = document.getElementById('productsDiv');
+			displayProducts.innerHTML = xhr.responseText;
+		}
+	}
+
+	var displayAll = true;
+	var queryString = "?displayAll=" + displayAll;
+
+	xhr.open("GET", "filter.php" + queryString, true);
+	xhr.send();
+};
+
+window.onload = displayAllFunction();
 
 function getChecked(list) {
 	var index = 0;
@@ -40,7 +56,6 @@ function getChecked(list) {
 			index = i;
 		}
     }
-
     return index;
 }
 
