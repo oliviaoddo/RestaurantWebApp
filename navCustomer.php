@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="../../favicon.ico"> 
 
     <title>Mangia Bene</title>
 
@@ -44,7 +44,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">HOME</a>
+      <a class="navbar-brand" href="indexCustomer.php">HOME</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -57,7 +57,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="cart.php">CART</a></li>
-        <li><a href="customer_login.php">LOG OUT</a></li>
+        <li><a href="customer_login_script.php">LOG OUT</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

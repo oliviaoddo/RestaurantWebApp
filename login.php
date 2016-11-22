@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -13,7 +13,7 @@
    <div>
         <?php include_once("nav.php");?>
       </div>
-      <form id="customerLogin" name="form1" method="post" action="customer_login.php">
+      <form id="customerLogin" name="form1" method="post" action="customer_login_script.php">
       <h2>Login</h2>
         <label for = "username">Username</label>
         <input name="username" type="text" id="username">

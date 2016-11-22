@@ -28,7 +28,7 @@
     <![endif]-->
 
     <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
+    <link href="carousel.css" rel="stylesheet"> 
     <link href="mangiabene.css" rel="stylesheet">
     
   </head>

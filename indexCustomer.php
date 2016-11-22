@@ -1,4 +1,4 @@
-<?php 
+ <?php 
 session_start();
 if(!isset($_SESSION["customer"])){
 	header("location: customer_login.php");
@@ -21,28 +21,92 @@ if($existCount == 0){// evaluate the count
 }
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php echo $customer;?>'s Account</title>
-<link rel="stylesheet" href="../style.css" type="text/css" media="screen" />
-</head>
 
-<body>
-<div align="center" id="mainWrapper">
-  <?php include_once("navCustomer.php");?>
-  <div id="pageContent"><br />
-    <div align="left" style="margin-left:24px;">
-      <h2>Hello store manager, what would you like to do today?</h2>
-      <p><a href="inventory_list.php">Manage Inventory</a><br />
-      <a href="#">Manage Blah Blah </a></p>
-    </div>
-    <br />
-  <br />
-  <br />
-  </div>
-  <?php include_once("footer.php");?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <link href="carousel.css" rel="stylesheet">
+    <link href="mangiabene.css" rel="stylesheet">
+    
+  </head>
+
+	<body>
+	
+  <div>
+    <?php include_once("navCustomer.php");?>
 </div>
-</body>
+	
+
+    <!-- Carousel
+    ================================================== -->
+    
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="first-slide" src="images/slide2.jpg" alt="First slide">
+
+        </div>
+        <div class="item">
+          <img class="second-slide" src="images/test.jpg" alt="Second slide">
+        </div>
+        <div class="item">
+          <img class="third-slide" src="images/Restaurant.jpg" alt="Third slide">
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    
+    <!-- /.carousel -->
+	<div class="menucontainer" id="menulinks">
+		<div class="row">
+			<section class="col-md-12 col-sm-12 col-lg-4 col-xs-12">
+				<a href="lunchmenu.html"><img class="food" src="images/pizza.jpg" alt="Food" ></a>
+				<a href="lunchmenu.html"><h3>LUNCH MENU</h3></a>
+			</section>
+			
+			<section class="col-md-12 col-sm-12 col-lg-4 col-xs-12">
+				<a href="dinnermenu.html"><img class="food" src="images/pasta.jpg" alt="Food"></a>
+				<a href="dinnermenu.html"><h3>DINNER MENU</h3></a>
+			</section>
+			
+			<section class="col-md-12 col-sm-12 col-lg-4 col-xs-12">
+				<a href="drinkmenu.html"><img class="food" src="images/drinks.jpg" alt="Food"></a>
+				<a href="drinkmenu.html"><h3>DRINK MENU</h3></a>
+			</section>
+			
+		</div>
+	</div>
+  <div>
+    <?php include_once("footer.php");?>
+</div>
+
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   
+  </body>
 </html>

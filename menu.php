@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -20,7 +20,18 @@
   </head>
 <body>
  <div>
-    <?php include_once("nav.php");?>
+    <?php 
+	session_start();
+	if (isset($_SESSION["customer"])) {
+		include_once("navCustomer.php");
+	}
+	else if (isset($_SESSION["manager"])) {
+		include_once("navAdmin.php");
+	}
+	else {
+		include_once("nav.php");
+	}
+	?>
 </div>
 	
 <a name="dinnerlink"></a>
@@ -136,7 +147,15 @@
     <br />
     <br />
  <div>
-    <?php include_once("footer.php");?>
+    <?php 
+	if (isset($_SESSION["manager"])) {
+		include_once("footerAdmin.php");
+	}
+	else {
+		include_once("footer.php");
+	}
+	?>
+</div>
 </div>
     
     

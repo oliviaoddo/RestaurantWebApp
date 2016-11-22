@@ -11,9 +11,20 @@
 <body>
 
     <div>
-        <?php include_once("nav.php");?>
+    <?php 
+	session_start();
+	if (isset($_SESSION["customer"])) {
+		include_once("navCustomer.php"); 
+	}
+	else if (isset($_SESSION["manager"])) {
+		include_once("navAdmin.php");
+	}
+	else {
+		include_once("nav.php");
+	}
+	?>
     </div>
-      <form id="form1" name="form1" method="post" action="admin_login.php">
+      <form id="form1" name="form1" method="post" action="admin_login_script.php">
       <h2>Admin Login</h2>
         <label for = "username">Username</label>
         <input name="username" type="text" id="username">
