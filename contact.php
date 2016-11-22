@@ -19,18 +19,7 @@
   </head>
 <body>
   <div>
-    <?php 
-	session_start();
-	if (isset($_SESSION["customer"])) {
-		include_once("navCustomer.php");
-	}
-	else if (isset($_SESSION["manager"])) {
-		include_once("navAdmin.php");
-	}
-	else {
-		include_once("nav.php");
-	}
-	?>
+    <?php include_once("nav.php");?>
 </div>
 
 <section class= "contactimage"> 
@@ -127,16 +116,8 @@ Laguna Niguel, CA 92677</a><br>
 </div>
     
 	
-	<div>
-    <?php 
-	if (isset($_SESSION["manager"])) {
-		include_once("footerAdmin.php");
-	}
-	else {
-		include_once("footer.php");
-	}
-	?>
-	</div>
+  <div>
+    <?php include_once("footer.php");?>
 </div>
 
       

@@ -44,7 +44,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="indexAdmin.php">HOME</a>
+      <a class="navbar-brand" href="index.php">HOME</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -57,7 +57,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="cart.php">CART</a></li>
-        <li><a href="admin_login_script.php">LOG OUT</a></li>
+        <li><a href="admin_login.php">LOG OUT</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

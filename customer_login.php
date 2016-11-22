@@ -17,6 +17,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 	$sql = mysqli_query($link, "SELECT id FROM customer WHERE username='$customer' AND password='$password' LIMIT 1"); //query the person 
 	//MAKE SURE PERSON EXISTS IN DATABASE
 	$existCount = mysqli_num_rows($sql); //count the row nums
+  echo $existCount;
 	if($existCount == 1){//evaluate the count
 		while($row= mysqli_fetch_array($sql)){
 			$id=$row["id"];
