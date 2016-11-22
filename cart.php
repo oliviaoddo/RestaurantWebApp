@@ -2,7 +2,7 @@
 session_start();
 //Script Error Reporting
 error_reporting(E_ALL);
-ini_set('display_errors', '1');
+ini_set('display_errors', '1'); 
 include "connect_to_mysql.php";
 ?>
  <div>

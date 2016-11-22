@@ -8,7 +8,7 @@ if (isset($_SESSION["manager"])) {
 ?>
 <?php
 session_start();
-if(isset($_POST["username"]) && isset($_POST["password"])){
+if(isset($_POST["username"]) && isset($_POST["password"])){ 
 
 	$manager = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["username"]); // filter everything but numbers and letters
     $password = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["password"]); // filter everything but numbers and letters

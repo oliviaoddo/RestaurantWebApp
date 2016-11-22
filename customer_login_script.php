@@ -4,7 +4,7 @@ session_start();
 if (isset($_SESSION["customer"])) {
 	unset($_SESSION["customer"]);
 	header("location: login.php");
-}
+} 
 ?>
 <?php
 session_start();
