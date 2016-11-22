@@ -193,7 +193,17 @@ mysqli_close($link); // required when using mysqli_query instead of mysql_query
   </head>
 <body>
 <div>
-    <?php include_once("nav.php");?>
+    <?php 
+	if (isset($_SESSION["customer"])) {
+		include_once("navCustomer.php");
+	}
+	else if (isset($_SESSION["manager"])) {
+		include_once("navAdmin.php");
+	}
+	else {
+		include_once("nav.php");
+	}
+	?>
 </div>
 
 
@@ -308,8 +318,15 @@ with a pre-set value
    <!-- </div>
 </div>-->
 <div>
-    <?php include_once("footer.php");?>
-</div>
+    <?php 
+	if (isset($_SESSION["manager"])) {
+		include_once("footerAdmin.php");
+	}
+	else {
+		include_once("footer.php");
+	}
+	?>
+	</div>
     
        <!-- Bootstrap core JavaScript
     ================================================== -->
