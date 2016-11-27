@@ -1,6 +1,6 @@
 <?php
 include "connect_to_mysql.php";
-include "product_class.php";
+//include "product_class.php";
 
 //$id = $_GET['id'];
 $id = 1;
@@ -8,7 +8,18 @@ $id = 1;
 $query = "SELECT * FROM products WHERE id = ";
 $query .= $id;
 
-$qry_result = mysqli_query($link, $query) or die(mysqli_error());
+$json = array();
+
+$result = mysqli_query($link, $query);
+
+while($row = $result->fetch_assoc()){
+	$json[] = $row;
+}
+
+//header(‘Content-type: application/json’);
+echo json_encode($json);
+
+/*$qry_result = mysqli_query($link, $query) or die(mysqli_error());
 
 $productCount = mysqli_num_rows($qry_result); // count the output amount
 
@@ -42,5 +53,5 @@ if ($productCount > 0) {
 		);
 
 	echo json_encode($productArray);
-
+*/
 ?>
