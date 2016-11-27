@@ -12,7 +12,7 @@ $password = preg_replace('#[^A-Za-z0-9]#i','', $_SESSION["password"]);
 //Run mySQL query to be sure that this person is an admin and that their password session var equals the database information 
 //Connect to the MySQL database 
 include "connect_to_mysql.php";
-$sql = mysqli_query($link, "SELECT * FROM customer"); //query the person 
+$sql = mysqli_query($link, "SELECT * FROM accounts"); //query the person 
 //MAKE SURE PERSON EXISTS IN DATABASE
 $existCount = mysqli_num_rows($sql); //count the row nums 
 if($existCount == 0){// evaluate the count 

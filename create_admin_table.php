@@ -1,14 +1,19 @@
 <?php 
 require "connect_to_mysql.php";
 
-$sqlCommand = "CREATE TABLE admin (
-		id int(11) NOT NULL auto_increment, 
-		username varchar(255) NOT NULL, 
-		password varchar(255) NOT NULL, 
-		last_log_date date NOT NULL, 
-		PRIMARY KEY(id), 
-		UNIQUE KEY username(username)
-		)";
+$sqlCommand = "CREATE TABLE admins
+  (
+      admin_id     	int(11)      		NOT NULL		AUTO_INCREMENT,
+      user_id		int(11)			NOT NULL,
+      username		varchar(20)		NOT NULL,
+      password		varchar(20)		NOT NULL,
+      last_login DATE      			NOT NULL,
+      CONSTRAINT pk_admin PRIMARY KEY (admin_id),
+      CONSTRAINT admin_user_fk
+      	FOREIGN KEY (user_id)
+      	REFERENCES users (user_id),
+      unique(username)
+  )";
 
 if(mysql_query($sqlCommand)){
 	echo "Your admin table has been created successfully!";
