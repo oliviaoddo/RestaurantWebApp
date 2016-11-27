@@ -16,7 +16,7 @@
       </div>
   
 
-      <form action = "checkout.php" method = "post">
+      <form action = "order.php" method = "post">
         
         <h1>Checkout</h1>
         

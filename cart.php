@@ -1,3 +1,4 @@
+
 <?php 
 session_start();
 //Script Error Reporting
@@ -21,21 +22,29 @@ include "connect_to_mysql.php";
 </div>
 
 <?php
-if (isset($_POST['pid'])) { // pid = name of add-to-cart button on product.php, this is cart.php screen after they added something
+/*
+Note to self: cart is a multi-dimensional array containing multiple associative array (key=>value pairs)
+so the keys in our multi-d array points to an associative array 'key => array("key"=>value)'
+this way each row is created for only one PID and it's quantity, which matches the database
+*/
+if (isset($_POST['pid'])) { // pid [product ID]= name of add-to-cart button on product.php, this is cart.php screen after they added something
     $pid = $_POST['pid'];
 	$wasFound = false;
 	$i = 0;
 	// If the cart session variable is not set or cart array is empty
 	if (!isset($_SESSION["cart_array"]) || count($_SESSION["cart_array"]) < 1) { 
-	    // RUN IF THE CART IS EMPTY OR NOT SET
-		$_SESSION["cart_array"] = array(0 => array("item_id" => $pid, "quantity" => 1));
+	    /* RUN IF THE CART IS EMPTY OR NOT SET
+		creates cart_array in SESSION and add 1 of item with PID since it must exist in if condition*/
+		$_SESSION["cart_array"] = array(1 => array("item_id" => $pid, "quantity" => 1));
 	} else {
-		// RUN IF THE CART HAS AT LEAST ONE ITEM IN IT
+		// cart must have atleast 1 item, each_item = array/rows in multi-D array
 		foreach ($_SESSION["cart_array"] as $each_item) { 
 		      $i++;
+			  // while loop each row to access list of key=>value of each associative array(rows)
 		      while (list($key, $value) = each($each_item)) {
+				  //item_id and quantity is already created in the if !isset statement above
 				  if ($key == "item_id" && $value == $pid) {
-					  // That item is in cart already so let's adjust its quantity using array_splice()
+					  // That item is in cart already, adjust its quantity using array_splice()
 					  array_splice($_SESSION["cart_array"], $i-1, 1, array(array("item_id" => $pid, "quantity" => $each_item['quantity'] + 1)));
 					  $wasFound = true;
 				  } // close if condition
@@ -213,8 +222,25 @@ if(!isset($_SESSION["cart_array"]) || count($_SESSION["cart_array"]) < 1){
         <td>&nbsp;</td>
       </tr> -->
     </table>
-       <?php echo $cartTotal; ?>
-       <a href="checkout.php"><button input = "button" style = "font-size: 18px; margin-top:12px;" align="right">Checkout</button></a>
+       <?php echo $cartTotal; 
+	   /*disable checkout button base on whether or not cart is empty
+	   this ensures that a cart with atleast 1 product is required for order.php before it makes SQL insert into order/orderlines
+	   */
+	   if (!isset($_SESSION["cart_array"]) || count($_SESSION["cart_array"]) < 1) { 
+		echo '
+		<a href="checkout.php">
+		<button input = "button" disabled style = "font-size: 18px; margin-top:12px;" align="right">Checkout</button>
+		</a>';
+	   }
+	   else {
+		   echo '
+			<a href="checkout.php">
+			<button input = "button" style = "font-size: 18px; margin-top:12px;" align="right">Checkout</button>
+			</a>';
+	   }
+	   
+	   ?>
+       
 <br /> <br />
 <a href = "cart.php?cmd=emptycart">Click here to empty shopping cart</a>
 </div>
