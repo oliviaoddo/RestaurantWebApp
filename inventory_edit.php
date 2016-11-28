@@ -6,13 +6,12 @@ if(!isset($_SESSION["manager"])){
 }
 
 //Be sure to check this manager SESSION value is in fact in the database 
-$managerID = preg_replace('#[^0-9]#i','',$_SESSION["id"]); //filter everything but numbers and letters
 $manager = preg_replace('#[^A-Za-z0-9]#i','', $_SESSION["manager"]); //filter everything but numbers and letters
 $password = preg_replace('#[^A-Za-z0-9]#i','', $_SESSION["password"]);
 //Run mySQL query to be sure that this person is an admin and that their password session var equals the database information 
 //Connect to the MySQL database 
 include "connect_to_mysql.php";
-$sql = mysqli_query($link, "SELECT * FROM admin WHERE id='$managerID' AND username='$manager' AND password = '$password' LIMIT 1"); //query the person 
+$sql = mysqli_query($link, "SELECT * FROM admins WHERE username='$manager' AND password = '$password' LIMIT 1"); //query the person 
 //MAKE SURE PERSON EXISTS IN DATABASE
 $existCount = mysqli_num_rows($sql); //count the row nums 
 if($existCount == 0){// evaluate the count 
@@ -23,8 +22,8 @@ if($existCount == 0){// evaluate the count
 
 ?>
 
-<?php 
-//Script Error Reporting
+<?php //Script Error Reporting
+
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 ?>
@@ -33,19 +32,30 @@ ini_set('display_errors', '1');
 //Parse the form data and add inventory item to the system 
 if(isset($_POST['product_name'])){
 
-  $pid = mysqli_real_escape_string($link, $_POST['thisID']);
+  //$pid = mysqli_real_escape_string($link, $_POST['thisID']);
+  $pid = $_SESSION["product_ID"];
   $product_name = mysqli_real_escape_string($link, $_POST['product_name']);
   $price = mysqli_real_escape_string($link, $_POST['price']);
   $category = mysqli_real_escape_string($link, $_POST['category']);
   $calories = mysqli_real_escape_string($link, $_POST['calories']);
   $description = mysqli_real_escape_string($link, $_POST['description']);
-  $protien = mysqli_real_escape_string($link, $_POST['protien']);
+  $protein = mysqli_real_escape_string($link, $_POST['protein']);
   $calories = mysqli_real_escape_string($link, $_POST['calories']);
   $carbs = mysqli_real_escape_string($link, $_POST['carbs']);
   $fat = mysqli_real_escape_string($link, $_POST['fat']);
   $sugar = mysqli_real_escape_string($link, $_POST['sugar']);
+  echo $pid.'</br>';
+  
   //See if that product name is an identical match to another product in the system 
-  $sql = mysqli_query($link, "UPDATE products SET name = '$product_name', price = '$price', description = '$description', category = '$category', protien = '$protien', calories = '$calories', carbs = '$carbs', fat = '$fat', sugar = '$sugar' WHERE id = '$pid'");
+  //$updateSql =  "UPDATE products SET name = '$product_name', price = '$price', description = '$description', category = '$category', protien = '$protien', calories = '$calories', carbs = '$carbs', fat = '$fat', sugar = '$sugar' WHERE id = '$pid'";
+  $updateSql = "UPDATE products SET name = '$product_name' WHERE id = '$pid'";
+  if (mysqli_query($link,$updateSql)){
+	  echo 'sql worked</br>';
+  }
+  else {
+	  echo 'didnt work</br>';
+  }
+  echo $product_name.$pid;
   //$sql = mysqli_query($link, "UPDATE products SET name = '$product_name', price = '$price',  category = '$category' WHERE id = '$pid'");
   if ($_FILES['fileField']['tmp_name'] != "") {
       // Place image in the folder 
@@ -54,36 +64,41 @@ if(isset($_POST['product_name'])){
   }
   header("location: inventory_list.php"); 
     exit();
+	
 }
 
 ?>
 <?php
 date_default_timezone_set('UTC');
-//Gather this product's full informayion for inserting automatically into the edit form below 
-if(isset($_GET['pid'])){
-  $targetID = $_GET['pid'];
+//Gather this product's full information for inserting automatically into the edit form below 
+if(isset($_SESSION["product_ID"])){
+  $targetID = $_SESSION["product_ID"];
+  echo $targetID;
   $sql = mysqli_query($link, "SELECT * FROM products WHERE id = '$targetID' LIMIT 1");
   $productCount = mysqli_num_rows($sql); //count output amount
-if($productCount > 0){
-  while($row = mysqli_fetch_array($sql)){
-    $pid = $row["id"];
-    $product_name = $row["name"];
-    $price = $row["price"];
-    $category = $row["category"];
-    $description = $row["description"];
-    $calories = $row["calories"];
-    $fat = $row["fat"];
-    $sugar = $row["sugar"];
-    $protien = $row["protien"];
-    $carbs = $row["carbs"];
-    $date_added = strftime("%b %d %Y", strtotime($row["date_added"]));
-    $product_list .= "$date_added-$pid-$product_name &nbsp; &nbsp; &nbsp;<a href='inventory_edit.php?pid=$pid'>edit</a>&bull;<a href='#'>delete</a><br>";
-  }
-}else{
-  echo "Does not exist";
-  exit();
-}
+	if($productCount > 0){
+		while($row = mysqli_fetch_array($sql)){
+			$pid = $row["id"];
+			$product_name = $row["name"];
+			$price = $row["price"];
+			$category = $row["category"];
+			$description = $row["description"];
+			$calories = $row["calories"];
+			$fat = $row["fat"];
+			$sugar = $row["sugar"];
+			$protein = $row["protein"];
+			$carbs = $row["carbs"];
+			$date_added = strftime("%b %d %Y", strtotime($row["date_added"]));
+			//$product_list .= "$date_added-$pid-$product_name &nbsp; &nbsp; &nbsp;<a href='inventory_edit.php?pid=$pid'>edit</a>&bull;<a href='#'>delete</a><br>";
+		}
+	}else{
+		echo "Does not exist";
+		//exit();
+	}
 
+}
+else {
+	echo 'not set get PID</br>';
 }
 ?>
 
@@ -97,13 +112,23 @@ if($productCount > 0){
 
 <body>
 <div align="center" id="mainWrapper">
-  <?php include_once("template_header.php");?>
+  <?php 
+  if (isset($_SESSION["customer"])) {
+		include_once("navCustomer.php");
+	}
+	else if (isset($_SESSION["manager"])) {
+		include_once("navAdmin.php");
+	}
+	else {
+		include_once("nav.php");
+	}
+	?>
   <div id="pageContent"><br />
     <div align = "right" style = "margin-right:32px;"><a href = "inventory_list.php#inventoryForm">+ Add New Inventory Item</a></div>
     <div align="left" style="margin-left:24px;">
       <h2>Inventory list</h2>
        <?php 
-        echo $product_list;
+        //echo $product_list;
         ?>
     </div>
     <a name="inventoryForm" id="inventoryForm"></a>
@@ -127,7 +152,8 @@ if($productCount > 0){
         <td align="right">Category</td>
         <td><label>
           <select name="category" id="category">
-          <option value="Clothing">Clothing</option>
+          <option value="Entree">Entree</option>
+		  <option value="Appetizer">Appetizer</option>
           </select>
         </label></td>
       </tr>
@@ -148,7 +174,7 @@ if($productCount > 0){
             <tr>
         <td align="right">Protien</td>
         <td><label>
-          <textarea name="protien" id="protien" cols="64" rows="5" ><?php echo $protien; ?></textarea>
+          <textarea name="protein" id="protein" cols="64" rows="5" ><?php echo $protein; ?></textarea>
         </label></td>
       </tr>
       <tr>
@@ -189,7 +215,14 @@ if($productCount > 0){
     <br />
   <br />
   </div>
-  <?php include_once("template_footer.php");?>
+  <?php 
+  if (isset($_SESSION["manager"])) {
+		include_once("footerAdmin.php");
+	}
+	else {
+		include_once("footer.php");
+	}
+  ?>
 </div>
 </body>
 </html>

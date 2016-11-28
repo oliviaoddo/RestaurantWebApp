@@ -6,13 +6,12 @@ if(!isset($_SESSION["manager"])){
 }
 
 //Be sure to check this manager SESSION value is in fact in the database 
-$managerID = preg_replace('#[^0-9]#i','',$_SESSION["id"]); //filter everything but numbers and letters
 $manager = preg_replace('#[^A-Za-z0-9]#i','', $_SESSION["manager"]); //filter everything but numbers and letters
 $password = preg_replace('#[^A-Za-z0-9]#i','', $_SESSION["password"]);
 //Run mySQL query to be sure that this person is an admin and that their password session var equals the database information 
 //Connect to the MySQL database 
 include "connect_to_mysql.php";
-$sql = mysqli_query($link, "SELECT * FROM admin WHERE id='$managerID' AND username='$manager' AND password = '$password' LIMIT 1"); //query the person 
+$sql = mysqli_query($link, "SELECT * FROM admins WHERE username='$manager' AND password = '$password' LIMIT 1"); //query the person 
 //MAKE SURE PERSON EXISTS IN DATABASE
 $existCount = mysqli_num_rows($sql); //count the row nums 
 if($existCount == 0){// evaluate the count 
@@ -89,8 +88,9 @@ $product_list = "";
 $sql = mysqli_query($link, "SELECT * FROM products ORDER BY date_added DESC");
 $productCount = mysqli_num_rows($sql); //count output amount
 if($productCount > 0){
-  while($row = mysqli_fetch_array($sql)){
+  while($row = mysqli_fetch_assoc($sql)){
     $id = $row["id"];
+	$_SESSION["product_ID"] = $id; //giving us 21 for some reason
     $name = $row["name"];
     $date_added = strftime("%b %d %Y", strtotime($row["date_added"]));
     $product_list .= "$date_added-$id-$name &nbsp; &nbsp; &nbsp;<a href='inventory_edit.php?pid=$id'>edit</a>&bull;<a href='inventory_list.php?deleteid=$id'>delete</a><br>";
@@ -112,7 +112,17 @@ if($productCount > 0){
 
 <body>
 <div align="center" id="mainWrapper">
-  <?php include_once("template_header.php");?>
+  <?php 
+  if (isset($_SESSION["customer"])) {
+		include_once("navCustomer.php");
+	}
+	else if (isset($_SESSION["manager"])) {
+		include_once("navAdmin.php");
+	}
+	else {
+		include_once("nav.php");
+	}
+  ?>
   <div id="pageContent"><br />
     <div align="right" style="margin-right:32px;"><a href="inventory_list.php#inventoryForm">+ Add New Inventory Item</a></div>
 <div align="left" style="margin-left:24px;">
@@ -205,7 +215,14 @@ if($productCount > 0){
     <br />
   <br />
   </div>
-  <?php include_once("template_footer.php");?>
+  <?php
+  if (isset($_SESSION["manager"])) {
+		include_once("footerAdmin.php");
+	}
+	else {
+		include_once("footer.php");
+	}
+  ?>
 </div>
 </body>
 </html>
