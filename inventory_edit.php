@@ -29,11 +29,10 @@ ini_set('display_errors', '1');
 ?>
 
 <?php
-//Parse the form data and add inventory item to the system 
-if(isset($_POST['product_name'])){
-
-  //$pid = mysqli_real_escape_string($link, $_POST['thisID']);
-  $pid = $_SESSION["product_ID"];
+//Parse the form data and edit inventory item
+//$pid = mysqli_real_escape_string($link, $_POST['thisID']);
+if (isset($_POST['product_name'])) {
+  $pid = mysqli_real_escape_string($link, $_POST['thisID']);
   $product_name = mysqli_real_escape_string($link, $_POST['product_name']);
   $price = mysqli_real_escape_string($link, $_POST['price']);
   $category = mysqli_real_escape_string($link, $_POST['category']);
@@ -44,19 +43,11 @@ if(isset($_POST['product_name'])){
   $carbs = mysqli_real_escape_string($link, $_POST['carbs']);
   $fat = mysqli_real_escape_string($link, $_POST['fat']);
   $sugar = mysqli_real_escape_string($link, $_POST['sugar']);
-  echo $pid.'</br>';
+  echo $pid.'47</br>';
   
   //See if that product name is an identical match to another product in the system 
-  //$updateSql =  "UPDATE products SET name = '$product_name', price = '$price', description = '$description', category = '$category', protien = '$protien', calories = '$calories', carbs = '$carbs', fat = '$fat', sugar = '$sugar' WHERE id = '$pid'";
-  $updateSql = "UPDATE products SET name = '$product_name' WHERE id = '$pid'";
-  if (mysqli_query($link,$updateSql)){
-	  echo 'sql worked</br>';
-  }
-  else {
-	  echo 'didnt work</br>';
-  }
-  echo $product_name.$pid;
-  //$sql = mysqli_query($link, "UPDATE products SET name = '$product_name', price = '$price',  category = '$category' WHERE id = '$pid'");
+  $updateSql =  "UPDATE products SET name = '$product_name', price = '$price', description = '$description', category = '$category', protein = '$protein', calories = '$calories', carbs = '$carbs', fat = '$fat', sugar = '$sugar' WHERE id = '$pid'";
+  $sql = mysqli_query($link, $updateSql);
   if ($_FILES['fileField']['tmp_name'] != "") {
       // Place image in the folder 
       $newname = "$pid.jpg";
@@ -71,9 +62,9 @@ if(isset($_POST['product_name'])){
 <?php
 date_default_timezone_set('UTC');
 //Gather this product's full information for inserting automatically into the edit form below 
-if(isset($_SESSION["product_ID"])){
-  $targetID = $_SESSION["product_ID"];
-  echo $targetID;
+if(isset($_GET['pid'])){
+  $targetID = $_GET['pid'];
+  echo $targetID.'68</br>';
   $sql = mysqli_query($link, "SELECT * FROM products WHERE id = '$targetID' LIMIT 1");
   $productCount = mysqli_num_rows($sql); //count output amount
 	if($productCount > 0){
@@ -172,7 +163,7 @@ else {
       </tr>
       <tr>
             <tr>
-        <td align="right">Protien</td>
+        <td align="right">protein</td>
         <td><label>
           <textarea name="protein" id="protein" cols="64" rows="5" ><?php echo $protein; ?></textarea>
         </label></td>

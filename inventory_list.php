@@ -56,7 +56,7 @@ if(isset($_POST['product_name'])){
   $price = mysqli_real_escape_string($link, $_POST['price']);
   $category = mysqli_real_escape_string($link, $_POST['category']);
   $description = mysqli_real_escape_string($link, $_POST['description']);
-  $protien = mysqli_real_escape_string($link, $_POST['protien']);
+  $protein = mysqli_real_escape_string($link, $_POST['protein']);
   $calories = mysqli_real_escape_string($link, $_POST['calories']);
   $carbs = mysqli_real_escape_string($link, $_POST['carbs']);
   $fat = mysqli_real_escape_string($link, $_POST['fat']);
@@ -70,8 +70,8 @@ if(isset($_POST['product_name'])){
     exit();
   }
   //Add this product into the database now 
-  $sql = mysqli_query($link, "INSERT INTO products (name,price,description,category, protien, calories, carbs, fat, sugar, date_added)
-      VALUES('$product_name', '$price', '$description','$category', '$protien', '$calories', '$carbs', '$fat', '$sugar', now())") or die (mysqli_error($link));
+  $sql = mysqli_query($link, "INSERT INTO products (name,price,description,category, protein, calories, carbs, fat, sugar, date_added)
+      VALUES('$product_name', '$price', '$description','$category', '$protein', '$calories', '$carbs', '$fat', '$sugar', now())") or die (mysqli_error($link));
     $pid = mysqli_insert_id($link);
     //Place image in the folder 
   $newname = "$pid.jpg";
@@ -90,10 +90,12 @@ $productCount = mysqli_num_rows($sql); //count output amount
 if($productCount > 0){
   while($row = mysqli_fetch_assoc($sql)){
     $id = $row["id"];
-	$_SESSION["product_ID"] = $id; //giving us 21 for some reason
+	//$_SESSION["product_ID"] = $id; //giving us 21 for some reason
     $name = $row["name"];
     $date_added = strftime("%b %d %Y", strtotime($row["date_added"]));
-    $product_list .= "$date_added-$id-$name &nbsp; &nbsp; &nbsp;<a href='inventory_edit.php?pid=$id'>edit</a>&bull;<a href='inventory_list.php?deleteid=$id'>delete</a><br>";
+    //$product_list .= "$date_added-$id-$name &nbsp; &nbsp; &nbsp;<a href='inventory_edit.php?pid=$id'>edit</a>&bull;<a href='inventory_list.php?deleteid=$id'>delete</a><br>";
+	//$product_list .= "$id-$name &nbsp; &nbsp; &nbsp;<a href='inventory_edit.php?pid=$id'>edit</a>&bull;<a href='inventory_list.php?deleteid=$id'>delete</a><br>";
+$product_list .= "Product ID: $id - <strong>$name</strong> - <em>Added $date_added</em> &nbsp; &nbsp; &nbsp; <a href='inventory_edit.php?pid=$id'>edit</a> &bull; <a href='inventory_list.php?deleteid=$id'>delete</a><br />";  
   }
 }else{
   $product_list = "You have no products listed in your store yet";
@@ -179,9 +181,9 @@ if($productCount > 0){
       </tr>
       <tr>
             <tr>
-        <td align="right">Protien</td>
+        <td align="right">Protein</td>
         <td><label>
-          <textarea name="protien" id="protien" cols="64" rows="5"></textarea>
+          <textarea name="protein" id="protein" cols="64" rows="5"></textarea>
         </label></td>
       </tr>
       <tr>
