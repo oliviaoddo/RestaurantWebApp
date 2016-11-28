@@ -36,7 +36,7 @@ if($existCount == 0){// evaluate the count
     <div align="left" style="margin-left:24px;">
       <h2>Hello store manager, what would you like to do today?</h2>
       <p><a href="inventory_list.php">Manage Inventory</a><br />
-      <a href="#">Manage Blah Blah </a></p>
+      <a href="order_history.php">View orders placed </a></p>
     </div>
     <br />
   <br />

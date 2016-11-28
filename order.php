@@ -56,29 +56,11 @@ $date = date("y-m-d");
 //check if user is either a log-in customer or a guest
 $subclassSQL = "";
 $idForOrder = "";
-$selectUserID = "SELECT * FROM USERS 
-	WHERE fname ='$fname' and lname = '$lname' 
-	LIMIT 1";
-	$resultUser = mysqli_query($conn, $selectUserID);
-	$row = mysqli_fetch_assoc($resultUser);
-	$userID = $row["user_id"];
 
-	echo 'userID = '.$userID."</br>";
+
 	if (isset($_SESSION["customer"])) {
-		echo "customer in sess"."</br>";
-		$idForOrder = "SELECT * FROM accounts WHERE user_id = '$userID' LIMIT 1";
-		/* incase you need access to username/password of customer ordering
-		$selectAccountID = "SELECT * FROM accounts 
-			WHERE user_id=$userID 
-			LIMIT 1";
-		$resultUser = mysqli_query($conn, $selectAccountID);
-		$row = mysqli_fetch_assoc($resultUser);
-		$username = $row["username"];
-		$password = $row["password"];
-		*/
-		
-		
-		
+		echo "customer in sess, therefore a row in user/account shares a user_id</br>";
+		$idForOrder = "SELECT * FROM accounts WHERE user_id = '$userID' LIMIT 1";	
 	}
 	else { //is guest
 		echo "is a guest,creating new user and guest account</br>";
@@ -87,15 +69,26 @@ $selectUserID = "SELECT * FROM USERS
 		if (mysqli_query($conn, $userSQL)) {
 			echo "New user created successfully</br>";
 		} else {
-			echo "Error: " . $userSQL . "<br>" . mysqli_error($conn);
+			echo "Error: " . $userSQL . "</br>" . mysqli_error($conn);
 		}
-		$subclassSQL = "INSERT INTO GUEST 
-			VALUES('','$userID')";
-		if (mysqli_query($conn, $subclassSQL)) {
-			echo "New guest created successfully";
-			$idForOrder = "SELECT * FROM guest WHERE user_id = '$userID' LIMIT 1";
-		} else {
-			echo "Error: " . $subclassSQL . "<br>" . mysqli_error($conn);
+		/*retrieve the user_id of new user using values the PK user_id represents*/
+		$selectUserID = "SELECT * FROM USERS 
+		WHERE fname ='$fname' and lname = '$lname' and phone = '$phone' and email = '$email'
+		LIMIT 1";
+		$resultUser = mysqli_query($conn, $selectUserID);
+		if ($resultUser){
+			$row = mysqli_fetch_assoc($resultUser);
+			$userID = $row["user_id"];
+			/*sql to create guest using user_id found*/
+			$subclassSQL = "INSERT INTO GUEST 
+				VALUES('','$userID')";
+			if (mysqli_query($conn, $subclassSQL)) {
+				echo "New guest created successfully";
+				$idForOrder = "SELECT * FROM guest WHERE user_id = '$userID' LIMIT 1";
+			} else {
+				echo "Error: " . $subclassSQL . "</br>" . mysqli_error($conn);
+			}
+			echo 'found a matching user with user_id: '.$userID.'</br>';
 		}
 	}
 
@@ -116,7 +109,7 @@ if(mysqli_num_rows($resultOrder) > 0){
 		echo "New order created successfully</br>";
 	} 
 	else {
-		echo "Error: " . $orderSQL . "<br>" . mysqli_error($conn);
+		echo "Error: " . $orderSQL . "</br>" . mysqli_error($conn);
 	}
 	
 	//check content of cart to produce Product ID for orderline rows
@@ -137,7 +130,7 @@ if(mysqli_num_rows($resultOrder) > 0){
 					echo "New orderline created successfully</br>";
 				} 
 				else {
-					echo "Error: " . $orderlineSQL . "<br>" . mysqli_error($conn);
+					echo "Error: " . $orderlineSQL . "</br>" . mysqli_error($conn);
 				}
 			}
 			$i++;
