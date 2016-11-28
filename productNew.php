@@ -8,14 +8,14 @@
         <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
         <link href="mangiabene.css" rel="stylesheet">
     </head>
-    <body>
+    <body  onload="product()" >
         <div>
             <?php include_once("nav.php");?>
          </div>
         <div class = "row" id = "productRow">
 
             <div class = "col-md-6" id = "productImage">
-              <a href = "inventory_images/<?php echo $id; ?>.png"><img src="inventory_images/<?php echo $id; ?>.png" width="200" height="100" alt="<?php echo $product_name; ?>"></a>
+              
             </div>
 
             <div class = "col-md-6">
