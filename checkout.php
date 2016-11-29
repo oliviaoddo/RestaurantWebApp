@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="form.css">
         <link rel="stylesheet" href="autocomplete.css">
     </head>
-    <body>
+    <body onload = "reviewOrder()">
       <div>
         <?php include_once("nav.php");?>
       </div>
@@ -152,6 +152,8 @@
         <legend id = "fieldNumber3"><span class = "number">4</span> Review Order</legend>
         <fieldset id = "set4">
         <!-- add the cart content here-->
+          <ul id="cartContent">
+          </ul>
         </fieldset>
         <!-- display the subtotal, tax, delivery fee(if applicable), and grand total-->
         <button type = "submit">Complete Order</button>
@@ -164,6 +166,7 @@
 
       <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="form.js" type="text/javascript" charset="utf-8"></script>
+  <script src="reviewOrder.js" type="text/javascript" charset="utf-8"></script>
   <script src="autocomplete.js" type="text/javascript" charset="utf-8"></script>
     </body>
 </html>
