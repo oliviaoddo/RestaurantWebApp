@@ -1,0 +1,1 @@
+<div id="pageFooter">Copyright | <a href="http://127.0.0.1/~oliviaoddo/ecommerceStore/admin_login.php">Admin</a></div>

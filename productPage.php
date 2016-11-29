@@ -29,6 +29,7 @@
  	mysqli_close($link);
  
  	$productArray = array(
+ 		'productId' => $id,
  		'productName' => $product_name, 
  		'productPrice' => $price, 
  		'productCategory' => $category, 

@@ -7,14 +7,15 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
         <link href="mangiabene.css" rel="stylesheet">
+        <link rel="stylesheet" href="lightbox.css" type="text/css" media="screen" title="no title" charset="utf-8">
     </head>
     <body  onload="product()" >
         <div>
             <?php include_once("nav.php");?>
          </div>
-        <div class = "row" id = "productRow">
+        <div class="row" id="productRow">
 
-            <div class = "col-md-6" id = "productImage">
+            <div class="col-md-6" id="productImage">
               
             </div>
 
@@ -37,11 +38,17 @@
               <p id = "productCarbs">Carbs: </p>
               <br />
               </p>
-              <form id="form1" name="form1" method="post" action="cart.php">
+              <button type = "button" id = "addToCart">Add to Cart</button>
+              <!--<form id="form1" name="form1" method="post" action="cart.php">
                 <input type="hidden" name="pid" id="pid" value="<?php echo $id; ?>" />
                 <input type="submit" name="button" id="button" onclick = "checkoutCart.js" value="Add to Shopping Cart" />
-              </form>
+              </form>-->
               </div>
+        </div>
+        <div class = "popUp">
+          <h3>Added to cart!</h3>
+          <a href="cartNew.php"><button type="button">Checkout</button></a><br>
+          <a href="filteredProducts.php"><button type="button">Continue Shopping</button></a>
         </div>
 
         <div>
@@ -49,6 +56,7 @@
          </div>
 
         <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="lightbox.js" type="text/javascript" charset="utf-8"></script>
         <script src="productPage.js" type="text/javascript" charset="utf-8"></script>
     </body>
 </html>
