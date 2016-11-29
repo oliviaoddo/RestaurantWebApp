@@ -155,6 +155,10 @@
         <!-- add the cart content here-->
           <ul id="cartContent">
           </ul>
+          <h5 id="subtotal">Subtotal: $</h5>
+          <h5 id="tax">Tax: $</h5>
+          <h5 = id = "deliveryFee"></h5>
+          <h5 id="orderTotal"></h5>
         </fieldset>
         <!-- display the subtotal, tax, delivery fee(if applicable), and grand total-->
         <button type = "submit">Complete Order</button>

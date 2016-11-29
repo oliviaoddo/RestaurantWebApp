@@ -24,6 +24,7 @@
 			  </tr>
 			</table>
          </div>
+         <h5 id="subtotal">Subtotal: $</h5>
          <a id="checkout" href = "checkout.php"><button type = "button">Checkout</button></a>
          <button id = "clearCart" type="button">Clear Cart</button>
 
