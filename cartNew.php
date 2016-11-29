@@ -24,6 +24,8 @@
 			  </tr>
 			</table>
          </div>
+         <a id="checkout" href = "checkout.php"><button type = "button">Checkout</button></a>
+         <button id = "clearCart" type="button">Clear Cart</button>
 
  		<div>
             <?php include_once("footer.php");?>

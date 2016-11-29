@@ -34,31 +34,30 @@ function product(id){
 		    document.getElementById("productImage").appendChild(link);
 
 		    $('#addToCart').click(function(){
-		    	alert("pressed");
-		    	//function addProduct(){
-		    		//search through cart array, if id not found
-					//create new product in the cart 
-					//if found 
-					//quantity++;
-		    		var quantity = 1;
 		    		var cartEntries = JSON.parse(localStorage.getItem("allEntries"));
+		    		var found = false;
 		    		if(cartEntries == null) cartEntries = [];
-					/*if(cartEntries != null){
-			    		for(i = 0; i<cartEntries.length; i++){
-			    			if(cartEntries[i].productId == jsonResponse.productId){
-			    				//console.log(cartEntries[i].productId++);
-			    				localStorage.setItem("cartEntries[i].productQuantity", JSON.stringify(cartEntries[i].productQuantity++));
-			    				var price = parseInt(cartEntries[i].productPrice);
-			    				var quantity = cartEntries[i].productQuantity;
-			    				var total = price * quantity;
-			    				console.log(total);
-			    				//console.log(quantity);
-			    				localStorage.setItem("cartEntries[i].productTotal", JSON.stringify(total));
-			    				console.log(cartEntries);
-			    			}
+		    		for(i = 0; i<cartEntries.length; i++){
+		    			if(cartEntries[i].productId == jsonResponse.productId){
+		    				//console.log(cartEntries[i].productId++);
+		    				console.log(cartEntries[i].productQuantity);
+
+		    				localStorage.setItem("cartEntries[i].productQuantity", JSON.stringify(cartEntries[i].productQuantity++));
+		    				console.log(cartEntries[i].productQuantity);
+		    				found = true;
+		    				//var price = parseInt(cartEntries[i].productPrice);
+		    				//var quantity = cartEntries[i].productQuantity;
+		    				//var total = price * quantity;
+		    				//console.log(total);
+		    				//console.log(quantity);
+		    				//localStorage.setItem("cartEntries[i].productTotal", JSON.stringify(total));
 		    			}
-		    		}*/
-		    		//else{
+		    		}
+		    		console.log(found);
+		    		console.log(cartEntries);
+		    		//create new product in the cart 
+		    		if(found == false){
+		    			var quantity = 1;
 			    		var cartEntry = {
 			    			"productId": jsonResponse.productId,
 					        "productName": jsonResponse.productName,  
@@ -70,49 +69,20 @@ function product(id){
 	    				localStorage.setItem("cartEntry", JSON.stringify(cartEntry));
 	   					// Save allEntries back to local storage
 	    				cartEntries.push(cartEntry);
-	    				console.log(cartEntries);
 	    				localStorage.setItem("allEntries", JSON.stringify(cartEntries));
-	    				console.log(cartEntries);
-	    				console.log(cartEntries[0].productName);
-    				//}
-		    	//}
-		    	
-		    	/*
-		    	cart.push({
-		    		"productName": jsonResponse.productName,  
-		    		"productDesc": jsonResponse.productDesc, 
-		    		"productPrice": jsonResponse.productPrice, 
-		    		"productQuantity": quantity, 
-		    		"productTotal": jsonResponse.productPrice * 2
-		    	});
-		    	alert(cart[0].productName);
-		    	alert(cart[0].productDesc);
-		    	alert(cart[0].productPrice);
-		    	alert(cart[0].productQuantity);
-		    	alert(cart[0].productTotal);
-		    	cart.push({
-		    		"productName": jsonResponse.productName,  
-		    		"productDesc": jsonResponse.productDesc, 
-		    		"productPrice": jsonResponse.productPrice, 
-		    		"productQuantity": quantity, 
-		    		"productTotal": jsonResponse.productPrice * 2
-		    	});
-		    	alert(cart[1].productName);
-		    	alert(cart[1].productDesc);
-		    	alert(cart[1].productPrice);
-		    	alert(cart[1].productQuantity);
-		    	alert(cart[1].productTotal);
-				*/
+	    				//console.log(cartEntries);
+	    				//console.log(cartEntries[0].productName);
+    				}
+    		
+    			console.log(cartEntries);
 	
-    			//onlick add to cart
-    			//pop up
-    			//checkout: link to cart 
-    			//continue shopping: link to products page
-
-    			var $overlay = $('<div id="overlay"></div>');
-				var $popUp = $(".popUp");
+    			var $overlay = $('<div id="overlay"></div>'); 
+				var $popUp = $("div.popUp");
+				console.log($popUp);
 				$overlay.append($popUp);
 				$("body").append($overlay);
+				$overlay.show();
+				$('.popUp').show();
 				$overlay.click(function(){
 				  //Hide the overlay
 				  $overlay.hide();

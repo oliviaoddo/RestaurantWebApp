@@ -147,9 +147,10 @@
           <label for = "billingCountry">Country:</label>
           <input type = "text" id = "billingCountry" name = "billing_country">
 
+          <button type = "button" id="nextThree">Next</button>
         </fieldset>
 
-        <legend id = "fieldNumber3"><span class = "number">4</span> Review Order</legend>
+        <legend id = "fieldNumber4"><span class = "number">4</span> Review Order</legend>
         <fieldset id = "set4">
         <!-- add the cart content here-->
           <ul id="cartContent">

@@ -1,8 +1,13 @@
 function viewCart(){
 	console.log("hello");
+	//show your cart is empty if localstorage = null 
+		$("#checkout").hide();
+		$("#clearCart").hide();
+		$("#cartTable").hide();
+
 	//get localstorage 
 	var cartEntries = JSON.parse(localStorage.getItem("allEntries"));
-	console.log(cartEntries);
+	console.log(cartEntries[0].productQuantity);
 	//for(i = 0; i < cartEntries.length; i++){
 		var table = document.getElementById("cartTable");
 
@@ -19,4 +24,16 @@ function viewCart(){
 		    cell4.innerHTML = cartEntries[i].productQuantity;
 		    cell5.innerHTML = cartEntries[i].productTotal;
 	}
+
+	$("#clearCart").click(function(){
+		$("#cartTable").empty();
+		localStorage.clear();
+
+		$("#checkout").hide();
+		$("#clearCart").hide();
+
+		//show your shopping cart is empty 
+
+
+	})
 };
