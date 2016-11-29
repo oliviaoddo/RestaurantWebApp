@@ -98,6 +98,8 @@ var orderTimes = function(option){
 $("#set2").hide();
 //hide #set3
 $("#set3").hide();
+//hide #set4
+$("#set4").hide();
 
 //if #set1 next clicked
 //show #set2
@@ -112,23 +114,42 @@ $("#nextTwo").click(function(){
 	$("#set3").show();
 });
 
+//if #set3 next clicked
+//show #set4
+$("#nextThree").click(function(){
+	$("#set3").hide();
+	$("#set4").show();
+});
+
 $("#fieldNumber1").click(function(){
 	$("#set2").hide();
 	$("#set3").hide();
+	$("#set4").hide();
 	$("#set1").toggle();
 });
 
 $("#fieldNumber2").click(function(){
 	$("#set1").hide();
 	$("#set3").hide();
+	$("#set4").hide();
 	$("#set2").toggle();
 });
 
 $("#fieldNumber3").click(function(){
 	$("#set1").hide();
 	$("#set2").hide();
+	$("#set4").hide();
 	$("#set3").toggle();
 });
+
+$("#fieldNumber4").click(function(){
+	$("#set1").hide();
+	$("#set2").hide();
+	$("#set3").hide();
+	$("#set4").toggle();
+});
+
+
 
 //auto fill billing address
 //create checkbox if delivery clicked
