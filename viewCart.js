@@ -1,5 +1,5 @@
 function viewCart(){
-	var cartEntries = JSON.parse(localStorage.allEntries);
+	var cartEntries = JSON.parse(localStorage.getItem("allEntries"));
 	if(cartEntries == null){
 		$("#checkout").hide();
 		$("#clearCart").hide();
@@ -13,17 +13,20 @@ function viewCart(){
 		var table = document.getElementById("cartTable");
 
 		for(i = 0; i < cartEntries.length; i++){
-		    var row = table.insertRow();
+		    var row = table.insertRow(-1);
+		    row.id = cartEntries[i].productId;
 		    var cell1 = row.insertCell(0);
 		    var cell2 = row.insertCell(1);
 		    var cell3 = row.insertCell(2);
 		    var cell4 = row.insertCell(3);
 		    var cell5 = row.insertCell(4);
+		    var cell6 = row.insertCell(5);
 		    cell1.innerHTML = cartEntries[i].productName;
 		    cell2.innerHTML = cartEntries[i].productDesc;
 		    cell3.innerHTML = cartEntries[i].productPrice;
 		    cell4.innerHTML = cartEntries[i].productQuantity;
 		    cell5.innerHTML = cartEntries[i].productTotal;
+		    cell6.innerHTML = "<button type='button' id='delete'>X</button>";
 	}
 
 	var subtotal = 0;

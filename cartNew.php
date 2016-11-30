@@ -21,6 +21,7 @@
 			    <th>Unit Price</th>
 			    <th>Quantity</th>
 			    <th>Total</th>
+                <th>Remove</th>
 			  </tr>
 			</table>
          </div>
@@ -35,5 +36,6 @@
         <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="lightbox.js" type="text/javascript" charset="utf-8"></script>
         <script src="viewCart.js" type="text/javascript" charset="utf-8"></script>
+        <script src="deleteItem.js" type="text/javascript" charset="utf-8"></script>
     </body>
 </html>
