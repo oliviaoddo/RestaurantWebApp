@@ -1,6 +1,5 @@
 function viewCart(){
-	var cartEntries = JSON.parse(localStorage.getItem("allEntries"));
-
+	var cartEntries = JSON.parse(localStorage.allEntries);
 	if(cartEntries == null){
 		$("#checkout").hide();
 		$("#clearCart").hide();

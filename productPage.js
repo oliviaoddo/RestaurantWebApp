@@ -34,25 +34,23 @@ function product(id){
 		    document.getElementById("productImage").appendChild(link);
 
 		    $('#addToCart').click(function(){
-		    		var cartEntries = JSON.parse(localStorage.getItem("allEntries"));
 		    		var found = false;
+		    		var cartEntries = JSON.parse(localStorage.getItem("allEntries"));
+		    		if(cartEntries == null) cartEntries = [];
+		    		
+		    		console.log(cartEntries);
 		    		if(cartEntries == null) cartEntries = [];
 		    		for(i = 0; i<cartEntries.length; i++){
 		    			if(cartEntries[i].productId == jsonResponse.productId){
-		    				//console.log(cartEntries[i].productId++);
+		    				console.log("heere");
 		    				console.log(cartEntries[i].productQuantity);
-
-		    				localStorage.setItem("cartEntries[i].productQuantity", JSON.stringify(cartEntries[i].productQuantity++));
-		    				console.log(cartEntries[i].productQuantity);
+		    				cartEntries[i].productQuantity += 1;
+		    				cartEntries[i].productTotal = cartEntries[i].productQuantity * cartEntries[i].productPrice;
 		    				found = true;
-		    				//var price = parseInt(cartEntries[i].productPrice);
-		    				//var quantity = cartEntries[i].productQuantity;
-		    				//var total = price * quantity;
-		    				//console.log(total);
-		    				//console.log(quantity);
-		    				//localStorage.setItem("cartEntries[i].productTotal", JSON.stringify(total));
+		    				break;
 		    			}
 		    		}
+		    		localStorage.setItem("allEntries", JSON.stringify(cartEntries));
 		    		console.log(found);
 		    		console.log(cartEntries);
 		    		//create new product in the cart 
@@ -67,11 +65,8 @@ function product(id){
 				    		"productTotal": jsonResponse.productPrice * quantity
 	    				}
 	    				localStorage.setItem("cartEntry", JSON.stringify(cartEntry));
-	   					// Save allEntries back to local storage
 	    				cartEntries.push(cartEntry);
 	    				localStorage.setItem("allEntries", JSON.stringify(cartEntries));
-	    				//console.log(cartEntries);
-	    				//console.log(cartEntries[0].productName);
     				}
     		
     			console.log(cartEntries);
