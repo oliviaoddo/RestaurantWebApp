@@ -24,7 +24,13 @@ function viewCart(){
 		    cell1.innerHTML = cartEntries[i].productName;
 		    cell2.innerHTML = cartEntries[i].productDesc;
 		    cell3.innerHTML = cartEntries[i].productPrice;
-		    cell4.innerHTML = cartEntries[i].productQuantity;
+		    //get the quantity 
+		    var quantity = cartEntries[i].productQuantity;
+		    //where quantity == option id
+		    //select the id .attr("selected")
+		    cell4.innerHTML = "<select> <option id = '1'value = '1'>1</option><option id = '2' value = '2'>2</option><option id = '3' value = '3'>3</option><option id = '4' value = '4'>4</option><option id = '5' value = '5'>5</option><option id = '6' value = '6'>6</option><option id = '7' value = '7'>7</option><option id = '8' value = '8'>8</option><option id = '9' value = '9'>9</option><option id = '10' value = '10'>10</option></select>";//cartEntries[i].productQuantity;
+		    console.log($('#'+quantity));
+		    $('#'+quantity).attr("selected","selected");
 		    cell5.innerHTML = cartEntries[i].productTotal;
 		    cell6.innerHTML = "<button type='button' id='delete'>X</button>";
 	}
