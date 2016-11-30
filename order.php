@@ -44,20 +44,47 @@ if (isset($_SESSION["customer"])) {
 //Attempt to connect to database // test if require "connect_to_mysql.php"; will suffice post-project
 $conn = mysqli_connect(HOST, USER, PASSWORD, DATABASE) or die("Error " . mysqli_error($link));
 
-//1)retrieve info from checkout.php HTML forms
+/*paying customer info*/
 $fname = $_POST['user_firstName'];
 $lname = $_POST['user_lastName'];
 $phone = $_POST['user_phone'];
 $email = $_POST['user_email'];
 $date = date("y-m-d");
+$instruction = $_POST['delivery_instructions'];
+$orderType = $_POST['orderOption']; //pickup or delivery
+/*delivery or pickup info*/
+//do if condition to check if isset delivery, if yes then try to retrieve it from GET?POST? else retrieve pickuptime
+$deliveryType = $_POST['orderOption'];
+if ($deliveryType == "pickup"){
+	$pickup_time = $_POST['pickup_time'];
+	echo $pickup_time.'</br>';
+}
+/*else deliveryType is delivery, not pickup, assume all delivery address info is filled to retrieve*/
+else {
+	$deliv_time = $_POST['delivery_time'];
+	$deliv_street = $_POST['delivery_street'];
+	$deliv_city = $_POST['delivery_city'];
+	$deliv_state = $_POST['delivery_state'];
+	$deliv_zipcode = $_POST['delivery_zip'];
+	$deliv_country = $_POST['delivery_country'];
+}
+/* credit card input */
+$card_number = $_POST['card_number'];
+$card_month = $_POST['card_month'];
+$card_year = $_POST['card_year'];
+$card_securtiy = $_POST['card_security'];
+/*billing customer info*/
+$bill_fname = $_POST['pickup_time'];
+$bill_lname = $_POST['pickup_time'];
+$bill_street = $_POST['pickup_time'];
+$bill_city = $_POST['pickup_time'];
+$bill_state = $_POST['pickup_time'];
+$bill_zip = $_POST['pickup_time'];
+$bill_country = $_POST['pickup_time'];
 
-
-
-//check if user is either a log-in customer or a guest
+/*Perform different SQL statements based on whether user is a logged in account or guest*/
 $subclassSQL = "";
 $idForOrder = "";
-
-
 	if (isset($_SESSION["customer"])) {
 		echo "customer in sess, therefore a row in user/account shares a user_id</br>";
 		$idForOrder = "SELECT * FROM accounts WHERE user_id = '$userID' LIMIT 1";	
@@ -92,8 +119,6 @@ $idForOrder = "";
 		}
 	}
 
-
-	
 	//MAKE SURE PERSON EXISTS IN DATABASE by counting rows
 $resultOrder = mysqli_query($conn, $idForOrder);
 if(mysqli_num_rows($resultOrder) > 0){

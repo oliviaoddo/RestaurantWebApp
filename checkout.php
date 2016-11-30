@@ -119,7 +119,7 @@
           </select>
 
         <label for = "cardCode">Security Code:</label>
-        <input type = "number" id = "cardCode" name = "card_number" min="3" max="3">
+        <input type = "number" id = "cardCode" name = "card_security" min="3" max="3">
 
 
         <h3>Billing Address</h3>
