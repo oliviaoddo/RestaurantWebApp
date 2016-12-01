@@ -21,22 +21,13 @@ function viewCart(){
 		    var cell4 = row.insertCell(3);
 		    var cell5 = row.insertCell(4);
 		    var cell6 = row.insertCell(5);
-
-		    var ext = ".png"; //File Extension 
-
-			var elem = document.createElement("img");
-			elem.setAttribute("src", "inventory_images/" + cartEntries[i].productId+ ext);
-			elem.setAttribute("alt", cartEntries[i].productName);
-
-		    elem.setAttribute("height", "100px");
-		    elem.setAttribute("width", "100px");
-
-		    
-
 		    cell1.innerHTML = "<img height = '50px' width = '100px' src = 'inventory_images/" + cartEntries[i].productId + ".png' alt = '" + cartEntries[i].productName + "' ><br>" + cartEntries[i].productName;
 		    cell2.innerHTML = cartEntries[i].productDesc;
 		    cell3.innerHTML = cartEntries[i].productPrice;
+		    //get the quantity 
 		    var quantity = cartEntries[i].productQuantity;
+		    //where quantity == option id
+		    //select the id .attr("selected")
 		    cell4.innerHTML = "<select> <option id = '1'value = '1'>1</option><option id = '2' value = '2'>2</option><option id = '3' value = '3'>3</option><option id = '4' value = '4'>4</option><option id = '5' value = '5'>5</option><option id = '6' value = '6'>6</option><option id = '7' value = '7'>7</option><option id = '8' value = '8'>8</option><option id = '9' value = '9'>9</option><option id = '10' value = '10'>10</option></select>";//cartEntries[i].productQuantity;
 		    console.log($('#'+quantity));
 		    $('#'+quantity).attr("selected","selected");
