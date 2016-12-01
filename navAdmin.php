@@ -56,7 +56,7 @@
         <li><a href="product_list.php">ORDER ONLINE</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="cart.php">CART</a></li>
+        <li><a href="cartnew.php">CART</a></li>
         <li><a href="admin_login_script.php">LOG OUT</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
