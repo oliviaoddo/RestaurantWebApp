@@ -84,5 +84,6 @@
 
         <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="filter.js" type="text/javascript" charset="utf-8"></script>
+        <script src="productPage.js" type="text/javascript" charset="utf-8"></script>
     </body>
 </html>
