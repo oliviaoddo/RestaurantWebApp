@@ -37,5 +37,6 @@
         <script src="lightbox.js" type="text/javascript" charset="utf-8"></script>
         <script src="viewCart.js" type="text/javascript" charset="utf-8"></script>
         <script src="deleteItem.js" type="text/javascript" charset="utf-8"></script>
+        <script src="updateQuantity.js" type="text/javascript" charset="utf-8"></script>
     </body>
 </html>
