@@ -14,7 +14,7 @@ function viewCart(){
 
 		for(i = 0; i < cartEntries.length; i++){
 		    var row = table.insertRow(-1);
-		    row.id = cartEntries[i].productId;
+		    row.id = "row" + cartEntries[i].productId;
 		    var cell1 = row.insertCell(0);
 		    var cell2 = row.insertCell(1);
 		    var cell3 = row.insertCell(2);
@@ -25,12 +25,18 @@ function viewCart(){
 		    cell2.innerHTML = cartEntries[i].productDesc;
 		    cell3.innerHTML = cartEntries[i].productPrice;
 		    //get the quantity 
-		    var quantity = cartEntries[i].productQuantity;
+		    //var quantity = cartEntries[i].productQuantity;
 		    //where quantity == option id
 		    //select the id .attr("selected")
-		    cell4.innerHTML = "<select> <option id = '1'value = '1'>1</option><option id = '2' value = '2'>2</option><option id = '3' value = '3'>3</option><option id = '4' value = '4'>4</option><option id = '5' value = '5'>5</option><option id = '6' value = '6'>6</option><option id = '7' value = '7'>7</option><option id = '8' value = '8'>8</option><option id = '9' value = '9'>9</option><option id = '10' value = '10'>10</option></select>";//cartEntries[i].productQuantity;
-		    console.log($('#'+quantity));
-		    $('#'+quantity).attr("selected","selected");
+		    cell4.innerHTML = "<select id='select" + cartEntries[i].productId +"'> <option class = '1'value = '1'>1</option><option class = '2' value = '2'>2</option><option class = '3' value = '3'>3</option><option class = '4' value = '4'>4</option><option class = '5' value = '5'>5</option><option class = '6' value = '6'>6</option><option class = '7' value = '7'>7</option><option class = '8' value = '8'>8</option><option class = '9' value = '9'>9</option><option class = '10' value = '10'>10</option></select>";//cartEntries[i].productQuantity;
+		    //console.log($('#'+quantity));
+		   	//var rowNumber = $('#row'+cartEntries[i].productId);
+		   	var selectId = $('#select'+cartEntries[i].productId);
+		   	rowQuantity = $('.'+cartEntries[i].productQuantity);
+		   	//rowQuantity.attr("selected","selected");
+		   	console.log($('#row'+cartEntries[i].productId).find(selectId).find(rowQuantity));
+		   	$('#row'+cartEntries[i].productId).find(selectId).find(rowQuantity).attr("selected", "selected");
+		    //$('#row'+cartEntries[i].productId, '#'+quantity).attr("selected","selected");
 		    cell5.innerHTML = cartEntries[i].productTotal;
 		    cell6.innerHTML = "<button type='button' id='delete'>X</button>";
 	}
