@@ -75,7 +75,7 @@ mysqli_close($link);
       <?php echo "Carbs- ". $carbs; ?>
       <br />
       </p>
-      <form id="form1" name="form1" method="post" action="cart.php">
+      <form id="form1" name="form1" method="post" action="cartnew.php">
         <input type="hidden" name="pid" id="pid" value="<?php echo $id; ?>" />
         <input type="submit" name="button" id="button" value="Add to Shopping Cart" />
       </form>
