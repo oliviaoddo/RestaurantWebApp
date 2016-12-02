@@ -35,6 +35,9 @@ function product(id){
 
 		    $('#addToCart').click(function(){
 		    		var found = false;
+		    		var selectedQuantity = $('.productPageSelect').find(":selected").text();
+		    		var selectedQuantity = parseInt(selectedQuantity);
+		    		console.log(selectedQuantity);
 		    		var cartEntries = JSON.parse(localStorage.getItem("allEntries"));
 		    		if(cartEntries == null) cartEntries = [];
 		    		
@@ -42,9 +45,7 @@ function product(id){
 		    		if(cartEntries == null) cartEntries = [];
 		    		for(i = 0; i<cartEntries.length; i++){
 		    			if(cartEntries[i].productId == jsonResponse.productId){
-		    				console.log("heere");
-		    				console.log(cartEntries[i].productQuantity);
-		    				cartEntries[i].productQuantity += 1;
+		    				cartEntries[i].productQuantity = selectedQuantity;
 		    				cartEntries[i].productTotal = cartEntries[i].productQuantity * cartEntries[i].productPrice;
 		    				found = true;
 		    				break;
@@ -55,14 +56,13 @@ function product(id){
 		    		console.log(cartEntries);
 		    		//create new product in the cart 
 		    		if(found == false){
-		    			var quantity = 1;
 			    		var cartEntry = {
 			    			"productId": jsonResponse.productId,
 					        "productName": jsonResponse.productName,  
 				    		"productDesc": jsonResponse.productDesc, 
 				    		"productPrice": jsonResponse.productPrice, 
-				    		"productQuantity": quantity, 
-				    		"productTotal": jsonResponse.productPrice * quantity
+				    		"productQuantity": selectedQuantity, 
+				    		"productTotal": jsonResponse.productPrice * selectedQuantity
 	    				}
 	    				localStorage.setItem("cartEntry", JSON.stringify(cartEntry));
 	    				cartEntries.push(cartEntry);
