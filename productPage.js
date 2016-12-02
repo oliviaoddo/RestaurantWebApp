@@ -45,7 +45,12 @@ function product(id){
 		    		if(cartEntries == null) cartEntries = [];
 		    		for(i = 0; i<cartEntries.length; i++){
 		    			if(cartEntries[i].productId == jsonResponse.productId){
-		    				cartEntries[i].productQuantity = selectedQuantity;
+		    				if(parseInt(cartEntries[i].productQuantity) + selectedQuantity > 10){
+		    					cartEntries[i].productQuantity = 10;
+		    				}
+		    				else{
+		    					cartEntries[i].productQuantity = parseInt(cartEntries[i].productQuantity) + selectedQuantity;
+		    				}
 		    				cartEntries[i].productTotal = cartEntries[i].productQuantity * cartEntries[i].productPrice;
 		    				found = true;
 		    				break;

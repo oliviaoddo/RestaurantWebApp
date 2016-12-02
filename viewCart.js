@@ -26,20 +26,11 @@ function viewCart(){
 		    cell1.innerHTML = "<img height = '50px' width = '100px' src = 'inventory_images/" + cartEntries[i].productId + ".png' alt = '" + cartEntries[i].productName + "' ><br>" + cartEntries[i].productName;
 		    cell2.innerHTML = cartEntries[i].productDesc;
 		    cell3.innerHTML = cartEntries[i].productPrice;
-		    //get the quantity 
-		    //var quantity = cartEntries[i].productQuantity;
-		    //where quantity == option id
-		    //select the id .attr("selected")
-		    console.log(typeof(cartEntries[i].productId));
-		    cell4.innerHTML = "<select id='select" + cartEntries[i].productId + "' onclick = 'updateQuantity(" + cartEntries[i].productId +"," + i +")'> <option class = '1' value = '1'>1</option><option class = '2' value = '2'>2</option><option class = '3' value = '3'>3</option><option class = '4' value = '4'>4</option><option class = '5' value = '5'>5</option><option class = '6' value = '6'>6</option><option class = '7' value = '7'>7</option><option class = '8' value = '8'>8</option><option class = '9' value = '9'>9</option><option class = '10' value = '10'>10</option></select>";//cartEntries[i].productQuantity;
-		    //console.log($('#'+quantity));
-		   	//var rowNumber = $('#row'+cartEntries[i].productId);
+
+		    cell4.innerHTML = "<select id='select" + cartEntries[i].productId + "' onclick = 'updateQuantity(" + cartEntries[i].productId +"," + i +")'> <option class = '1' value = '1'>1</option><option class = '2' value = '2'>2</option><option class = '3' value = '3'>3</option><option class = '4' value = '4'>4</option><option class = '5' value = '5'>5</option><option class = '6' value = '6'>6</option><option class = '7' value = '7'>7</option><option class = '8' value = '8'>8</option><option class = '9' value = '9'>9</option><option class = '10' value = '10'>10</option></select>";
 		   	var selectId = $('#select'+cartEntries[i].productId);
 		   	rowQuantity = $('.'+cartEntries[i].productQuantity);
-		   	//rowQuantity.attr("selected","selected");
-		   	console.log($('#row'+cartEntries[i].productId).find(selectId).find(rowQuantity));
 		   	$('#row'+cartEntries[i].productId).find(selectId).find(rowQuantity).attr("selected", "selected");
-		    //$('#row'+cartEntries[i].productId, '#'+quantity).attr("selected","selected");
 		    cell5.innerHTML = cartEntries[i].productTotal;
 		    cell6.innerHTML = "<button type='button' class='delete'>X</button>";
 	}
@@ -49,7 +40,7 @@ function viewCart(){
 		subtotal = cartEntries[i].productTotal + subtotal;
 	}
 
-	document.getElementById('subtotal').append(subtotal);
+	document.getElementById('subtotal').append(subtotal + ".00");
 
 	$("#clearCart").click(function(){
 		$("#cartTable").empty();
