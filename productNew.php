@@ -38,6 +38,18 @@
               <p id = "productCarbs">Carbs: </p>
               <br />
               </p>
+              <select class = "productPageSelect"> 
+                <option class = '1' value = '1'>1</option>
+                <option class = '2' value = '2'>2</option>
+                <option class = '3' value = '3'>3</option>
+                <option class = '4' value = '4'>4</option>
+                <option class = '5' value = '5'>5</option>
+                <option class = '6' value = '6'>6</option>
+                <option class = '7' value = '7'>7</option>
+                <option class = '8' value = '8'>8</option>
+                <option class = '9' value = '9'>9</option>
+                <option class = '10' value = '10'>10</option>
+                </select>
               <button type = "button" id = "addToCart">Add to Cart</button>
               <!--<form id="form1" name="form1" method="post" action="cart.php">
                 <input type="hidden" name="pid" id="pid" value="<?php echo $id; ?>" />
