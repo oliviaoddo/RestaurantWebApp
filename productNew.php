@@ -47,8 +47,8 @@
         </div>
         <div class = "popUp">
           <h3>Added to cart!</h3>
-          <a href="cartNew.php"><button type="button">Checkout</button></a><br>
-          <a href="filteredProducts.php"><button type="button">Continue Shopping</button></a>
+          <a href="cart.php"><button type="button">Checkout</button></a><br>
+          <a href="product_list.php"><button type="button">Continue Shopping</button></a>
         </div>
 
         <div>

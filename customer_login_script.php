@@ -18,10 +18,8 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 	//MAKE SURE PERSON EXISTS IN DATABASE
 	$existCount = mysqli_num_rows($sql); //count the row nums
 	if($existCount == 1){//evaluate the count
-		while($row= mysqli_fetch_array($sql)){
-			$id=$row["id"];
-		}
-		$_SESSION["id"] = $id;
+		$row= mysqli_fetch_assoc($sql);
+		$_SESSION["id"] = $row["id"];
 		$_SESSION["customer"] = $customer; //set sesssion to customer for indexCustomer page valdiation
 		$_SESSION["password"] = $password;
 		header("location: indexCustomer.php"); //take customer to customer's index, not guest or admin

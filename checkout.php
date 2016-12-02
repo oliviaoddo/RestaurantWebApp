@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php session_start(); ?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -12,7 +13,17 @@
     </head>
     <body onload = "reviewOrder()">
       <div>
-        <?php include_once("nav.php");?>
+        <?php 
+		if (isset($_SESSION["customer"])) {
+		include_once("navCustomer.php");
+	}
+	else if (isset($_SESSION["manager"])) {
+		include_once("navAdmin.php");
+	}
+	else {
+		include_once("nav.php");
+	}
+		?>
       </div>
   
 
@@ -72,7 +83,7 @@
           <input type = "text" id = "deliveryState" name = "delivery_state" class = "deliveryAddress">
 
           <label for = "deliveryZip" class = "deliveryAddress">Zip:</label>
-          <input type = "number" id = "deliveryZip" class = "deliveryAddress" name = "delivery_zip" min="5" max="5">
+          <input type = "number" id = "deliveryZip" class = "deliveryAddress" name = "delivery_zip" pattern="(\d{5}([\-]\d{4})?)">
 
           <label for = "deliveryCountry" class = "deliveryAddress">Country:</label>
           <input type = "text" id = "deliveryCountry" class = "deliveryAddress" name = "delivery_country">
@@ -84,7 +95,7 @@
         <fieldset id = "set3">
 
         <label for = "cardNumber">Card Number:</label>
-        <input type = "number" id = "cardNumber" name = "card_number" min="16" max="16">
+        <input type = "number" id = "cardNumber" name = "card_number" maxlength = "16">
 
         <label>Expiration Date:</label><br>
         <select id = "card_month" name = "card_month">
@@ -119,7 +130,7 @@
           </select>
 
         <label for = "cardCode">Security Code:</label>
-        <input type = "number" id = "cardCode" name = "card_security" min="3" max="3">
+        <input type = "number" id = "cardCode" name = "card_security" maxlength="3">
 
 
         <h3>Billing Address</h3>
@@ -142,7 +153,7 @@
           <input type = "text" id = "billingState" name = "billing_state">
 
           <label for = "billingZip">Zip:</label>
-          <input type = "number" id = "billingZip" name = "billing_zip" min="5" max="5">
+          <input type = "number" id = "billingZip" name = "billing_zip" pattern="(\d{5}([\-]\d{4})?)">
 
           <label for = "billingCountry">Country:</label>
           <input type = "text" id = "billingCountry" name = "billing_country">
@@ -166,7 +177,14 @@
       </form>
 
       <div>
-        <?php include_once("footer.php");?>
+        <?php 
+		if (isset($_SESSION["manager"])) {
+		include_once("footerAdmin.php");
+	}
+	else {
+		include_once("footer.php");
+	}
+		?>
       </div>
 
       <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
