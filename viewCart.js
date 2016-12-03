@@ -32,7 +32,7 @@ function viewCart(){
 		   	rowQuantity = $('.'+cartEntries[i].productQuantity);
 		   	$('#row'+cartEntries[i].productId).find(selectId).find(rowQuantity).attr("selected", "selected");
 		    cell5.innerHTML = cartEntries[i].productTotal;
-		    cell6.innerHTML = "<button type='button' class='delete'>X</button>";
+		    cell6.innerHTML = "<button type='button' onclick = 'deleteItem(" + row.rowIndex +"," + cartEntries[i].productId +")' class='delete'>X</button>";
 	}
 
 	var subtotal = 0;

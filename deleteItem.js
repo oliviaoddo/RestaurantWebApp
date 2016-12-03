@@ -1,11 +1,10 @@
-$(document).on('click', '.delete', function(event){
+function deleteItem(rowIndex, rowId){
 	var table = document.getElementById("cartTable");
-	var rowProductId = $('.delete').closest('tr').attr('id');
-	rowProductId = rowProductId.replace( /^\D+/g, '');
+	var rowProductId = rowId;
+	var rowDelete = rowIndex;
 	//var rowDelete = $('#row'+cartEntries[i].productId).closest('tr').index();
 	var currentCartTotal = $("#subtotal").text().replace( /^\D+/g, '');
 	currentCartTotal = parseInt(currentCartTotal);
-	var rowDelete = $('.delete').closest('tr').index();
 	var cartEntries = JSON.parse(localStorage.getItem("allEntries"));
 	for(i = 0; i<cartEntries.length; i++){
 		if(cartEntries[i].productId == rowProductId){
@@ -15,8 +14,9 @@ $(document).on('click', '.delete', function(event){
 			localStorage.allEntries = JSON.stringify(cartEntries);
 			//localStorage.removeItem("allEntries[i]");
 			table.deleteRow(rowDelete);
+			window.location.reload();
 
 		}
 	}
 
-})
+}
