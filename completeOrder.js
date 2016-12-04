@@ -85,12 +85,20 @@ function completeOrder(){
 			expirationYear, 
 			cardCode
 		];
+
+
 		
+	var order = {
+		'info': orderInfo, 
+		'orderItems': cartEntries
+	};
+
     xhr = new XMLHttpRequest;
-    console.log(orderInfo);
-    console.log("here");
+    //console.log(order);
+    //console.log(cartEntries);
+    //console.log("here");
 	xhr.open( "POST", "testOrder.php" );
 	xhr.setRequestHeader( "Content-Type", "application/json" );
-	xhr.send(JSON.stringify(orderInfo));
+	xhr.send(JSON.stringify(order));
 
 }
