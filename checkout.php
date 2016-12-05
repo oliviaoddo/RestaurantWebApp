@@ -23,17 +23,17 @@
         <legend id = "fieldNumber1"><span class = "number">1</span> Customer Information</legend>
         <fieldset id = "set1">
           
-            <label for="firstName">First Name:</label>
-            <input type="text" id = "firstName" name = "user_firstName" required>
+            <label for="firstName">* First Name:</label>
+            <input type="text" id = "firstName" name = "user_firstName" pattern = "[A-Za-z]" required>
 
-            <label for="lastName"> Last Name:</label>
+            <label for="lastName">* Last Name:</label>
             <input type="text" id = "lastName" name = "user_lastName" required>
           
-            <label for = "mail">Email:</label>
+            <label for = "mail">* Email:</label>
             <input type="email" id="mail" name = "user_email" required>
           
-            <label for = "phone">Phone:</label>
-            <input type ="tel" id = "phone" name = "user_phone" required>
+            <label for = "phone">* Phone: (xxx-xxx-xxxx)</label>
+            <input type ="tel" id = "phone" name = "user_phone" pattern="^\d{3}-\d{3}-\d{4}$" required>
             <button type = "button" id="nextOne">Next</button>
           
         </fieldset>
@@ -46,7 +46,7 @@
           <textarea id = "instructions" name = "delivery_instructions"></textarea>
 
           <div class = "deliveryOption">
-          <label>Pickup or Delivery?</label><br>
+          <label>* Pickup or Delivery?</label><br>
           <input type = "radio" id="pickup" value="pickup" name = "orderOption" required><label for = "pickup" class = "light">Pickup</label>
           <input type = "radio" id="delivery" value="delivery" name = "orderOption"><label for = "delivery" class = "light">Delivery</label><br>
           </div>
@@ -72,7 +72,7 @@
           <input type = "text" id = "deliveryState" name = "delivery_state" class = "deliveryAddress">
 
           <label for = "deliveryZip" class = "deliveryAddress">Zip:</label>
-          <input type = "text" id = "deliveryZip" class = "deliveryAddress" name = "delivery_zip" min="5" max="5">
+          <input type = "text" id = "deliveryZip" pattern = "(\d{5}([\-]\d{4})?)" class = "deliveryAddress" name = "delivery_zip" min="5" max="5">
 
           <label for = "deliveryCountry" class = "deliveryAddress">Country:</label>
           <input type = "text" id = "deliveryCountry" class = "deliveryAddress" name = "delivery_country">
@@ -83,10 +83,10 @@
         <legend id = "fieldNumber3"><span class = "number">3</span> Payment</legend>
         <fieldset id = "set3">
 
-        <label for = "cardNumber">Card Number:</label>
-        <input type = "text" id = "cardNumber" name = "card_number" required>
+        <label for = "cardNumber">* Card Number:</label>
+        <input type = "text" id = "cardNumber" pattern = "[0-9]{13,16}" name = "card_number" required>
 
-        <label>Expiration Date:</label><br>
+        <label>* Expiration Date:</label><br>
         <select id = "card_month" name = "card_month" required>
             <option value = "month">Month</option>
             <option value = "january">01 January</option>
@@ -118,7 +118,7 @@
             <option value = "2027">2027</option>
           </select>
 
-        <label for = "cardCode">Security Code:</label>
+        <label for = "cardCode">* Security Code:</label>
         <input type = "text" id = "cardCode" name = "card_number" required>
 
 
@@ -126,25 +126,25 @@
           <input type = "checkbox" id="sameAddress">
           <label for = "sameAddress">Same as Delivery Address</label><br>
 
-		<label for = "billingFName">First Name:</label>
+		<label for = "billingFName">* First Name:</label>
           <input type = "text" id = "billingFName" name = "billing_fname" required>
 
-          <label for = "billingLName">Last Name:</label>
+          <label for = "billingLName">* Last Name:</label>
           <input type = "text" id = "billingLName" name = "billing_lname" required>
 
-          <label for = "billingStreet">Street:</label>
+          <label for = "billingStreet">* Street:</label>
           <input type = "text" id = "billingStreet" name = "billing_street" required>
 
-          <label for = "billingCity">City:</label>
+          <label for = "billingCity">* City:</label>
           <input type = "text" id = "billingCity" name = "billing_city" required>
 
-          <label for = "billingState">State:</label>
+          <label for = "billingState">* State:</label>
           <input type = "text" id = "billingState" name = "billing_state" required>
 
-          <label for = "billingZip">Zip:</label>
-          <input type = "text" id = "billingZip" name = "billing_zip" required>
+          <label for = "billingZip">* Zip:</label>
+          <input type = "text" id = "billingZip" pattern = "(\d{5}([\-]\d{4})?)" name = "billing_zip" required>
 
-          <label for = "billingCountry">Country:</label>
+          <label for = "billingCountry">* Country:</label>
           <input type = "text" id = "billingCountry" name = "billing_country" required>
 
           <button type = "button" id="nextThree">Next</button>

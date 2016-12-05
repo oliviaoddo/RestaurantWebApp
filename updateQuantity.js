@@ -5,7 +5,7 @@ function updateQuantity(idToUpdate, i){
 		cartEntries[i].productQuantity = selectedQuantity;
 		cartEntries[i].productTotal = parseInt(cartEntries[i].productPrice) * parseInt(selectedQuantity);
 		var newTotal = cartEntries[i].productTotal;
-		$("#total"+idToUpdate).html(newTotal);
+		$("#total"+idToUpdate).html("$" + newTotal);
 		//var currentCartTotal = $("#subtotal").text().replace( /^\D+/g, '');
 		//currentCartTotal = parseInt(currentCartTotal);
 		//currentCartTotal = currentCartTotal - parseInt(cartEntries[i].productTotal);
