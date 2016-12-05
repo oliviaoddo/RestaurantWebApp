@@ -8,6 +8,9 @@
         <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
         <link href="mangiabene.css" rel="stylesheet">
         <link rel="stylesheet" href="lightbox.css" type="text/css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="checkoutLightbox.css" type="text/css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="product.css" type="text/css" media="screen" title="no title" charset="utf-8">
+        <script src="https://use.fontawesome.com/501f28931f.js"></script>
     </head>
     <body  onload="product()" >
         <div>
@@ -15,29 +18,17 @@
          </div>
         <div class="row" id="productRow">
 
-            <div class="col-md-6" id="productImage">
+            <div class="col-md-4" id="productImage">
               
             </div>
 
-            <div class = "col-md-6">
+            <div class = "col-md-4">
               <h3 id = "productName"></h3>
-              <p id = "productPrice"></p><br />
+              <p id = "productPrice"></p>
               <br /> 
               <h4>Description:</h4>
               <p id = "productDescription"></p>
               <br />
-              <h4>Nutritional Facts:</h4>
-              <p id = "productCalories">Calories: </p>
-              <br />
-              <p id = "productFat">Fat: </p>
-              <br />
-              <p id = "productProtein">Protein: </p>
-              <br />
-              <p id = "productSugar">Sugar: </p>
-              <br />
-              <p id = "productCarbs">Carbs: </p>
-              <br />
-              </p>
               <select class = "productPageSelect"> 
                 <option class = '1' value = '1'>1</option>
                 <option class = '2' value = '2'>2</option>
@@ -51,6 +42,16 @@
                 <option class = '10' value = '10'>10</option>
                 </select>
               <button type = "button" id = "addToCart">Add to Cart</button>
+              </div>
+              <div class = "col-md-4" id="facts">
+                <h4 id= "nutrHeader">Nutritional Facts:</h4>
+                <p id = "productCalories">Calories: </p>
+                <p id = "productFat">Fat: </p>
+                <p id = "productProtein">Protein: </p>
+                <p id = "productSugar">Sugar: </p>
+                <p id = "productCarbs">Carbs: </p>
+                </p>
+              </div>
               <!--<form id="form1" name="form1" method="post" action="cart.php">
                 <input type="hidden" name="pid" id="pid" value="<?php echo $id; ?>" />
                 <input type="submit" name="button" id="button" onclick = "checkoutCart.js" value="Add to Shopping Cart" />
@@ -59,8 +60,8 @@
         </div>
         <div class = "popUp">
           <h3>Added to cart!</h3>
-          <a href="cartNew.php"><button type="button">Checkout</button></a><br>
-          <a href="filteredProducts.php"><button type="button">Continue Shopping</button></a>
+          <a class = "lightboxButton" href="cartNew.php"><button type="button"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout</button></a><br>
+          <a class = "lightboxButton" href="filteredProducts.php"><button type="button"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Continue Shopping</button></a>
         </div>
 
         <div>

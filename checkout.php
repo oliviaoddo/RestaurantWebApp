@@ -24,16 +24,16 @@
         <fieldset id = "set1">
           
             <label for="firstName">First Name:</label>
-            <input type="text" id = "firstName" name = "user_firstName">
+            <input type="text" id = "firstName" name = "user_firstName" required>
 
             <label for="lastName"> Last Name:</label>
-            <input type="text" id = "lastName" name = "user_lastName">
+            <input type="text" id = "lastName" name = "user_lastName" required>
           
             <label for = "mail">Email:</label>
-            <input type="email" id="mail" name = "user_email">
+            <input type="email" id="mail" name = "user_email" required>
           
             <label for = "phone">Phone:</label>
-            <input type ="tel" id = "phone" name = "user_phone">
+            <input type ="tel" id = "phone" name = "user_phone" required>
             <button type = "button" id="nextOne">Next</button>
           
         </fieldset>
@@ -47,7 +47,7 @@
 
           <div class = "deliveryOption">
           <label>Pickup or Delivery?</label><br>
-          <input type = "radio" id="pickup" value="pickup" name = "orderOption"><label for = "pickup" class = "light">Pickup</label>
+          <input type = "radio" id="pickup" value="pickup" name = "orderOption" required><label for = "pickup" class = "light">Pickup</label>
           <input type = "radio" id="delivery" value="delivery" name = "orderOption"><label for = "delivery" class = "light">Delivery</label><br>
           </div>
 
@@ -84,10 +84,10 @@
         <fieldset id = "set3">
 
         <label for = "cardNumber">Card Number:</label>
-        <input type = "text" id = "cardNumber" name = "card_number" min="16" max="16">
+        <input type = "text" id = "cardNumber" name = "card_number" required>
 
         <label>Expiration Date:</label><br>
-        <select id = "card_month" name = "card_month">
+        <select id = "card_month" name = "card_month" required>
             <option value = "month">Month</option>
             <option value = "january">01 January</option>
             <option value = "feburary">02 Feburary</option>
@@ -102,7 +102,7 @@
             <option value = "november">11 November</option>
             <option value = "december">12 December</option>
           </select>
-        <select id = "card_year" name = "card_year">
+        <select id = "card_year" name = "card_year" required>
             <option value = "year">Year</option>
             <option value = "2016">2016</option>
             <option value = "2017">2017</option>
@@ -119,7 +119,7 @@
           </select>
 
         <label for = "cardCode">Security Code:</label>
-        <input type = "text" id = "cardCode" name = "card_number" min="3" max="3">
+        <input type = "text" id = "cardCode" name = "card_number" required>
 
 
         <h3>Billing Address</h3>
@@ -127,25 +127,25 @@
           <label for = "sameAddress">Same as Delivery Address</label><br>
 
 		<label for = "billingFName">First Name:</label>
-          <input type = "text" id = "billingFName" name = "billing_fname">
+          <input type = "text" id = "billingFName" name = "billing_fname" required>
 
           <label for = "billingLName">Last Name:</label>
-          <input type = "text" id = "billingLName" name = "billing_lname">
+          <input type = "text" id = "billingLName" name = "billing_lname" required>
 
           <label for = "billingStreet">Street:</label>
-          <input type = "text" id = "billingStreet" name = "billing_street">
+          <input type = "text" id = "billingStreet" name = "billing_street" required>
 
           <label for = "billingCity">City:</label>
-          <input type = "text" id = "billingCity" name = "billing_city">
+          <input type = "text" id = "billingCity" name = "billing_city" required>
 
           <label for = "billingState">State:</label>
-          <input type = "text" id = "billingState" name = "billing_state">
+          <input type = "text" id = "billingState" name = "billing_state" required>
 
           <label for = "billingZip">Zip:</label>
-          <input type = "text" id = "billingZip" name = "billing_zip" min="5" max="5">
+          <input type = "text" id = "billingZip" name = "billing_zip" required>
 
           <label for = "billingCountry">Country:</label>
-          <input type = "text" id = "billingCountry" name = "billing_country">
+          <input type = "text" id = "billingCountry" name = "billing_country" required>
 
           <button type = "button" id="nextThree">Next</button>
         </fieldset>
@@ -161,7 +161,7 @@
           <h5 id="orderTotal"></h5>
         </fieldset>
         <!-- display the subtotal, tax, delivery fee(if applicable), and grand total-->
-        <button onclick = "completeOrder()">Complete Order</button>
+        <button type = "submit" onclick = "completeOrder()">Complete Order</button>
         
       </form>
 

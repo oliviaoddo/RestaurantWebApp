@@ -75,7 +75,7 @@ border-color: #000;
 #logo {
 	height: 250px;
 	background-image: url(images/logo.png);
-  	background-position: 0 50%;
+  	background-position: 5% 50%;
   	background-repeat:  no-repeat;
   	background-size: 25%;
 	}
@@ -341,32 +341,4 @@ border-color: white;
 #myModal{
 color: black;
 font-size: 20px;
-}
-
-.filter {
-	display: inline-block !important;
-}
-
-.filterType {
-	display: block !important;
-	padding-right: 10px !important;
-	padding-left: 10px !important; 
-}
-
-#filterRow {
-	padding-right: 20%;
-	padding-left: 20%;
-}
-
-#productsDiv{
-	padding-top: 100px;
-}
-
-.orderTitle{
-	text-align: center;
-}
-
-.filterCalories {
-    background-color: #f4f7f8;
-    padding: 5px;
 }
