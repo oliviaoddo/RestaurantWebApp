@@ -2,7 +2,7 @@
 //create order class taking in cust info (custID,date,paymentType)
 //currently dont see a point in making order have OOP, since its not interacting with anything
 //and the order sql is created in this page, will implemnet if required
-class order {
+class order { 
 	protected $custID; /* protected so only this class and children who extend has access to it*/
 	protected $productID;
 	protected $orderDate; //payment type
@@ -13,7 +13,8 @@ class order {
 	}
 	public function getCID(){
 		echo $this->custID;
-	}
+	} 
+	/*test commit*/
 }
 ?>
 <?php
