@@ -6,6 +6,17 @@ if (isset($_SESSION["manager"])) {
 	header("location: adminLogin.php");
 }
 ?>
+ <?php 
+	if (isset($_SESSION["customer"])) {
+		include_once("navCustomer.php");
+	}
+	else if (isset($_SESSION["manager"])) {
+		include_once("navAdmin.php");
+	}
+	else {
+		include_once("nav.php");
+	}
+?>
 <?php
 session_start();
 if(isset($_POST["username"]) && isset($_POST["password"])){ 
@@ -35,3 +46,11 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 	}
 }
 ?>
+<?php 
+		if (isset($_SESSION["manager"])) {
+		include_once("footerAdmin.php");
+	}
+	else {
+		include_once("footer.php");
+	}
+		?>

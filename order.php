@@ -1,10 +1,4 @@
 <?php
-/*script that does mysqli of checkout.php info into menu_db's customer/order/orderlines table
-1) customer fills info in checkout.php ; insert customer into database, retrieve customer's auto inc ID through sub-query
-such as, SELECT id from customers where name is X and phone is X and email is X (whatever attribute PK is identifying)
-2) insert into orders table from step 4)review order, info comes from cart.php, insert into orderlines table
-this part might require a loop to make sure you get each key->value (prodName or ID -> quantity)
-*/
 /**
  * These are the database login details
  */  
