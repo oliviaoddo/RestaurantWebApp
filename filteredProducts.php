@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
         <link href="mangiabene.css" rel="stylesheet">
+        <link href="productPage.css" rel="stylesheet">
+        <script src="https://use.fontawesome.com/501f28931f.js"></script>
     </head>
     <body>
         <div>
@@ -15,7 +17,7 @@
     <form>
     <div class = "row" id = "filterRow">
         <div class = "col-md-2">
-         <label id = "filterCalories">Calories<i class="fa fa-caret-down" aria-hidden="true"></i></label><br>
+         <label id = "filterCalories">Calories <i class="fa fa-caret-down" aria-hidden="true"></i></label><br>
                 <div class = "filterCalories">
                     <input type="radio" name="calories" value="500" class = "calories" id = "500cal" onclick="filterFunction()"/><label for ="500cal">Under 500</label><br>
                     <input type="radio" name="calories" value="800" class = "calories" id = "800cal" onclick="filterFunction()"/><label for ="800cal">Under 800</label><br>
@@ -24,7 +26,7 @@
                 </div>
         </div>
         <div class = "col-md-2">
-            <label id = "filterSugar">Sugar<i class="fa fa-caret-down" aria-hidden="true"></i></label><br>
+            <label id = "filterSugar">Sugar <i class="fa fa-caret-down" aria-hidden="true"></i></label><br>
                 <div class = "filterSugar">
                     <input type="radio" name="sugar" value="5" class = "sugar" id = "5sug" onclick="filterFunction()"/><label for ="5sug">Under 5g</label><br>
                     <input type="radio" name="sugar" value="10" class = "sugar" id = "10sug" onclick="filterFunction()"/><label for ="10sug">Under 10g</label><br>
@@ -34,7 +36,7 @@
             </div>
 
         <div class = "col-md-2">
-        <label id = "filterProtein">Protein<i class="fa fa-caret-down" aria-hidden="true"></i></label><br>
+        <label id = "filterProtein">Protein <i class="fa fa-caret-down" aria-hidden="true"></i></label><br>
                 <div class = "filterProtein">
                     <input type="radio" name="protein" value="5" class = "protein" id = "5pro" onclick="filterFunction()"/><label for ="5pro">Under 5g</label><br>
                     <input type="radio" name="protein" value="10" class = "protein" id = "10pro" onclick="filterFunction()"/><label for ="10pro">Under 10g</label><br>
@@ -44,7 +46,7 @@
             </div>
 
         <div class = "col-md-2">
-        <label id = "filterFat">Fat<i class="fa fa-caret-down" aria-hidden="true"></i></label><br>
+        <label id = "filterFat">Fat <i class="fa fa-caret-down" aria-hidden="true"></i></label><br>
             <div class = "filterFat">
                     <input type="radio" name="fat" value="5" class = "fat" id = "5fat" onclick="filterFunction()"/><label for ="5fat">Under 5g</label><br>
                     <input type="radio" name="fat" value="10" class = "fat" id = "10fat" onclick="filterFunction()"/><label for ="10fat">Under 10g</label><br>
@@ -52,7 +54,7 @@
                 </div>
                 </div>
         <div class = "col-md-2">
-        <label id = "filterCarbs">Carbs<i class="fa fa-caret-down" aria-hidden="true"></i></label><br>
+        <label id = "filterCarbs">Carbs <i class="fa fa-caret-down" aria-hidden="true"></i></label><br>
                 <div class = "filterCarbs">
                      <input type="radio" name="carbs" value="20" class = "carbs" id = "20car" onclick="filterFunction()"/><label for ="20car">Under 20g</label><br>
                      <input type="radio" name="carbs" value="30" class = "carbs" id = "30car" onclick="filterFunction()"/><label for ="30car">Under 30g</label><br>
@@ -61,7 +63,7 @@
                 </div>
                 </div>
           <div class = "col-md-1">      
-        <label id = "filterPrice">Price<i class="fa fa-caret-down" aria-hidden="true"></i></label><br>
+        <label id = "filterPrice">Price <i class="fa fa-caret-down" aria-hidden="true"></i></label><br>
                 <div class = "filterPrice">
                     <input type="radio" name="price" value="5" class = "price" id = "5dol" onclick="filterFunction()"/><label for ="5dol">Under $5</label><br>
                     <input type="radio" name="price" value="10" class = "price" id = "10dol" onclick="filterFunction()"/><label for ="10dol">Under $10</label><br>
@@ -70,7 +72,7 @@
                 </div>
 
                 <div class = "col-md-1">  
-                    <input type = "reset" value = "Clear" onclick = "displayAllFunction()">
+                    <button type = "button" onclick = "displayAllFunction()"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
                 </div>
         </form>
 

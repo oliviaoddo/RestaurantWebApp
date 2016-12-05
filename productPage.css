@@ -1,0 +1,60 @@
+button {
+	background-color: #f2f2f2;
+	border: none;
+	border-radius: 2px;
+}
+
+.filter {
+	display: inline-block !important;
+}
+
+.filterType {
+	display: block !important;
+	padding-right: 10px !important;
+	padding-left: 10px !important; 
+}
+
+#filterRow {
+	padding-right: 10%;
+	padding-left: 10%;
+}
+
+#productsDiv{
+	padding-top: 100px;
+}
+
+.orderTitle{
+	text-align: center;
+}
+
+.filterCalories {
+    background-color: #f4f7f8;
+    padding: 5px;
+}
+
+.filterFat {
+    background-color: #f4f7f8;
+    padding: 5px;
+}
+.filterCarbs {
+    background-color: #f4f7f8;
+    padding: 5px;
+}
+.filterSugar {
+    background-color: #f4f7f8;
+    padding: 5px;
+}
+
+.filterProtein {
+    background-color: #f4f7f8;
+    padding: 5px;
+}
+
+.filterPrice {
+    background-color: #f4f7f8;
+    padding: 5px;
+}
+
+a#viewProduct {
+	color: #5a5a5a !important;
+}

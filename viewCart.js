@@ -5,8 +5,9 @@ function viewCart(){
 		$("#clearCart").hide();
 		$("#cartTable").hide();
 		$("#subtotal").hide();
+		$("#empty").show();
+		$("#cartHeading").hide();
 	}
-
 
 	//get localstorage 
 	console.log(cartEntries[0].productQuantity);
@@ -32,8 +33,10 @@ function viewCart(){
 		   	rowQuantity = $('.'+cartEntries[i].productQuantity);
 		   	$('#row'+cartEntries[i].productId).find(selectId).find(rowQuantity).attr("selected", "selected");
 		    cell5.innerHTML = cartEntries[i].productTotal;
-		    cell6.innerHTML = "<button type='button' onclick = 'deleteItem(" + row.rowIndex +"," + cartEntries[i].productId +")' class='delete'>X</button>";
+		    cell6.innerHTML = "<button type='button' onclick = 'deleteItem(" + row.rowIndex +"," + cartEntries[i].productId +")' class='delete'><i class='fa fa-trash' aria-hidden='true'></i></button>";
+			$("#empty").hide();
 	}
+
 
 	var subtotal = 0;
 	for(i = 0; i < cartEntries.length; i++){
@@ -44,12 +47,12 @@ function viewCart(){
 
 	$("#clearCart").click(function(){
 		$("#cartTable").empty();
+		$("#subtotal").hide();
+		$("#cartHeading").hide();
 		localStorage.clear();
-
+		$("#empty").show();
 		$("#checkout").hide();
 		$("#clearCart").hide();
-
-		//show your shopping cart is empty 
 
 
 	})

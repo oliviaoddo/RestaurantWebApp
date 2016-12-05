@@ -1,7 +1,7 @@
 #productRow{
-	padding-right: 25%;
-	padding-left: 25%;
-	padding-bottom: 100px;
+	margin-right: 10%;
+	margin-left: 10%;
+	margin-bottom: 10%;
 }
 
 .productHeader {
@@ -9,5 +9,29 @@
 }
 
 #facts {
-	padding-top: 100px;
+	background-color: #f2f2f2;
+}
+
+#nutrHeader{
+	margin-left: 30%;
+}
+
+#productCalories{
+	margin-left: 40%;
+}
+
+#productFat{
+	margin-left: 40%;
+}
+
+#productProtein{
+	margin-left: 40%;
+}
+
+#productSugar{
+	margin-left: 40%;
+}
+
+#productCarbs{
+	margin-left: 40%;
 }
