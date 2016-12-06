@@ -97,7 +97,7 @@ function completeOrder(){
     //console.log(order);
     //console.log(cartEntries);
     //console.log("here");
-	xhr.open( "POST", "testOrder.php" );
+	xhr.open( "POST", "order.php" );
 	xhr.setRequestHeader( "Content-Type", "application/json" );
 	xhr.send(JSON.stringify(order));
 
