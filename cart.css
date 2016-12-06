@@ -1,7 +1,11 @@
+/*Styling for the cart*/
+
+/*makes every other row grey*/
 tr:nth-child(even){
 	background-color: #f2f2f2
 }
 
+/*positioning of the table and the cart buttons*/
 #cartTable{
 	width: 80%;
 	margin-left: 10%;
@@ -39,6 +43,7 @@ a#checkout{
 	color: #5a5a5a !important;
 }
 
+/*styling for "your shoppping cart is empty"*/
 #empty{
 	background-color: #f2f2f2;
 	color: #5a5a5a;

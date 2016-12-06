@@ -1,3 +1,4 @@
+/*padding for 3 columns on indidivual product pages*/
 #productRow{
 	margin-right: 10%;
 	margin-left: 10%;
@@ -8,6 +9,7 @@
 	font-weight: bold;
 }
 
+/*color and formatting of nutritional facts box*/
 #facts {
 	background-color: #f2f2f2;
 }

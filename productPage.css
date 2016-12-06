@@ -1,24 +1,31 @@
+/*Styles for the order online page where all products are displayed and can be filtered*/
+
+/*style for all buttons on page*/
 button {
 	background-color: #f2f2f2;
 	border: none;
 	border-radius: 2px;
 }
 
+/*display filter options horizontally*/
 .filter {
 	display: inline-block !important;
 }
 
+/*display filter options under each filter vertically*/
 .filterType {
 	display: block !important;
 	padding-right: 10px !important;
 	padding-left: 10px !important; 
 }
 
+/*padding for the row of filters*/
 #filterRow {
 	padding-right: 10%;
 	padding-left: 10%;
 }
 
+/*adds space to the top of the displayed products*/
 #productsDiv{
 	padding-top: 100px;
 }
@@ -27,6 +34,7 @@ button {
 	text-align: center;
 }
 
+/*adds background color and padding to the dropped down filter options*/
 .filterCalories {
     background-color: #f4f7f8;
     padding: 5px;
@@ -55,6 +63,7 @@ button {
     padding: 5px;
 }
 
+/*view product button color*/
 a#viewProduct {
 	color: #5a5a5a !important;
 }
