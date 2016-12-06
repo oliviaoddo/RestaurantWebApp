@@ -141,12 +141,12 @@ input.invalid {
         padding: 10px;
         font-size: 12px;
         width: 50%;
-        color: #fff;
+        color: #5a5a5a;
         display: block;
         margin-left: 100%;  
     }
 
 #notify.error {
-        background-color: #DD2C00;
+        background-color: #e8eeef;
             border-radius: 15px 15px 15px 0px;
       }

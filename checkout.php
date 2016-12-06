@@ -9,6 +9,7 @@
         <link href="mangiabene.css" rel="stylesheet">
         <link rel="stylesheet" href="form.css">
         <link rel="stylesheet" href="autocomplete.css">
+        <script src="https://use.fontawesome.com/501f28931f.js"></script>
     </head>
     <body onload = "reviewOrder()">
       <div>
@@ -87,8 +88,8 @@
         <input type = "text" id = "cardNumber" pattern = "[0-9]{13,16}" name = "card_number" required>
 
         <label "expirationError">* Expiration Date:</label><br>
-        <select  placeholder="Username" id = "card_month" name = "card_month" required>
-          
+        <select id = "card_month" name = "card_month" required>
+            <option value = "month">Month</option>
             <option value = "january">01 January</option>
             <option value = "feburary">02 Feburary</option>
             <option value = "march">03 March</option>
@@ -118,7 +119,7 @@
             <option value = "2027">2027</option>
           </select>
 
-        <label for = "cardCode">* Security Code:</label>
+        <label id = "errorCode" for = "cardCode">* Security Code:</label>
         <input type = "text" id = "cardCode" pattern = "[0-9]{3}" name = "card_number" required>
 
 
@@ -126,25 +127,25 @@
           <input type = "checkbox" id="sameAddress">
           <label for = "sameAddress">Same as Delivery Address</label><br>
 
-		<label for = "billingFName">* First Name:</label>
+		<label id = "errorBillFName" for = "billingFName">* First Name:</label>
           <input type = "text" id = "billingFName" pattern = "[A-Za-z]{1,12}" name = "billing_fname" required>
 
-          <label for = "billingLName">* Last Name:</label>
+          <label id = "errorBillLName" for = "billingLName">* Last Name:</label>
           <input type = "text" id = "billingLName" pattern = "[A-Za-z]{1,12}" name = "billing_lname" required>
 
-          <label for = "billingStreet">* Street:</label>
+          <label id = "errorBillStreet" for = "billingStreet">* Street:</label>
           <input type = "text" id = "billingStreet" name = "billing_street" required>
 
-          <label for = "billingCity">* City:</label>
+          <label id = "errorBillCity" for = "billingCity">* City:</label>
           <input type = "text" id = "billingCity" pattern = "[A-Za-z]{1,12}" name = "billing_city" required>
 
-          <label for = "billingState">* State:</label>
+          <label id = "errorBillState" for = "billingState">* State:</label>
           <input type = "text" id = "billingState" pattern = "[A-Za-z]{1,12}" name = "billing_state" required>
 
-          <label for = "billingZip">* Zip:</label>
+          <label id = "errorBillZip" for = "billingZip">* Zip:</label>
           <input type = "text" id = "billingZip" pattern = "(\d{5}([\-]\d{4})?)" name = "billing_zip" required>
 
-          <label for = "billingCountry">* Country:</label>
+          <label id = "errorBillCountry" for = "billingCountry">* Country:</label>
           <input type = "text" id = "billingCountry" pattern = "[A-Za-z]{1,25}" name = "billing_country" required>
 
           <button type = "button" id="nextThree">Next</button>
