@@ -352,7 +352,7 @@ billingCountry.addEventListener('input', function(event){
     }
 });
 
-/*billing country*/
+/*billing street*/
 var billingStreet = document.getElementById('billingStreet');
 var errorBillStreet  = document.getElementById('errorBillStreet');
 
@@ -376,3 +376,129 @@ billingStreet.addEventListener('input', function(event){
         billStreet.style.display = 'none';
     }
 });
+
+/*delivery city*/
+var deliveryCity = document.getElementById('deliveryCity');
+var errorDelCit  = document.getElementById('errorDelCit');
+
+var delCit = document.createElement('div');
+delCit.id = 'notify';
+billCity.style.display = 'none';
+errorDelCit.before(delCit);
+
+deliveryCity.addEventListener('invalid', function(event){
+    event.preventDefault();
+    if ( ! event.target.validity.valid ) {
+        delCit.innerHTML   = '<i style = "color: red;" class="fa fa-exclamation-circle" aria-hidden="true"></i> Required: City must only contain letters';
+        delCit.className     = 'error';
+        delCit.style.display = 'block';
+    }
+});
+
+deliveryCity.addEventListener('input', function(event){
+    if ( 'block' === delCit.style.display ) {
+        deliveryCity.className = '';
+        delCit.style.display = 'none';
+    }
+});
+
+/*delivery state*/
+var deliveryState = document.getElementById('deliveryState');
+var errorDelSta  = document.getElementById('errorDelSta');
+
+var delSta = document.createElement('div');
+delSta.id = 'notify';
+delSta.style.display = 'none';
+errorDelSta.before(delSta);
+
+deliveryState.addEventListener('invalid', function(event){
+    event.preventDefault();
+    if ( ! event.target.validity.valid ) {
+        delSta.innerHTML   = '<i style = "color: red;" class="fa fa-exclamation-circle" aria-hidden="true"></i> Required: State must only contain letters';
+        delSta.className     = 'error';
+        delSta.style.display = 'block';
+    }
+});
+
+deliveryState.addEventListener('input', function(event){
+    if ( 'block' === delSta.style.display ) {
+        deliveryState.className = '';
+        delSta.style.display = 'none';
+    }
+});
+
+/*delivery zip*/
+var deliveryZip = document.getElementById('deliveryZip');
+var errorDelZip  = document.getElementById('errorDelZip');
+
+var delZip = document.createElement('div');
+delZip.id = 'notify';
+delZip.style.display = 'none';
+errorDelZip.before(delZip);
+
+deliveryZip.addEventListener('invalid', function(event){
+    event.preventDefault();
+    if ( ! event.target.validity.valid ) {
+        delZip.innerHTML   = '<i style = "color: red;" class="fa fa-exclamation-circle" aria-hidden="true"></i> Required: Invalid zip code, ex. 92677 or 92677-0008';
+        delZip.className     = 'error';
+        delZip.style.display = 'block';
+    }
+});
+
+deliveryZip.addEventListener('input', function(event){
+    if ( 'block' === delZip.style.display ) {
+        deliveryZip.className = '';
+        delZip.style.display = 'none';
+    }
+});
+
+/*delivery country*/
+var deliveryCountry = document.getElementById('deliveryCountry');
+var errorDelCoun  = document.getElementById('errorDelCoun');
+
+var delCoun = document.createElement('div');
+delCoun.id = 'notify';
+delCoun.style.display = 'none';
+errorDelCoun.before(delCoun);
+
+deliveryCountry.addEventListener('invalid', function(event){
+    event.preventDefault();
+    if ( ! event.target.validity.valid ) {
+        delCoun.innerHTML   = '<i style = "color: red;" class="fa fa-exclamation-circle" aria-hidden="true"></i> Required: Country must only contain letters';
+        delCoun.className     = 'error';
+        delCoun.style.display = 'block';
+    }
+});
+
+deliveryCountry.addEventListener('input', function(event){
+    if ( 'block' === delCoun.style.display ) {
+        deliveryCountry.className = '';
+        delCoun.style.display = 'none';
+    }
+});
+
+/*delivery street*/
+var deliveryStreet = document.getElementById('deliveryStreet');
+var errorDelSt  = document.getElementById('errorDelSt');
+
+var delSt = document.createElement('div');
+delSt.id = 'notify';
+delSt.style.display = 'none';
+errorDelSt.before(delSt);
+
+deliveryStreet.addEventListener('invalid', function(event){
+    event.preventDefault();
+    if ( ! event.target.validity.valid ) {
+        delSt.innerHTML   = '<i style = "color: red;" class="fa fa-exclamation-circle" aria-hidden="true"></i> Required';
+        delSt.className     = 'error';
+        delSt.style.display = 'block';
+    }
+});
+
+deliveryStreet.addEventListener('input', function(event){
+    if ( 'block' === delSt.style.display ) {
+        deliveryStreet.className = '';
+        delSt.style.display = 'none';
+    }
+});
+

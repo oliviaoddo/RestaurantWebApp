@@ -75,6 +75,12 @@ var orderTimes = function(option){
 			//remove required from pickup incase user switches back and forth
 			//add attribute of delivery time required
 			//add required attribute to delivery street, city, state, zip, country 
+		document.getElementById('deliveryStreet').required = true;
+		document.getElementById('deliveryCity').required = true;
+		document.getElementById('deliveryState').required = true;
+		document.getElementById('deliveryZip').required = true;
+		document.getElementById('deliveryCountry').required = true;
+			
 		}
 	//if pick up selected 
 	if (option === "pickup"){
@@ -93,10 +99,14 @@ var orderTimes = function(option){
 				addOptionTag("pickupTime", standardTime);
 			}
 
+		document.getElementById('deliveryStreet').required = false;
+		document.getElementById('deliveryCity').required = false;
+		document.getElementById('deliveryState').required = false;
+		document.getElementById('deliveryZip').required = false;
+		document.getElementById('deliveryCountry').required = false;
+
 		}
-		//remove required from delivery incase user switches back and forth
-		//add attribute of pickup time required
-	
+
 };
 
 //hide #set2

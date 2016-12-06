@@ -63,19 +63,19 @@
           </select>
 
           <h3 class = "deliveryAddress">Delivery Address</h3>
-          <label for = "deliveryStreet" class = "deliveryAddress">Street:</label>
+          <label id = "errorDelSt" for = "deliveryStreet" class = "deliveryAddress">Street:</label>
           <input type = "text" id = "deliveryStreet" class = "deliveryAddress" name = "delivery_street">
 
-          <label for = "deliveryCity" class = "deliveryAddress">City:</label>
+          <label id = "errorDelCit" for = "deliveryCity" class = "deliveryAddress">City:</label>
           <input type = "text" id = "deliveryCity" pattern = "[A-Za-z]{1,25}" name = "delivery_city" class = "deliveryAddress">
 
-          <label for = "deliveryState" class = "deliveryAddress">State:</label>
+          <label id = "errorDelSta" for = "deliveryState" class = "deliveryAddress">State:</label>
           <input type = "text" id = "deliveryState" name = "delivery_state" pattern = "[A-Za-z]{1,12}" class = "deliveryAddress">
 
-          <label for = "deliveryZip" class = "deliveryAddress">Zip:</label>
+          <label id = "errorDelZip" for = "deliveryZip" class = "deliveryAddress">Zip:</label>
           <input type = "text" id = "deliveryZip" pattern = "(\d{5}([\-]\d{4})?)" class = "deliveryAddress" name = "delivery_zip" min="5" max="5">
 
-          <label for = "deliveryCountry" class = "deliveryAddress">Country:</label>
+          <label id = "errorDelCoun" for = "deliveryCountry" class = "deliveryAddress">Country:</label>
           <input type = "text" id = "deliveryCountry" pattern = "[A-Za-z]{1,25}" class = "deliveryAddress" name = "delivery_country">
           <button type = "button" id="nextTwo">Next</button>
 
