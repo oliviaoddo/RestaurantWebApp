@@ -1,4 +1,6 @@
-/** Start Coding Here **/
+/*Styling used for when a product on it's own page is clicked*/
+
+/*transparent black background*/ 
 #overlay {
   background:rgba(0,0,0,0.7);
   width:100%;
@@ -10,10 +12,12 @@
   text-align:center;
 }
 
+/*position of the image on the overlay*/
 #overlay img {
  margin-top: 10%; 
 }
 
+/*color of text on the overlay*/
 #overlay p {
  color:white; 
 }
