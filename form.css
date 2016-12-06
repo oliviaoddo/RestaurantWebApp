@@ -131,3 +131,22 @@ label.light {
   display: inline-block;
   float: right;
 }
+
+input.invalid {
+        border-color: #DD2C00;
+}
+
+
+#notify {
+        padding: 10px;
+        font-size: 12px;
+        width: 50%;
+        color: #fff;
+        display: block;
+        margin-left: 100%;  
+    }
+
+#notify.error {
+        background-color: #DD2C00;
+            border-radius: 15px 15px 15px 0px;
+      }

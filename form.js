@@ -72,6 +72,9 @@ var orderTimes = function(option){
 				//create <option> element in delivery <select> time 
 				addOptionTag("deliveryTime", standardTime);
 			}
+			//remove required from pickup incase user switches back and forth
+			//add attribute of delivery time required
+			//add required attribute to delivery street, city, state, zip, country 
 		}
 	//if pick up selected 
 	if (option === "pickup"){
@@ -91,6 +94,8 @@ var orderTimes = function(option){
 			}
 
 		}
+		//remove required from delivery incase user switches back and forth
+		//add attribute of pickup time required
 	
 };
 
