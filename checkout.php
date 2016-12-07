@@ -1,3 +1,7 @@
+<?php
+@ob_start();
+session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +17,17 @@
     </head>
     <body onload = "reviewOrder()">
       <div>
-        <?php include_once("nav.php");?>
+         <?php 
+            if (isset($_SESSION["customer"])) {
+              include_once("navCustomer.php");
+            }
+            else if (isset($_SESSION["manager"])) {
+              include_once("navAdmin.php");
+            }
+            else {
+              include_once("nav.php");
+            }
+          ?>
       </div>
   
 
@@ -137,7 +151,7 @@
           <input type = "text" id = "billingStreet" name = "billing_street" required>
 
           <label id = "errorBillCity" for = "billingCity">* City:</label>
-          <input type = "text" id = "billingCity" pattern = "[A-Za-z]{1,12}" name = "billing_city" required>
+          <input type = "text" id = "billingCity" name = "billing_city" required>
 
           <label id = "errorBillState" for = "billingState">* State:</label>
           <input type = "text" id = "billingState" pattern = "[A-Za-z]{1,12}" name = "billing_state" required>
@@ -146,7 +160,7 @@
           <input type = "text" id = "billingZip" pattern = "(\d{5}([\-]\d{4})?)" name = "billing_zip" required>
 
           <label id = "errorBillCountry" for = "billingCountry">* Country:</label>
-          <input type = "text" id = "billingCountry" pattern = "[A-Za-z]{1,25}" name = "billing_country" required>
+          <input type = "text" id = "billingCountry" name = "billing_country" required>
 
           <button type = "button" id="nextThree">Next</button>
         </fieldset>
@@ -167,7 +181,14 @@
       </form>
 
       <div>
-        <?php include_once("footer.php");?>
+        <?php 
+          if (isset($_SESSION["manager"])) {
+            include_once("footerAdmin.php");
+          }
+          else {
+            include_once("footer.php");
+          }
+        ?>
       </div>
 
   <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>

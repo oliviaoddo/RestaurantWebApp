@@ -1,3 +1,7 @@
+<?php
+@ob_start();
+session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +18,17 @@
     </head>
     <body  onload="product()" >
         <div>
-            <?php include_once("nav.php");?>
+            <?php 
+            if (isset($_SESSION["customer"])) {
+              include_once("navCustomer.php");
+            }
+            else if (isset($_SESSION["manager"])) {
+              include_once("navAdmin.php");
+            }
+            else {
+              include_once("nav.php");
+            }
+          ?>
          </div>
         <div class="row" id="productRow">
 
@@ -52,10 +66,6 @@
                 <p id = "productCarbs">Carbs: </p>
                 </p>
               </div>
-              <!--<form id="form1" name="form1" method="post" action="cart.php">
-                <input type="hidden" name="pid" id="pid" value="<?php echo $id; ?>" />
-                <input type="submit" name="button" id="button" onclick = "checkoutCart.js" value="Add to Shopping Cart" />
-              </form>-->
               </div>
         </div>
         <div class = "popUp">
@@ -65,7 +75,14 @@
         </div>
 
         <div>
-            <?php include_once("footer.php");?>
+            <?php 
+                if (isset($_SESSION["manager"])) {
+                    include_once("footerAdmin.php");
+                }
+                else {
+                    include_once("footer.php");
+                }     
+            ?>
          </div>
 
         <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>

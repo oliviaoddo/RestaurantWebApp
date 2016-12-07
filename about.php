@@ -1,3 +1,7 @@
+<?php
+@ob_start();
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en"> 
   <head>
@@ -21,7 +25,6 @@
 <body>
 	<div>
     <?php 
-	session_start();
 	if (isset($_SESSION["customer"])) {
 		include_once("navCustomer.php");
 	}

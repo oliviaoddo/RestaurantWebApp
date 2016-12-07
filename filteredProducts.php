@@ -1,3 +1,7 @@
+<?php
+@ob_start();
+session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,7 +16,17 @@
     </head>
     <body>
         <div>
-            <?php include_once("nav.php");?>
+            <?php 
+            if (isset($_SESSION["customer"])) {
+              include_once("navCustomer.php");
+            }
+            else if (isset($_SESSION["manager"])) {
+              include_once("navAdmin.php");
+            }
+            else {
+              include_once("nav.php");
+            }
+          ?>
          </div>
     <form>
     <div class = "row" id = "filterRow">
@@ -81,7 +95,14 @@
         </div>
 
         <div>
-            <?php include_once("footer.php");?>
+            <?php 
+                if (isset($_SESSION["manager"])) {
+                    include_once("footerAdmin.php");
+                }
+                else {
+                    include_once("footer.php");
+                }     
+            ?>
          </div>
 
         <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
