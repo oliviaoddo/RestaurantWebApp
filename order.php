@@ -25,7 +25,8 @@ $fname = $_POST['user_firstName'];
 $lname = $_POST['user_lastName'];
 $phone = $_POST['user_phone'];
 $email = $_POST['user_email'];
-$date = date("Y-m-d h:i:sa");
+//$date = date("Y-m-d h:i:sa");
+$date = date("Y-m-d");
 
 /*CHECKOUT STEP 1*/
 /*Perform different SQL statements based on whether user is a logged in account or guest*/
@@ -135,14 +136,23 @@ if(mysqli_num_rows($resultOrder) > 0){
 	$row = mysqli_fetch_assoc($resultOrder); // use $row[attribute] to retrieve data for order constructor
 	$userID = $row["user_id"];
 	echo $userID."</br>";
-	$orderSQL = "INSERT INTO orders 
-		VALUES('$userID','$date','$instruction','$order_time','$orderType','$card_number',
+	$orderSQL = "INSERT INTO orders
+		VALUES('','$userID','$date','$instruction','$order_time','$orderType','$card_number',
 		'$card_month','$card_year','$card_securtiy')";
-		
-		
-		
+
 	if (mysqli_query($conn, $orderSQL)) {
 		echo "New order created successfully</br>";
+		$order_num = "";
+		$orderNumSQL = "SELECT count(order_num) as count from orders";
+		$result = mysqli_query($conn, $orderNumSQL);
+		if ($result){
+			$row = mysqli_fetch_assoc($result);
+			$countOrderNum = $row["count"];
+			echo 'counted order_num to be: '.$countOrderNum;
+		}
+		else {
+			echo 'you failed</br>';
+		}
 		//check content of cart to produce Product ID for orderline rows only if order was created successfully
 		foreach ($_SESSION["cart_array"] as $single_row){
 			$i = 0; //used as an index for each key=>value pair in a row, we have 2 (1 for product id, 1 for quantity)
@@ -156,7 +166,7 @@ if(mysqli_num_rows($resultOrder) > 0){
 					$quantity = $value;
 					//do orderline insert before loop to next row!, ensured pid was already assigned before quantity
 					$orderlineSQL = "INSERT INTO orderline 
-						VALUES('','$userID','$date', '$pid', $quantity)";
+						VALUES('$countOrderNum', '$pid', $quantity)";
 					if (mysqli_query($conn, $orderlineSQL)) {
 						echo "New orderline created successfully</br>";
 					} 
@@ -171,9 +181,6 @@ if(mysqli_num_rows($resultOrder) > 0){
 	else {
 		echo "Error: " . $orderSQL . "</br>" . mysqli_error($conn);
 	}
-	
-	
-
 }
 else {
 	 echo "0 results for resultOrder for userID:".$userID.'</br>';
