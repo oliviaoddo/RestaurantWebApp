@@ -1,13 +1,11 @@
 <?php
-/**
- * These are the database login details
- */  
-define("HOST", "127.0.0.1");     // The host you want to connect to.
-define("USER", "guest");    // The database username. 
-define("PASSWORD", "");    // The database password. 
-define("DATABASE", "menu_DB");    // The database name.
+include "connect_to_mysql.php";
+/*get JSON object from checkout form*/
+$data = file_get_contents( "php://input" ); //$data is now the string '[1,2,3]';
+$data = json_decode($data);
+
 date_default_timezone_set('US/Central');
-session_start();
+
 if (isset($_SESSION["customer"])) {
 		include_once("navCustomer.php");
 	}
@@ -17,14 +15,13 @@ if (isset($_SESSION["customer"])) {
 	else {
 		include_once("nav.php");
 	}
-//Attempt to connect to database // test if require "connect_to_mysql.php"; will suffice post-project
-$conn = mysqli_connect(HOST, USER, PASSWORD, DATABASE) or die("Error " . mysqli_error($link));
 
 /*paying customer info*/
-$fname = $_POST['user_firstName'];
-$lname = $_POST['user_lastName'];
-$phone = $_POST['user_phone'];
-$email = $_POST['user_email'];
+
+$fname = $data->info[0];
+$lname = $data->info[1];
+$phone = $data->info[2];
+$email = $data->info[3];
 //$date = date("Y-m-d h:i:sa");
 $date = date("Y-m-d");
 
@@ -37,7 +34,7 @@ $userID = "";
 /*SQL seclectUserID does not work when including 'and email = $email and phone = $phone'?*/
 $selectUserID = "SELECT user_id FROM USERS 
 		WHERE fname ='$fname' and lname = '$lname' LIMIT 1";
-		$resultUser = mysqli_query($conn, $selectUserID);
+		$resultUser = mysqli_query($link, $selectUserID);
 		if ($resultUser){
 			$row = mysqli_fetch_assoc($resultUser);
 			$userID = $row["user_id"];
@@ -52,15 +49,15 @@ $selectUserID = "SELECT user_id FROM USERS
 	else { //is guest
 		echo "is a guest,creating new user and guest account</br>";
 		$userSQL = "INSERT INTO users 
-		VALUES('','$fname', '$lname', '$phone','$email')";
-		if (mysqli_query($conn, $userSQL)) {
+		VALUES(default,'$fname', '$lname', '$phone','$email')";
+		if (mysqli_query($link, $userSQL)) {
 			echo "New user created successfully</br>";
 		} else {
-			echo "Error: " . $userSQL . "</br>" . mysqli_error($conn);
+			echo "Error: " . $userSQL . "</br>" . mysqli_error($link);
 		}
 		$selectUserID = "SELECT user_id FROM USERS 
 		WHERE fname ='$fname' and lname = '$lname' LIMIT 1";
-		$resultUser = mysqli_query($conn, $selectUserID);
+		$resultUser = mysqli_query($link, $selectUserID);
 		if ($resultUser){
 			echo 'created guest a userID success</br>';
 			$row = mysqli_fetch_assoc($resultUser);
@@ -71,38 +68,38 @@ $selectUserID = "SELECT user_id FROM USERS
 		}
 		/*sql to create guest using user_id found*/
 			$subclassSQL = "INSERT INTO GUEST 
-				VALUES('','$userID')";
-			if (mysqli_query($conn, $subclassSQL)) {
+				VALUES(default,'$userID')";
+			if (mysqli_query($link, $subclassSQL)) {
 				echo "New guest created successfully";
 				$idForOrder = "SELECT * FROM guest WHERE user_id = '$userID' LIMIT 1";
 			} else {
-				echo "Error: " . $subclassSQL . "</br>" . mysqli_error($conn);
+				echo "Error: " . $subclassSQL . "</br>" . mysqli_error($link);
 			}
 			echo 'found a matching user with user_id: '.$userID.'</br>';
 	}
 
 /*CHECKOUT STEP 2*/
-$instruction = $_POST['delivery_instructions'];
-$orderType = $_POST['orderOption']; //pickup or delivery
+$instruction = $data->info[4];
+$orderType = $data->info[23]; //pickup or delivery
 //if condition checks the value of radio button orderOption, retrieves appropiate POST values
 $order_time = null;
 if ($orderType == "pickup"){
 	echo 'this is pickup</br>';
-	$order_time = $_POST['pickup_time'];
+	$order_time = $data->info[5];
 }
 /*else deliveryType is delivery, not pickup, assume all delivery address info is filled to retrieve*/
 else {
 	echo 'this is delivery</br>';
-	$order_time = $_POST['delivery_time'];
-	$deliv_time = $_POST['delivery_time'];
-	$deliv_street = $_POST['delivery_street'];
-	$deliv_city = $_POST['delivery_city'];
-	$deliv_state = $_POST['delivery_state'];
-	$deliv_zipcode = $_POST['delivery_zip'];
-	$deliv_country = $_POST['delivery_country'];
-	$delivery_address = "INSERT INTO address VALUES('','$fname','$lname','$userID','delivery',
+	$order_time = $data->info[6];
+	$deliv_time = $data->info[6];
+	$deliv_street = $data->info[7];
+	$deliv_city = $data->info[8];
+	$deliv_state = $data->info[9];
+	$deliv_zipcode = $data->info[10];
+	$deliv_country = $data->info[11];
+	$delivery_address = "INSERT INTO address VALUES(default,'$fname','$lname','$userID','delivery',
 	'$deliv_street','$deliv_city','$deliv_state','$deliv_zipcode','$deliv_country')";
-	if (mysqli_query($conn, $delivery_address)) {
+	if (mysqli_query($link, $delivery_address)) {
 		echo 'new delivery address added for userID: '.$userID.'</br>';
 	}else{
 		echo 'deliv address failed</br>';
@@ -111,40 +108,40 @@ else {
 
 /*CHECKOUT STEP 3*/
 /* credit card input */
-$card_number = $_POST['card_number'];
-$card_month = $_POST['card_month'];
-$card_year = $_POST['card_year'];
-$card_securtiy = $_POST['card_security'];
+$card_number = $data->info[19];
+$card_month = $data->info[20];
+$card_year = $data->info[21];
+$card_securtiy = $data->info[22];
 /*billing customer info*/
-$bill_fname = $_POST['billing_fname'];
-$bill_lname = $_POST['billing_lname'];
-$bill_street = $_POST['billing_street'];
-$bill_city = $_POST['billing_city'];
-$bill_state = $_POST['billing_state'];
-$bill_zip = $_POST['billing_zip'];
-$bill_country = $_POST['billing_country'];
-$billing_address = "INSERT INTO address VALUES('','$bill_fname','$bill_lname','$userID','billing',
+$bill_fname = $data->info[17];
+$bill_lname = $data->info[18];
+$bill_street = $data->info[12];
+$bill_city = $data->info[13];
+$bill_state = $data->info[14];
+$bill_zip = $data->info[15];
+$bill_country = $data->info[16];
+$billing_address = "INSERT INTO address VALUES(default,'$bill_fname','$bill_lname','$userID','billing',
 	'$bill_street','$bill_city','$bill_state','$bill_zip','$bill_country')";
-	if (mysqli_query($conn, $billing_address)) {
+	if (mysqli_query($link, $billing_address)) {
 		echo 'new billing address added for userID: '.$userID.'</br>';
 	}else{
 		echo 'billing address failed</br>';
 	}
 /*CHECKOUT STEP 4, inserting order/orderline/address(es) into tables*/
-$resultOrder = mysqli_query($conn, $idForOrder);
+$resultOrder = mysqli_query($link, $idForOrder);
 if(mysqli_num_rows($resultOrder) > 0){
 	$row = mysqli_fetch_assoc($resultOrder); // use $row[attribute] to retrieve data for order constructor
 	$userID = $row["user_id"];
 	echo $userID."</br>";
 	$orderSQL = "INSERT INTO orders
-		VALUES('','$userID','$date','$instruction','$order_time','$orderType','$card_number',
+		VALUES(default,'$userID','$date','$instruction','$order_time','$orderType','$card_number',
 		'$card_month','$card_year','$card_securtiy')";
 
-	if (mysqli_query($conn, $orderSQL)) {
+	if (mysqli_query($link, $orderSQL)) {
 		echo "New order created successfully</br>";
 		$order_num = "";
 		$orderNumSQL = "SELECT count(order_num) as count from orders";
-		$result = mysqli_query($conn, $orderNumSQL);
+		$result = mysqli_query($link, $orderNumSQL);
 		if ($result){
 			$row = mysqli_fetch_assoc($result);
 			$countOrderNum = $row["count"];
@@ -154,40 +151,28 @@ if(mysqli_num_rows($resultOrder) > 0){
 			echo 'you failed</br>';
 		}
 		//check content of cart to produce Product ID for orderline rows only if order was created successfully
-		foreach ($_SESSION["cart_array"] as $single_row){
-			$i = 0; //used as an index for each key=>value pair in a row, we have 2 (1 for product id, 1 for quantity)
-			$pid = "";
-			$quantity = "";
-			foreach ($single_row as $key => $value){
-				if ($i == 0){
-					$pid = $value;
-				}
-				if ($i == 1){
-					$quantity = $value;
-					//do orderline insert before loop to next row!, ensured pid was already assigned before quantity
-					$orderlineSQL = "INSERT INTO orderline 
-						VALUES('$countOrderNum', '$pid', $quantity)";
-					if (mysqli_query($conn, $orderlineSQL)) {
-						echo "New orderline created successfully</br>";
-					} 
-					else {
-						echo "Error: " . $orderlineSQL . "</br>" . mysqli_error($conn);
-					}
-				}
-				$i++;
+		for($i=0; $i < count($data->orderItems); $i++){
+
+			$orderlineSQL = "INSERT INTO orderline VALUES('$countOrderNum', '".$data->orderItems[$i]->productId."', '".$data->orderItems[$i]->productQuantity."')"; 
+			if (mysqli_query($link, $orderlineSQL)) {
+					echo "New orderline created successfully</br>";
+			} 
+			else {
+				echo "Error: " . $orderlineSQL . "</br>" . mysqli_error($link);
 			}
+		
 		}
 	} 
 	else {
-		echo "Error: " . $orderSQL . "</br>" . mysqli_error($conn);
+		echo "Error: " . $orderSQL . "</br>" . mysqli_error($link);
 	}
 }
-else {
-	 echo "0 results for resultOrder for userID:".$userID.'</br>';
-}
+	else {
+	 	echo "0 results for resultOrder for userID:".$userID.'</br>';
+	}
 
 
-$resultProduct = mysqli_query($conn, "SELECT * FROM products WHERE user_id = '$userID'");
+$resultProduct = mysqli_query($link, "SELECT * FROM products WHERE user_id = '$userID'");
 if(mysqli_num_rows($resultOrder) > 0){
 
 }

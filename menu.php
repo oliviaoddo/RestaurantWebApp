@@ -1,4 +1,8 @@
- <!DOCTYPE html>
+<?php
+@ob_start();
+session_start();
+?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -21,7 +25,6 @@
 <body>
  <div>
     <?php 
-	session_start();
 	if (isset($_SESSION["customer"])) {
 		include_once("navCustomer.php");
 	}

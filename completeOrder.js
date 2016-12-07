@@ -16,6 +16,7 @@ function completeOrder(){
 		var deliveryState = null;
 		var deliveryZip = null;
 		var deliveryCountry = null;
+		var type = "pickup";
 	}
 
 	//if delivery selected 
@@ -27,6 +28,7 @@ function completeOrder(){
 		var deliveryZip = document.getElementById('deliveryZip').value;
 		var deliveryCountry = document.getElementById('deliveryCountry').value;
 		var pickupTime = null;
+		var type = "delivery";
 	}
 	
 	console.log(deliveryTime, deliveryStreet, deliveryCity, deliveryState, deliveryZip, deliveryCountry);
@@ -83,16 +85,18 @@ function completeOrder(){
 			cardNumber, 
 			expirationMonth, 
 			expirationYear, 
-			cardCode
+			cardCode,
+			type
 		];
 
 
+	
 		
 	var order = {
 		'info': orderInfo, 
 		'orderItems': cartEntries
 	};
-
+	console.log(order);
     xhr = new XMLHttpRequest;
     //console.log(order);
     //console.log(cartEntries);
