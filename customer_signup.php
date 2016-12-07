@@ -17,36 +17,36 @@
   <form id="form1" name="form1" action="customer_register.php" method="post">
   <h1>Sign Up</h1>
     <p>
-      <label for="fname">First Name</label>
-      <input id="fname" name="fname" type="text" required>
+      <label for="fname">First Name:</label>
+      <input id="fname" name="fname" pattern = "[A-Za-z]{1,25}" type="text" required>
     </p>
 
     <p>
-      <label for="lname">Last Name</label>
-      <input id="lname" name="lname" type="text" required>
+      <label for="lname">Last Name:</label>
+      <input id="lname" pattern = "[A-Za-z]{1,25}" name="lname" type="text" required>
     </p>
 	
  	<p>
-       <label for="email">Enter a desired email </br> ex.'Example@yahoo.com'</label>
+       <label for="email">Email:</label>
        <input id="email" name="email" type="text" required>
      </p>
 	
 	<p>
-      <label for="phone">Enter primary phone number:</label>
-      <input id="phone" name="phone" type="text" required>
+      <label for="phone">Phone: (xxx-xxx-xxxx)</label>
+      <input id="phone" pattern="^\d{3}-\d{3}-\d{4}$" name="phone" type="text" required>
     </p>
 
     <p>
-      <label for="username">Username</label>
+      <label for="username">Username:</label>
       <input id="username" name="username" type="text" required>
     </p>
     <p>
-      <label for="password">Password</label>
+      <label for="password">Password:</label>
       <input id="password" name="password" type="password">
       <span>Enter a password longer than 8 characters</span>
     </p>
     <p>
-      <label for="confirm_password">Confirm Password</label>
+      <label for="confirm_password">Confirm Password:</label>
       <input id="confirm_password" name="confirm_password" type="password">
       <span>Please confirm your password</span>
     </p>
