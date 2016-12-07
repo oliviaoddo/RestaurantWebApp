@@ -1,4 +1,5 @@
 function completeOrder(){
+	console.log("submitted");
 	var firstName = document.getElementById('firstName').value;
 	var lastName = document.getElementById('lastName').value;
 	var email = document.getElementById('mail').value;

@@ -31,7 +31,7 @@ session_start();
       </div>
   
 
-      <form action = "" method = "post" id = "form">
+      <form action = "" onsubmit = "completeOrder()" id = "form">
         
         <h1>Checkout</h1>
         
@@ -176,7 +176,7 @@ session_start();
           <h5 id="orderTotal"></h5>
         </fieldset>
         <!-- display the subtotal, tax, delivery fee(if applicable), and grand total-->
-        <button type = "submit" onclick = "completeOrder()">Complete Order</button>
+        <button type = "submit" >Complete Order</button>
         
       </form>
 
