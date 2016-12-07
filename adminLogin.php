@@ -31,8 +31,9 @@
        
         <label for = "password">Password</label>
         <input name="password" type="password" id="password">
-       
-        <button type="submit" name="button" id="button" value="Log In">Submit</button>
+        <p>
+          <input type="submit" name="button" id="button"  value="Log In" id="button">
+        </p>
        
       </form>
 </div>

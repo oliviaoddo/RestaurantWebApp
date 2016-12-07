@@ -98,7 +98,11 @@ var orderTimes = function(option){
 				//create <option> element in pickup <select> time 
 				addOptionTag("pickupTime", standardTime);
 			}
-
+		$('#errorDelZip').prev().hide();
+		$('#errorDelSta').prev().hide();
+		$('#errorDelCoun').prev().hide();
+		$('#errorDelCit').prev().hide();
+		$('#errorDelSt').prev().hide();
 		document.getElementById('deliveryStreet').required = false;
 		document.getElementById('deliveryCity').required = false;
 		document.getElementById('deliveryState').required = false;

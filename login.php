@@ -20,9 +20,10 @@
        
         <label for = "password">Password</label>
         <input name="password" type="password" id="password">
-        <a href="customer_signup.php">Don't have an account? Sign up here!</a><br>
-         <button type="submit" name="button" id="button" value="Log In">Submit</button>
-       
+        <a href="customer_signup.php">Don't have an account? Sign up here!</a>
+        <p>
+          <input type="submit" name="button" value="Log In" id="button">
+        </p>
       </form>
 
 
