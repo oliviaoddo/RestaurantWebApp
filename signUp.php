@@ -7,9 +7,9 @@ session_start();
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>Customer Sign Up</title>
+  <title>Sign Up</title>
   <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-  <link href="mangiabene.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
   <link rel="stylesheet" href="signUp.css" type="text/css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>

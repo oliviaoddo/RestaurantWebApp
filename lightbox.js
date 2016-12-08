@@ -32,20 +32,6 @@ $(document).on('click', '#productImage a', function(event) {
     $caption.text(captionText);
 });
 
-/*$("#productImage a").click(function(event){
-  console.log("olivia sucks");
-  event.preventDefault();
-  var imageLocation = $(this).attr("href");
-  //Update overlay with the image linked in the link
-  $image.attr("src", imageLocation);
-  
-  //Show the overlay.
-  $overlay.show();
-  
-  //Get child's alt attribute and set caption
-  var captionText = $(this).children("img").attr("alt");
-  $caption.text(captionText);
-});*/
 
 //When overlay is clicked
 $overlay.click(function(){

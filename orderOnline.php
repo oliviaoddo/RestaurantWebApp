@@ -10,8 +10,8 @@ session_start();
         <title>Order Online</title>
         <link rel="stylesheet" href="css/normalize.css">
         <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-        <link href="mangiabene.css" rel="stylesheet">
-        <link href="productPage.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+        <link href="filter.css" rel="stylesheet">
         <script src="https://use.fontawesome.com/501f28931f.js"></script>
     </head>
     <body>

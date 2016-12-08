@@ -1,4 +1,5 @@
 <?php 
+session_start();
 $pageTitle = 'User Register';
 date_default_timezone_set('US/Central');
 // note: since customer and admin table have AUTO_INCREMENT for their ID values, leave parameter blank '' when inserting query
@@ -39,7 +40,7 @@ $date = date("y-m-d");
 >>>>>>> 828384af0b5242b6f4fcce6eed1d4ac8ea227466
 */
 $sqlUser = "INSERT INTO USERS 
-		VALUES('','$fname', '$lname', '$email', '$phone')";
+		VALUES(default,'$fname', '$lname', '$email', '$phone')";
 //change this code once user revised with OOP, will just need to store $customer obj into session instead of these 3 param
 /* 
 $_SESSION["custId"] = $custID;
@@ -61,7 +62,7 @@ $userID = $row["user_id"];
 if(mysqli_num_rows($result) > 0){
 	echo "Found the userID".$userID."</br>";
 	$sqlAccount = "INSERT INTO ACCOUNTS 
-		VALUES('','$userID','$username','$password','$date')";
+		VALUES(default,'$userID','$username','$password','$date')";
 	if (mysqli_query($conn, $sqlAccount)) {
 		echo "New account created successfully";
 	} else {
@@ -77,7 +78,6 @@ $conn->close();
 ?>
 <div>
     <?php 
-	session_start();
 	if (isset($_SESSION["customer"])) {
 		include_once("navCustomer.php");
 	}

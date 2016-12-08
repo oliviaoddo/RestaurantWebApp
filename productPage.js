@@ -10,6 +10,7 @@ function product(id){
  		if(xhr.readyState === 4 && xhr.status === 200) {
  			var jsonResponse = JSON.parse(xhr.responseText);
  			document.getElementById('productName').innerHTML = jsonResponse.productName;
+ 			document.getElementById('productTitle').innerHTML = jsonResponse.productName;
  			document.getElementById('productPrice').innerHTML = "$" + jsonResponse.productPrice;
  			document.getElementById('productDescription').innerHTML = jsonResponse.productDesc;
  			document.getElementById('productCalories').append(jsonResponse.productCalories);
@@ -17,7 +18,7 @@ function product(id){
  			document.getElementById('productSugar').append(jsonResponse.productSugar);
  			document.getElementById('productProtein').append(jsonResponse.productProtein);
  			document.getElementById('productCarbs').append(jsonResponse.productCarbs);
- 			document.getElementById('productImage').createElement
+ 			document.getElementById('productImage').createElement;
 
  			var ext = ".png"; //File Extension 
 
