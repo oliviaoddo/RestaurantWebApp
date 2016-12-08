@@ -36,8 +36,8 @@
 		while ($row = $qry_result->fetch_assoc()) {
 	       $product = new Product($row["id"],$row["name"],$row["price"]);
 	       $display_string .= '<div class="col-md-4">';
-	       $display_string .=  '<a href="productNew.php?id=' . $product->getid() . '"><img src="inventory_images/'
-	        . $product->getid() . '.png" alt="' . $product->getname() . '" width="200" height="100" border="1" /><br></a>'. $product->getname() . '<br /> $' . $product->getprice() . '<br /> <a class = "viewProduct" href="productNew.php?id=' . $product->getid() . '"><button name = "View Product Details" type = "button" id = "productId" value = '.$product->getid().'>View Product</button></a><br /> </div>';
+	       $display_string .=  '<a href="product.php?id=' . $product->getid() . '"><img src="inventory_images/'
+	        . $product->getid() . '.png" alt="' . $product->getname() . '" width="200" height="100" border="1" /><br></a>'. $product->getname() . '<br /> $' . $product->getprice() . '<br /> <a class = "viewProduct" href="product.php?id=' . $product->getid() . '"><button name = "View Product Details" type = "button" id = "productId" value = '.$product->getid().'>View Product</button></a><br /> </div>';
 	    }
 	   } else {//if there were no results with their filter selections
 	    	$display_string = "<h5>We are sorry. None of our products match your search.</h5>";

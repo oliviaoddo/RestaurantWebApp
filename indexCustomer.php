@@ -1,5 +1,7 @@
  <?php 
 session_start();
+?>
+<?php
 if(!isset($_SESSION["customer"])){
 	header("location: customer_login.php");
 	exit();
@@ -31,7 +33,7 @@ if($existCount == 0){// evaluate the count
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <link href="carousel.css" rel="stylesheet">
-    <link href="mangiabene.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     
   </head>
 

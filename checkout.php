@@ -8,11 +8,9 @@ session_start();
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Checkout</title>
-        <link rel="stylesheet" href="css/normalize.css">
         <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-        <link href="mangiabene.css" rel="stylesheet">
-        <link rel="stylesheet" href="form.css">
-        <link rel="stylesheet" href="autocomplete.css">
+        <link href="style.css" rel="stylesheet">
+        <link rel="stylesheet" href="checkoutForm.css">
         <script src="https://use.fontawesome.com/501f28931f.js"></script>
     </head>
     <body onload = "reviewOrder()">
@@ -192,7 +190,7 @@ session_start();
       </div>
 
   <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="form.js" type="text/javascript" charset="utf-8"></script>
+  <script src="checkoutForm.js" type="text/javascript" charset="utf-8"></script>
   <script src="reviewOrder.js" type="text/javascript" charset="utf-8"></script>
   <script src="completeOrder.js" type="text/javascript" charset="utf-8"></script>
   <script src="checkoutFormValidation.js" type="text/javascript" charset="utf-8"></script>

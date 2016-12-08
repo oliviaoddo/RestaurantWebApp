@@ -18,7 +18,7 @@ session_start();
     <!-- Bootstrap core CSS -->
    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href="carousel.css" rel="stylesheet">
-    <link href="mangiabene.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     
   </head>
 <body>

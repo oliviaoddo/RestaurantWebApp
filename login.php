@@ -7,9 +7,9 @@ session_start();
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Customer Sign Up</title>
+  <title>Login</title>
   <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
-  <link href="mangiabene.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
   <link rel="stylesheet" href="signUp.css" type="text/css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
@@ -34,7 +34,7 @@ session_start();
        
         <label for = "password">Password</label>
         <input name="password" type="password" id="password">
-        <a href="customer_signup.php">Don't have an account? Sign up here!</a>
+        <a href="signUp.php">Don't have an account? Sign up here!</a>
         <p>
           <input type="submit" name="button" value="Log In" id="button">
         </p>

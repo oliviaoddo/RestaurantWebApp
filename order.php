@@ -20,8 +20,8 @@ if (isset($_SESSION["customer"])) {
 
 $fname = $data->info[0];
 $lname = $data->info[1];
-$phone = $data->info[2];
-$email = $data->info[3];
+$phone = $data->info[3];
+$email = $data->info[2];
 //$date = date("Y-m-d h:i:sa");
 $date = date("Y-m-d");
 

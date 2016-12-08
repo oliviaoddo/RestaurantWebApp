@@ -29,7 +29,7 @@
 
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
-    <link href="mangiabene.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     
   </head>
 <footer class="footer">

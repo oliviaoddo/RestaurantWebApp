@@ -21,6 +21,7 @@ function reviewOrder(){
 		deliveryFee = 6;
 		document.getElementById('deliveryFee').innerHTML = "Delivery Fee: $" + deliveryFee;
 		var orderTotal = subtotal + parseFloat(tax) + deliveryFee;
+		orderTotal.toFixed(2);
 		document.getElementById('orderTotal').innerHTML = "Order Total: $" + orderTotal;
 	})
 
@@ -30,6 +31,7 @@ function reviewOrder(){
 		$("#deliveryFee").empty();
 		deliveryFee = 0;
 		var orderTotal = subtotal + parseFloat(tax);
+		orderTotal.toFixed(2);
 		document.getElementById('orderTotal').innerHTML = "Order Total: $" + orderTotal;
 	})
 
