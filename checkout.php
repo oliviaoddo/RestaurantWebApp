@@ -31,7 +31,7 @@ session_start();
       </div>
   
 
-      <form action = "" onsubmit = "completeOrder()" id = "form">
+      <form id = "form" method="post" onsubmit = "completeOrder()">
         
         <h1>Checkout</h1>
         
@@ -39,10 +39,10 @@ session_start();
         <fieldset id = "set1">
           
             <label id = "errorFName" for="firstName">* First Name:</label>
-            <input type="text" id = "firstName" name = "user_firstName" pattern = "[A-Za-z]{1,25}" required>
+            <input type="text" id = "firstName" name = "user_firstName" pattern = "[A-Za-z ]{1,25}" required>
 
             <label id = "errorLName" for="lastName">* Last Name:</label>
-            <input type="text" id = "lastName" name = "user_lastName" pattern = "[A-Za-z]{1,25}" required>
+            <input type="text" id = "lastName" name = "user_lastName" pattern = "[A-Za-z ]{1,25}" required>
           
             <label  id = "errorEmail" for = "mail">* Email:</label>
             <input type="email" id="mail" name = "user_email" required>
@@ -81,16 +81,16 @@ session_start();
           <input type = "text" id = "deliveryStreet" class = "deliveryAddress" name = "delivery_street">
 
           <label id = "errorDelCit" for = "deliveryCity" class = "deliveryAddress">City:</label>
-          <input type = "text" id = "deliveryCity" pattern = "[A-Za-z]{1,25}" name = "delivery_city" class = "deliveryAddress">
+          <input type = "text" id = "deliveryCity" pattern = "[A-Za-z ]{1,25}" name = "delivery_city" class = "deliveryAddress">
 
           <label id = "errorDelSta" for = "deliveryState" class = "deliveryAddress">State:</label>
-          <input type = "text" id = "deliveryState" name = "delivery_state" pattern = "[A-Za-z]{1,12}" class = "deliveryAddress">
+          <input type = "text" id = "deliveryState" name = "delivery_state" pattern = "[A-Za-z ]{1,14}" class = "deliveryAddress">
 
           <label id = "errorDelZip" for = "deliveryZip" class = "deliveryAddress">Zip:</label>
           <input type = "text" id = "deliveryZip" pattern = "(\d{5}([\-]\d{4})?)" class = "deliveryAddress" name = "delivery_zip" min="5" max="5">
 
           <label id = "errorDelCoun" for = "deliveryCountry" class = "deliveryAddress">Country:</label>
-          <input type = "text" id = "deliveryCountry" pattern = "[A-Za-z]{1,25}" class = "deliveryAddress" name = "delivery_country">
+          <input type = "text" id = "deliveryCountry" pattern = "[A-Za-z ]{1,25}" class = "deliveryAddress" name = "delivery_country">
           <button type = "button" id="nextTwo">Next</button>
 
         </fieldset>
@@ -142,25 +142,25 @@ session_start();
           <label for = "sameAddress">Same as Delivery Address</label><br>
 
 		<label id = "errorBillFName" for = "billingFName">* First Name:</label>
-          <input type = "text" id = "billingFName" pattern = "[A-Za-z]{1,12}" name = "billing_fname" required>
+          <input type = "text" id = "billingFName" pattern = "[A-Za-z ]{1,20}" name = "billing_fname" required>
 
           <label id = "errorBillLName" for = "billingLName">* Last Name:</label>
-          <input type = "text" id = "billingLName" pattern = "[A-Za-z]{1,12}" name = "billing_lname" required>
+          <input type = "text" id = "billingLName" pattern = "[A-Za-z ]{1,20}" name = "billing_lname" required>
 
           <label id = "errorBillStreet" for = "billingStreet">* Street:</label>
           <input type = "text" id = "billingStreet" name = "billing_street" required>
 
           <label id = "errorBillCity" for = "billingCity">* City:</label>
-          <input type = "text" id = "billingCity" name = "billing_city" required>
+          <input type = "text" id = "billingCity" pattern = "[A-Za-z ]{1,20}" name = "billing_city" required>
 
           <label id = "errorBillState" for = "billingState">* State:</label>
-          <input type = "text" id = "billingState" pattern = "[A-Za-z]{1,12}" name = "billing_state" required>
+          <input type = "text" id = "billingState" pattern = "[A-Za-z ]{1,14}" name = "billing_state" required>
 
           <label id = "errorBillZip" for = "billingZip">* Zip:</label>
           <input type = "text" id = "billingZip" pattern = "(\d{5}([\-]\d{4})?)" name = "billing_zip" required>
 
           <label id = "errorBillCountry" for = "billingCountry">* Country:</label>
-          <input type = "text" id = "billingCountry" name = "billing_country" required>
+          <input type = "text" id = "billingCountry" pattern = "[A-Za-z ]{1,25}" name = "billing_country" required>
 
           <button type = "button" id="nextThree">Next</button>
         </fieldset>
