@@ -1,5 +1,5 @@
-//Problem: Hints are shown even when form is valid
-//Solution: Hide and show them at appropriate times
+//form validation for signup.php
+//create variables for password and create password
 var $password = $("#password");
 var $confirmPassword = $("#confirm_password");
 

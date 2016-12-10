@@ -1,3 +1,4 @@
+//when the quantity is changed in the cart
 function updateQuantity(idToUpdate, i){
 	//execute if the quantity selector box has been changed
 	$('#select'+idToUpdate).change(function(){

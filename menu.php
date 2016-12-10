@@ -1,6 +1,6 @@
 <?php
-@ob_start();
-session_start();
+	@ob_start();
+	session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +24,7 @@ session_start();
   </head>
 <body>
  <div>
+ <!--Include correct navigation based on who is logged in-->
     <?php 
 	if (isset($_SESSION["customer"])) {
 		include_once("navCustomer.php");

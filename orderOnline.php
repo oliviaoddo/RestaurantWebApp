@@ -16,6 +16,7 @@ session_start();
     </head>
     <body>
         <div>
+        <!--Include correct navigation based on who is logged in-->
             <?php 
             if (isset($_SESSION["customer"])) {
               include_once("navCustomer.php");
@@ -31,6 +32,7 @@ session_start();
     <form>
     <div class = "row" id = "filterRow">
         <div class = "col-md-2">
+        <!--Create the filter options: when an option is clicked the filter function is called and the approriate products are displayed-->
          <label id = "filterCalories">Calories <i class="fa fa-caret-down" aria-hidden="true"></i></label><br>
                 <div class = "filterCalories">
                     <input type="radio" name="calories" value="500" class = "calories" id = "500cal" onclick="filterFunction()"/><label for ="500cal">Under 500</label><br>
@@ -84,13 +86,14 @@ session_start();
                     <input type="radio" name="price" value="15" class = "price" id = "15dol" onclick="filterFunction()"/><label for ="15dol">Under $15</label>
                     </div>
                 </div>
-
+                <!--When the X is clicked, all of the products are displayed-->
                 <div class = "col-md-1">  
                     <button type = "button" onclick = "displayAllFunction()"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
                 </div>
         </form>
 
         </div>
+        <!--div where the response text from filter.js is displayed aka the products-->
         <div id = "productsDiv" class = "container">
         </div>
 

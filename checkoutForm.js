@@ -1,4 +1,4 @@
-//pickup/delivery time 
+//get the current time 
 var currentTime = function(){
 	//get the current time 
 	var d = new Date();
@@ -14,11 +14,14 @@ var currentTime = function(){
 	//convert to minutes 
 	h = h * 60;
 	var currentTime = h + m;
+	//return the current time in minutes
 	return currentTime;
 };
 
+//convert miltary time to standard so the dropdown options are displayed in standard time with AM and PM for the user
 var standard = function (time){
 	var hour = Math.trunc(time/60);
+		//decides if military time is AM or PM in standard time
 		if(hour > 12){
 			hour = hour - 12;
 			var timeOfDay = "PM";
@@ -30,17 +33,18 @@ var standard = function (time){
 			var timeOfDay = "AM";
 		}
 		var minutes = time%60;
-		//convert to normal time 
+		//convert to standard time 
 		if(minutes == 0){
 			var standardTime = hour + ":" + minutes + "0" + timeOfDay;
 		}
 		else {
 			var standardTime = hour + ":" + minutes + timeOfDay;
 		}
-
+		//return time that is ready to be added to option tag
 		return standardTime;
 };
 
+//add the times to the drop down
 var addOptionTag = function(id, time){
 	var selectItem = document.getElementById(id);
 	var optionItem = document.createElement("option");
@@ -49,8 +53,11 @@ var addOptionTag = function(id, time){
 };
 
 var orderTimes = function(option){
+	//calls current time function to get the current time
 	var current = currentTime();
+	//close time is 9pm
 	var closeTime = 1260;
+	//open time is 9am
 	var openTime = 540;
 	if(current > closeTime){
 		current = openTime;
@@ -63,18 +70,16 @@ var orderTimes = function(option){
 		var standardTime = standard(current);
 		//create <option> element in delivery <select> time 
 		addOptionTag("deliveryTime", standardTime);
-		//loop
+		//loops white the current time is less than the closing time
 			while (current < closeTime){
 				//add 15 minutes until closing
 				current = current + 15;
-				//convert to military time
+				//convert the military time to standard
 				var standardTime = standard(current);
 				//create <option> element in delivery <select> time 
 				addOptionTag("deliveryTime", standardTime);
 			}
-			//remove required from pickup incase user switches back and forth
-			//add attribute of delivery time required
-			//add required attribute to delivery street, city, state, zip, country 
+		//add required attribute to delivery street, city, state, zip, country if the user is getting their order delivered 
 		document.getElementById('deliveryStreet').required = true;
 		document.getElementById('deliveryCity').required = true;
 		document.getElementById('deliveryState').required = true;
@@ -89,20 +94,22 @@ var orderTimes = function(option){
 		//create <option> element in pickup <select> time
 		var standardTime = standard(current);
 		addOptionTag("pickupTime", standardTime);
-		//loop
+		//loops while the current time is less than the closing time
 			while (current < closeTime){
 				//add 15 minutes until closing
 				current = current + 15;
-				//convert to military time
+				//convert the military time to standard
 				var standardTime = standard(current);
 				//create <option> element in pickup <select> time 
 				addOptionTag("pickupTime", standardTime);
 			}
+		//if delivery was originally clicked and form validation errors were displayed, hide them if the user switches to pickup
 		$('#errorDelZip').prev().hide();
 		$('#errorDelSta').prev().hide();
 		$('#errorDelCoun').prev().hide();
 		$('#errorDelCit').prev().hide();
 		$('#errorDelSt').prev().hide();
+		//make input fields not required if user is picking up
 		document.getElementById('deliveryStreet').required = false;
 		document.getElementById('deliveryCity').required = false;
 		document.getElementById('deliveryState').required = false;
@@ -140,6 +147,7 @@ $("#nextThree").click(function(){
 	$("#set4").show();
 });
 
+//if number 1 is clicked, hide other sets, number 1 hides and shows when clicked(toggles)
 $("#fieldNumber1").click(function(){
 	$("#set2").hide();
 	$("#set3").hide();
@@ -147,6 +155,7 @@ $("#fieldNumber1").click(function(){
 	$("#set1").toggle();
 });
 
+//if number 2 is clicked, hide other sets, number 2 hides and shows when clicked(toggles)
 $("#fieldNumber2").click(function(){
 	$("#set1").hide();
 	$("#set3").hide();
@@ -154,6 +163,7 @@ $("#fieldNumber2").click(function(){
 	$("#set2").toggle();
 });
 
+//if number 3 is clicked, hide other sets, number 3 hides and shows when clicked(toggles)
 $("#fieldNumber3").click(function(){
 	$("#set1").hide();
 	$("#set2").hide();
@@ -161,6 +171,7 @@ $("#fieldNumber3").click(function(){
 	$("#set3").toggle();
 });
 
+//if number 4 is clicked, hide other sets, number 4 hides and shows when clicked(toggles)
 $("#fieldNumber4").click(function(){
 	$("#set1").hide();
 	$("#set2").hide();

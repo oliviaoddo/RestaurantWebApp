@@ -1,26 +1,26 @@
  <?php 
-session_start();
+  session_start();
 ?>
 <?php
-if(!isset($_SESSION["customer"])){
-	header("location: customer_login.php");
-	exit();
-}
+  if(!isset($_SESSION["customer"])){
+  	header("location: customer_login.php");
+  	exit();
+  }
 
-//Check if customer SESSION value is in database if user tries to access index in browser bar
-$customerID = preg_replace('#[^0-9]#i','',$_SESSION["id"]); //filter everything but numbers and letters
-$customer = preg_replace('#[^A-Za-z0-9]#i','', $_SESSION["customer"]); //filter everything but numbers and letters
-$password = preg_replace('#[^A-Za-z0-9]#i','', $_SESSION["password"]);
-//Run mySQL query to be sure that this person is an admin and that their password session var equals the database information 
-//Connect to the MySQL database 
-include "connect_to_mysql.php";
-$sql = mysqli_query($link, "SELECT * FROM accounts"); //query the person 
-//MAKE SURE PERSON EXISTS IN DATABASE
-$existCount = mysqli_num_rows($sql); //count the row nums 
-if($existCount == 0){// evaluate the count 
-	echo "Your login session data is not on record in the databse";
-	exit();
-}
+  //Check if customer SESSION value is in database if user tries to access index in browser bar
+  $customerID = preg_replace('#[^0-9]#i','',$_SESSION["id"]); //filter everything but numbers and letters
+  $customer = preg_replace('#[^A-Za-z0-9]#i','', $_SESSION["customer"]); //filter everything but numbers and letters
+  $password = preg_replace('#[^A-Za-z0-9]#i','', $_SESSION["password"]);
+  //Run mySQL query to be sure that this person is an admin and that their password session var equals the database information 
+  //Connect to the MySQL database 
+  include "connect_to_mysql.php";
+  $sql = mysqli_query($link, "SELECT * FROM accounts"); //query the person 
+  //MAKE SURE PERSON EXISTS IN DATABASE
+  $existCount = mysqli_num_rows($sql); //count the row nums 
+  if($existCount == 0){// evaluate the count 
+  	echo "Your login session data is not on record in the databse";
+  	exit();
+  }
 ?>
 
 

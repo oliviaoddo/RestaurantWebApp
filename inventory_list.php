@@ -1,106 +1,104 @@
 <?php 
-session_start();
-if(!isset($_SESSION["manager"])){
-	header("location: admin_login.php");
-	exit();
-}
+  session_start();
+  if(!isset($_SESSION["manager"])){
+  	header("location: admin_login.php");
+  	exit();
+  }
 
-//Be sure to check this manager SESSION value is in fact in the database 
-$manager = preg_replace('#[^A-Za-z0-9]#i','', $_SESSION["manager"]); //filter everything but numbers and letters
-$password = preg_replace('#[^A-Za-z0-9]#i','', $_SESSION["password"]);
-//Run mySQL query to be sure that this person is an admin and that their password session var equals the database information 
-//Connect to the MySQL database 
-include "connect_to_mysql.php";
-$sql = mysqli_query($link, "SELECT * FROM admins WHERE username='$manager' AND password = '$password' LIMIT 1"); //query the person 
-//MAKE SURE PERSON EXISTS IN DATABASE
-$existCount = mysqli_num_rows($sql); //count the row nums 
-if($existCount == 0){// evaluate the count 
-	echo "Your login session data is not on record in the databse";
-	exit();
-
-}
+  //Be sure to check this manager SESSION value is in fact in the database 
+  $manager = preg_replace('#[^A-Za-z0-9]#i','', $_SESSION["manager"]); //filter everything but numbers and letters
+  $password = preg_replace('#[^A-Za-z0-9]#i','', $_SESSION["password"]);
+  //Run mySQL query to be sure that this person is an admin and that their password session var equals the database information 
+  //Connect to the MySQL database 
+  include "connect_to_mysql.php";
+  $sql = mysqli_query($link, "SELECT * FROM admins WHERE username='$manager' AND password = '$password' LIMIT 1"); //query the person 
+  //MAKE SURE PERSON EXISTS IN DATABASE
+  $existCount = mysqli_num_rows($sql); //count the row nums 
+  if($existCount == 0){// evaluate the count 
+  	echo "Your login session data is not on record in the databse";
+  	exit();
+  }
 
 ?>
 
 <?php 
 //Script Error Reporting
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+  error_reporting(E_ALL);
+  ini_set('display_errors', '1');
 ?>
 <?php 
-// Delete Item Question to Admin, and Delete Product if they choose
-if (isset($_GET['deleteid'])) {
-  echo 'Do you really want to delete product with ID of ' . $_GET['deleteid'] . '? <a href="inventory_list.php?yesdelete=' . $_GET['deleteid'] . '">Yes</a> | <a href="inventory_list.php">No</a>';
-  exit();
-}
-if (isset($_GET['yesdelete'])) {
-  // remove item from system and delete its picture
-  // delete from database
-  $id_to_delete = $_GET['yesdelete'];
-  $sql = mysqli_query($link, "DELETE FROM products WHERE id='$id_to_delete' LIMIT 1") or die (mysqli_error());
-  // unlink the image from server
-  // Remove The Pic -------------------------------------------
-    $pictodelete = ("../inventory_images/$id_to_delete.jpg");
-    if (file_exists($pictodelete)) {
-              unlink($pictodelete);
+  // Delete Item Question to Admin, and Delete Product if they choose
+  if (isset($_GET['deleteid'])) {
+    echo 'Do you really want to delete product with ID of ' . $_GET['deleteid'] . '? <a href="inventory_list.php?yesdelete=' . $_GET['deleteid'] . '">Yes</a> | <a href="inventory_list.php">No</a>';
+    exit();
+  }
+  if (isset($_GET['yesdelete'])) {
+    // remove item from system and delete its picture
+    // delete from database
+    $id_to_delete = $_GET['yesdelete'];
+    $sql = mysqli_query($link, "DELETE FROM products WHERE id='$id_to_delete' LIMIT 1") or die (mysqli_error());
+    // unlink the image from server
+    // Remove The Pic -------------------------------------------
+      $pictodelete = ("../inventory_images/$id_to_delete.jpg");
+      if (file_exists($pictodelete)) {
+                unlink($pictodelete);
+      }
+    header("location: inventory_list.php"); 
+      exit();
+  }
+?>
+<?php
+  //Parse the form data and add inventory item to the system 
+  if(isset($_POST['product_name'])){
+
+    $product_name = mysqli_real_escape_string($link, $_POST['product_name']);
+    $price = mysqli_real_escape_string($link, $_POST['price']);
+    $category = mysqli_real_escape_string($link, $_POST['category']);
+    $description = mysqli_real_escape_string($link, $_POST['description']);
+    $protein = mysqli_real_escape_string($link, $_POST['protein']);
+    $calories = mysqli_real_escape_string($link, $_POST['calories']);
+    $carbs = mysqli_real_escape_string($link, $_POST['carbs']);
+    $fat = mysqli_real_escape_string($link, $_POST['fat']);
+    $sugar = mysqli_real_escape_string($link, $_POST['sugar']);
+
+    //See if that product name is an identical match to another product in the system 
+    $sql = mysqli_query($link, "SELECT id FROM products WHERE name = '$product_name' LIMIT 1");
+    $productMatch = mysqli_num_rows($sql); //count the output amount
+    if($productMatch > 0){
+      echo 'Sorry you tried to place a duplicate "Product Name" into the system. <a href = "inventory_list.php">click here</a>';
+      exit();
     }
-  header("location: inventory_list.php"); 
-    exit();
-}
-?>
-<?php
-//Parse the form data and add inventory item to the system 
-if(isset($_POST['product_name'])){
-
-  $product_name = mysqli_real_escape_string($link, $_POST['product_name']);
-  $price = mysqli_real_escape_string($link, $_POST['price']);
-  $category = mysqli_real_escape_string($link, $_POST['category']);
-  $description = mysqli_real_escape_string($link, $_POST['description']);
-  $protein = mysqli_real_escape_string($link, $_POST['protein']);
-  $calories = mysqli_real_escape_string($link, $_POST['calories']);
-  $carbs = mysqli_real_escape_string($link, $_POST['carbs']);
-  $fat = mysqli_real_escape_string($link, $_POST['fat']);
-  $sugar = mysqli_real_escape_string($link, $_POST['sugar']);
-
-  //See if that product name is an identical match to another product in the system 
-  $sql = mysqli_query($link, "SELECT id FROM products WHERE name = '$product_name' LIMIT 1");
-  $productMatch = mysqli_num_rows($sql); //count the output amount
-  if($productMatch > 0){
-    echo 'Sorry you tried to place a duplicate "Product Name" into the system. <a href = "inventory_list.php">click here</a>';
+    //Add this product into the database now 
+    $sql = mysqli_query($link, "INSERT INTO products (name,price,description,category, protein, calories, carbs, fat, sugar, date_added)
+        VALUES('$product_name', '$price', '$description','$category', '$protein', '$calories', '$carbs', '$fat', '$sugar', now())") or die (mysqli_error($link));
+      $pid = mysqli_insert_id($link);
+      //Place image in the folder 
+    $newname = "$pid.jpg";
+    move_uploaded_file($_FILES['fileField']['tmp_name'], "../inventory_images/$newname");
+    header("location: inventory_list.php");
     exit();
   }
-  //Add this product into the database now 
-  $sql = mysqli_query($link, "INSERT INTO products (name,price,description,category, protein, calories, carbs, fat, sugar, date_added)
-      VALUES('$product_name', '$price', '$description','$category', '$protein', '$calories', '$carbs', '$fat', '$sugar', now())") or die (mysqli_error($link));
-    $pid = mysqli_insert_id($link);
-    //Place image in the folder 
-  $newname = "$pid.jpg";
-  move_uploaded_file($_FILES['fileField']['tmp_name'], "../inventory_images/$newname");
-  header("location: inventory_list.php");
-  exit();
-}
 ?>
 
 <?php
-date_default_timezone_set('UTC');
-//This block grabs the whole list for viewing 
-$product_list = "";
-$sql = mysqli_query($link, "SELECT * FROM products ORDER BY date_added DESC");
-$productCount = mysqli_num_rows($sql); //count output amount
-if($productCount > 0){
-  while($row = mysqli_fetch_assoc($sql)){
-    $id = $row["id"];
-	//$_SESSION["product_ID"] = $id; //giving us 21 for some reason
-    $name = $row["name"];
-    $date_added = strftime("%b %d %Y", strtotime($row["date_added"]));
-    //$product_list .= "$date_added-$id-$name &nbsp; &nbsp; &nbsp;<a href='inventory_edit.php?pid=$id'>edit</a>&bull;<a href='inventory_list.php?deleteid=$id'>delete</a><br>";
-	//$product_list .= "$id-$name &nbsp; &nbsp; &nbsp;<a href='inventory_edit.php?pid=$id'>edit</a>&bull;<a href='inventory_list.php?deleteid=$id'>delete</a><br>";
-$product_list .= "Product ID: $id - <strong>$name</strong> - <em>Added $date_added</em> &nbsp; &nbsp; &nbsp; <a href='inventory_edit.php?pid=$id'>edit</a> &bull; <a href='inventory_list.php?deleteid=$id'>delete</a><br />";  
+  date_default_timezone_set('UTC');
+  //This block grabs the whole list for viewing 
+  $product_list = "";
+  $sql = mysqli_query($link, "SELECT * FROM products ORDER BY date_added DESC");
+  $productCount = mysqli_num_rows($sql); //count output amount
+  if($productCount > 0){
+    while($row = mysqli_fetch_assoc($sql)){
+      $id = $row["id"];
+  	//$_SESSION["product_ID"] = $id; //giving us 21 for some reason
+      $name = $row["name"];
+      $date_added = strftime("%b %d %Y", strtotime($row["date_added"]));
+      //$product_list .= "$date_added-$id-$name &nbsp; &nbsp; &nbsp;<a href='inventory_edit.php?pid=$id'>edit</a>&bull;<a href='inventory_list.php?deleteid=$id'>delete</a><br>";
+  	//$product_list .= "$id-$name &nbsp; &nbsp; &nbsp;<a href='inventory_edit.php?pid=$id'>edit</a>&bull;<a href='inventory_list.php?deleteid=$id'>delete</a><br>";
+  $product_list .= "Product ID: $id - <strong>$name</strong> - <em>Added $date_added</em> &nbsp; &nbsp; &nbsp; <a href='inventory_edit.php?pid=$id'>edit</a> &bull; <a href='inventory_list.php?deleteid=$id'>delete</a><br />";  
+    }
+  }else{
+    $product_list = "You have no products listed in your store yet";
   }
-}else{
-  $product_list = "You have no products listed in your store yet";
-}
-
 ?>
 
 
@@ -115,15 +113,15 @@ $product_list .= "Product ID: $id - <strong>$name</strong> - <em>Added $date_add
 <body>
 <div align="center" id="mainWrapper">
   <?php 
-  if (isset($_SESSION["customer"])) {
-		include_once("navCustomer.php");
-	}
-	else if (isset($_SESSION["manager"])) {
-		include_once("navAdmin.php");
-	}
-	else {
-		include_once("nav.php");
-	}
+    if (isset($_SESSION["customer"])) {
+  		include_once("navCustomer.php");
+  	}
+  	else if (isset($_SESSION["manager"])) {
+  		include_once("navAdmin.php");
+  	}
+  	else {
+  		include_once("nav.php");
+  	}
   ?>
   <div id="pageContent"><br />
     <div align="right" style="margin-right:32px;"><a href="inventory_list.php#inventoryForm">+ Add New Inventory Item</a></div>
@@ -218,12 +216,12 @@ $product_list .= "Product ID: $id - <strong>$name</strong> - <em>Added $date_add
   <br />
   </div>
   <?php
-  if (isset($_SESSION["manager"])) {
-		include_once("footerAdmin.php");
-	}
-	else {
-		include_once("footer.php");
-	}
+    if (isset($_SESSION["manager"])) {
+  		include_once("footerAdmin.php");
+  	}
+  	else {
+  		include_once("footer.php");
+  	}
   ?>
 </div>
 </body>

@@ -1,6 +1,6 @@
 <?php
-@ob_start();
-session_start();
+  @ob_start();
+  session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,33 +13,32 @@ session_start();
   <link rel="stylesheet" href="signUp.css" type="text/css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
-
     <div>
+    <!--Include correct navigation based on who is logged in-->
       <?php 
-	     if (isset($_SESSION["customer"])) {
-		    include_once("navCustomer.php"); 
-	     }
-	     else if (isset($_SESSION["manager"])) {
-		    include_once("navAdmin.php");
-	     }
-	     else {
-		    include_once("nav.php");
-	     }
-	?>
+	       if (isset($_SESSION["customer"])) {
+		      include_once("navCustomer.php"); 
+	       }
+	       else if (isset($_SESSION["manager"])) {
+		      include_once("navAdmin.php");
+	       }
+	       else {
+		      include_once("nav.php");
+	       }
+	   ?>
     </div>
       <form id="form1" name="form1" method="post" action="admin_login_script.php">
-      <h2>Admin Login</h2>
+        <h2>Admin Login</h2>
         <label for = "username">Username</label>
         <input name="username" type="text" id="username">
-       
+         
         <label for = "password">Password</label>
         <input name="password" type="password" id="password">
         <p>
           <input type="submit" name="button" id="button"  value="Log In" id="button">
-        </p>
-       
+        </p>   
       </form>
-</div>
-  <?php include_once("footer.php");?>
+    </div>
+    <?php include_once("footer.php");?>
 </body>
 </html>
