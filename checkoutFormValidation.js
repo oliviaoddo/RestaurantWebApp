@@ -1,15 +1,19 @@
-/*checkout form validation*/
+//checkout form validation: overwrites the default browser validation error boxes
 
-/*first name*/
+//first name
+//get the input box that needs to be validated and the position where the error message will be displayed 
 var fNameInput = document.getElementById('firstName');
 var errorFName  = document.getElementById('errorFName');
 
+//create a div element for the error message
 var fname = document.createElement('div');
 fname.id = 'notify';
 fname.style.display = 'none';
 
+//add the error message before the input label
 errorFName.before(fname);
 
+//if input is invalid display the message
 fNameInput.addEventListener('invalid', function(event){
     event.preventDefault();
     if ( ! event.target.validity.valid ) {
@@ -19,6 +23,7 @@ fNameInput.addEventListener('invalid', function(event){
     }
 });
 
+//if input box is clicked after error message has been display, hide error message
 fNameInput.addEventListener('input', function(event){
     if ( 'block' === fname.style.display ) {
         fNameInput.className = '';
@@ -26,15 +31,20 @@ fNameInput.addEventListener('input', function(event){
     }
 });
 
-/*last name*/
+//last name
+//get the input box that needs to be validated and the position where the error message will be displayed 
 var lNameInput = document.getElementById('lastName');
 var errorLName  = document.getElementById('errorLName');
 
+//create a div element for the error message
 var lname = document.createElement('div');
 lname.id = 'notify';
 lname.style.display = 'none';
+
+//add the error message before the input label
 errorLName.before(lname);
 
+//if input is invalid display the message
 lNameInput.addEventListener('invalid', function(event){
     event.preventDefault();
     if ( ! event.target.validity.valid ) {
@@ -44,6 +54,7 @@ lNameInput.addEventListener('invalid', function(event){
     }
 });
 
+//if input box is clicked after error message has been display, hide error message
 lNameInput.addEventListener('input', function(event){
     if ( 'block' === lname.style.display ) {
         lNameInput.className = '';
@@ -51,15 +62,20 @@ lNameInput.addEventListener('input', function(event){
     }
 });
 
-/*email*/
+//email
+//get the input box that needs to be validated and the position where the error message will be displayed 
 var emailInput = document.getElementById('mail');
 var errorEmail  = document.getElementById('errorEmail');
 
+//create a div element for the error message
 var email = document.createElement('div');
 email.id = 'notify';
 email.style.display = 'none';
+
+//add the error message before the input label
 errorEmail.before(email);
 
+//if input is invalid display the message
 emailInput.addEventListener('invalid', function(event){
     event.preventDefault();
     if ( ! event.target.validity.valid ) {
@@ -69,6 +85,7 @@ emailInput.addEventListener('invalid', function(event){
     }
 });
 
+//if input box is clicked after error message has been display, hide error message
 emailInput.addEventListener('input', function(event){
     if ( 'block' === email.style.display ) {
         emailInput.className = '';
@@ -76,15 +93,20 @@ emailInput.addEventListener('input', function(event){
     }
 });
 
-/*phone*/
+//phone
+//get the input box that needs to be validated and the position where the error message will be displayed 
 var phoneInput = document.getElementById('phone');
 var errorPhone  = document.getElementById('errorPhone');
 
+//create a div element for the error message
 var phone = document.createElement('div');
 phone.id = 'notify';
 phone.style.display = 'none';
+
+//add the error message before the input label
 errorPhone.before(phone);
 
+//if input is invalid display the message
 phoneInput.addEventListener('invalid', function(event){
     event.preventDefault();
     if ( ! event.target.validity.valid ) {
@@ -94,6 +116,7 @@ phoneInput.addEventListener('invalid', function(event){
     }
 });
 
+//if input box is clicked after error message has been display, hide error message
 phoneInput.addEventListener('input', function(event){
     if ( 'block' === phone.style.display ) {
         phoneInput.className = '';
@@ -101,15 +124,20 @@ phoneInput.addEventListener('input', function(event){
     }
 });
 
-/*delivery or pickup radio button*/
+//delivery or pickup radio button
+//get the input box that needs to be validated and the position where the error message will be displayed 
 var radioInput = document.getElementById('pickup');
 var errorRadio  = document.getElementById('errorRadio');
 
+//create a div element for the error message
 var radio = document.createElement('div');
 radio.id = 'notify';
 radio.style.display = 'none';
+
+//add the error message before the input label
 errorRadio.before(radio);
 
+//if input is invalid display the message
 radioInput.addEventListener('invalid', function(event){
     event.preventDefault();
     if ( ! event.target.validity.valid ) {
@@ -119,6 +147,7 @@ radioInput.addEventListener('invalid', function(event){
     }
 });
 
+//if input box is clicked after error message has been display, hide error message
 radioInput.addEventListener('input', function(event){
     if ( 'block' === radio.style.display ) {
         radioInput.className = '';
@@ -126,15 +155,20 @@ radioInput.addEventListener('input', function(event){
     }
 });
 
-/*card number*/
+//card number
+//get the input box that needs to be validated and the position where the error message will be displayed 
 var cardInput = document.getElementById('cardNumber');
 var errorCard  = document.getElementById('errorCard');
 
+//create a div element for the error message
 var card = document.createElement('div');
 card.id = 'notify';
 card.style.display = 'none';
+
+//add the error message before the input label
 errorCard.before(card);
 
+//if input is invalid display the message
 cardInput.addEventListener('invalid', function(event){
     event.preventDefault();
     if ( ! event.target.validity.valid ) {
@@ -144,6 +178,7 @@ cardInput.addEventListener('invalid', function(event){
     }
 });
 
+//if input box is clicked after error message has been display, hide error message
 cardInput.addEventListener('input', function(event){
     if ( 'block' === card.style.display ) {
         cardInput.className = '';
@@ -151,33 +186,7 @@ cardInput.addEventListener('input', function(event){
     }
 });
 
-/*expiration date*/
-/*
-var expirationMonth = document.getElementByClass('card_month');
-var monthError  = document.getElementById('expirationError');
-
-var month = document.createElement('div');
-month.id = 'notify';
-month.style.display = 'none';
-monthError.before(month);
-
-expirationMonth.addEventListener('invalid', function(event){
-    event.preventDefault();
-    if ( ! event.target.validity.valid ) {
-        month.textContent   = 'Invalid card number, must be between 13 and 16 numbers';
-        month.className     = 'error';
-        month.style.display = 'block';
-    }
-});
-
-expirationMonth.addEventListener('input', function(event){
-    if ( 'block' === lname.style.display ) {
-        expirationMonth.className = '';
-        month.style.display = 'none';
-    }
-});*/
-
-/*card code*/
+//card code
 var codeInput = document.getElementById('cardCode');
 var errorCode  = document.getElementById('errorCode');
 

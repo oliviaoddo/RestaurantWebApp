@@ -32,26 +32,26 @@
     <link href="style.css" rel="stylesheet">
     
   </head>
-<footer class="footer">
+  <footer class="footer">
        <div id="footer">
         <div class="row">
         
-        	<section class="col-sm-4">
-    			<h3>LOCATION</h3>
-    			<br /> 
-    			<br />
-    			<p>Address
-    			<br />27281 La Paz Road, Suite I
-    			<br />Laguna Niguel, CA 92677
+      	<section class="col-sm-4">
+  			<h3>LOCATION</h3>
+  			<br /> 
+  			<br />
+  			<p>Address
+  			<br />27281 La Paz Road, Suite I
+  			<br />Laguna Niguel, CA 92677
 				</p>
 				</section>
 			
-      			<section class="col-sm-4">
-    				<h3>HOURS</h3>
-    				</br>
-    				<br /><p>Sun- Thurs 11:30 am. to 9:30 pm.
-    				<br />Friday & Sat 11:30 am - 10:30 pm.</p>
-    				<br/>
+  			<section class="col-sm-4">
+				<h3>HOURS</h3>
+				</br>
+				<br /><p>Sun- Thurs 11:30 am. to 9:30 pm.
+				<br />Friday & Sat 11:30 am - 10:30 pm.</p>
+				<br/>
     				<!-- Trigger the modal with a button -->
 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="happyhours">Happy Hours</button>
 
@@ -79,7 +79,7 @@
     				
     			</section>
     			
-      			<section class="col-sm-4">
+      		<section class="col-sm-4">
     			<h3>FOLLOW US</h3>
     			<a href="https://www.instagram.com/"><img class="twitter" src="images/instagramgood.png" alt="Twitter" ></a>
     			<a href="https://twitter.com/?lang=en"><img class="twitter" src="images/twittergood.png" alt="Twitter" ></a>

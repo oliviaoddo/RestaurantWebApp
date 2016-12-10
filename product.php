@@ -3,11 +3,12 @@
 session_start();
 ?>
 <!DOCTYPE html>
+<!-- individual product pages (when a product on orderOnline is clicked-->
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title id="productTitle"></title>
+        <title>Order Online</title>
         <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
         <link href="style.css" rel="stylesheet">
         <link rel="stylesheet" href="productLightbox.css" type="text/css" media="screen" title="no title" charset="utf-8">
@@ -15,8 +16,10 @@ session_start();
         <link rel="stylesheet" href="product.css" type="text/css" media="screen" title="no title" charset="utf-8">
         <script src="https://use.fontawesome.com/501f28931f.js"></script>
     </head>
+    <!--calls the product function in productPage.js on page load-->
     <body  onload="product()" >
         <div>
+        <!--Include correct navigation based on who is logged in-->
             <?php 
             if (isset($_SESSION["customer"])) {
               include_once("navCustomer.php");
@@ -31,10 +34,11 @@ session_start();
          </div>
         <div class="row" id="productRow">
 
+            <!--Product image is inserted here by productPage.js-->
             <div class="col-md-4" id="productImage">
               
             </div>
-
+            <!--Product information is inserted here by productPage.js-->
             <div class = "col-md-4">
               <h3 id = "productName"></h3>
               <p id = "productPrice"></p>
@@ -42,6 +46,7 @@ session_start();
               <h4>Description:</h4>
               <p id = "productDescription"></p>
               <br />
+              <!--created a drop down for quantity-->
               <select class = "productPageSelect"> 
                 <option class = '1' value = '1'>1</option>
                 <option class = '2' value = '2'>2</option>
@@ -56,6 +61,7 @@ session_start();
                 </select>
               <button type = "button" id = "addToCart">Add to Cart</button>
               </div>
+              <!--Nutritional fact are inserted here by productPage.js-->
               <div class = "col-md-4" id="facts">
                 <h4 id= "nutrHeader">Nutritional Facts:</h4>
                 <p id = "productCalories">Calories: </p>
@@ -67,6 +73,7 @@ session_start();
               </div>
               </div>
         </div>
+        <!--When added to cart is pressed, a pop up is displayed asking the user to keep shopping or checkout-->
         <div class = "popUp">
           <h3>Added to cart!</h3>
           <a class = "lightboxButton" href="cart.php"><button type="button"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Checkout</button></a><br>

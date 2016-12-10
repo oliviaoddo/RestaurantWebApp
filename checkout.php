@@ -1,8 +1,9 @@
 <?php
-@ob_start();
-session_start();
+  @ob_start();
+  session_start();
 ?>
 <!DOCTYPE html>
+<!--Checkout form to process order, displayed after chekcout button in the cart is clicked-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -14,6 +15,7 @@ session_start();
         <script src="https://use.fontawesome.com/501f28931f.js"></script>
     </head>
     <body onload = "reviewOrder()">
+    <!--Include correct navigation based on who is logged in-->
       <div>
          <?php 
             if (isset($_SESSION["customer"])) {
@@ -28,11 +30,11 @@ session_start();
           ?>
       </div>
   
-
-      <form id = "form" method="post" onsubmit = "completeOrder()">
+      <!--When form is submitted,user is directed to orderPlaced page and complete order is called-->
+      <form action = "orderPlaced.php" id = "form" method="post" onsubmit = "completeOrder()">
         
         <h1>Checkout</h1>
-        
+        <!--Input boxes for customer information-->
         <legend id = "fieldNumber1"><span class = "number">1</span> Customer Information</legend>
         <fieldset id = "set1">
           
@@ -54,7 +56,7 @@ session_start();
         <legend id = "fieldNumber2"><span class = "number">2</span> Delivery Options</legend>
         <fieldset id = "set2">
           
-
+        <!--Pickup/delivery options-->
           <label for = "instructions">Special Instructions:</label>
           <textarea id = "instructions" name = "delivery_instructions" maxlength="250"></textarea>
 
@@ -95,7 +97,7 @@ session_start();
 
         <legend id = "fieldNumber3"><span class = "number">3</span> Payment</legend>
         <fieldset id = "set3">
-
+        <!--Input boxes for payment-->
         <label id = "errorCard" for = "cardNumber">* Card Number:</label>
         <input type = "text" id = "cardNumber" pattern = "[0-9]{13,16}" name = "card_number" required>
 
@@ -165,7 +167,8 @@ session_start();
 
         <legend id = "fieldNumber4"><span class = "number">4</span> Review Order</legend>
         <fieldset id = "set4">
-        <!-- add the cart content here-->
+        <!-- items in the cart are added into the checkout form from reviewOrder.js-->
+        <!-- display the subtotal, tax, delivery fee(if applicable), and grand total-->
           <ul id="cartContent">
           </ul>
           <h5 id="subtotal">Subtotal: $</h5>
@@ -173,12 +176,13 @@ session_start();
           <h5 = id = "deliveryFee"></h5>
           <h5 id="orderTotal"></h5>
         </fieldset>
-        <!-- display the subtotal, tax, delivery fee(if applicable), and grand total-->
+        <!-- Complete order only works is the form passes validation-->
         <button type = "submit" >Complete Order</button>
         
       </form>
 
       <div>
+      <!--Include correct footer-->
         <?php 
           if (isset($_SESSION["manager"])) {
             include_once("footerAdmin.php");

@@ -2,8 +2,10 @@
  include "connect_to_mysql.php";
  include "product_class.php";
  
+ //get the id that was sent by the ajax request
  $id = $_GET['id'];
  
+ //query the database
  $query = "SELECT * FROM products WHERE id = ";
  $query .= $id;
  
@@ -12,7 +14,7 @@
  $productCount = mysqli_num_rows($qry_result); // count the output amount
  
  if ($productCount > 0) {
-     //get all the prouduct details 
+     //get all the prouduct details from the query result
      while($row = $qry_result->fetch_assoc()){
  		$product_name = $row["name"];
  		$price = $row["price"];
@@ -27,7 +29,7 @@
  }
  
  	mysqli_close($link);
- 
+ 	//create an array with the information and send it back to productPage.js in JSON format
  	$productArray = array(
  		'productId' => $id,
  		'productName' => $product_name, 

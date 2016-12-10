@@ -18,6 +18,7 @@ session_start();
 	<body>
 	
   <div>
+  <!--Include correct navigation based on who is logged in-->
     <?php 
       if (isset($_SESSION["customer"])) {
         include_once("navCustomer.php");
